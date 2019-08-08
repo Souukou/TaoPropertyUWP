@@ -6,9 +6,154 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+    Loaded="Page_Loaded"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <RelativePanel>
+            <Button Name="NavigatorButton" 
+                    RelativePanel.AlignLeftWithPanel="True"
+                    FontFamily="Segoe MDL2 Assets"
+                    FontSize="20"
+                    Width="45"
+                    Height="45"
+                    HorizontalAlignment="Center"
+                    Content="&#xE700;"
+                    Click="NavigatorButton_Click" />
+            <Button Name="GoBackButton" 
+                    Visibility="Collapsed" 
+                    FontFamily="Segoe MDL2 Assets" 
+                    FontSize="20"
+                    Width="45"
+                    Height="45"
+                    Click="GoBackButton_Click" 
+                    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+                    RelativePanel.RightOf="NavigatorButton" 
+                    Content="&#xE7EA;" />
+            <TextBlock Name="TitleTextBlock"
+                       RelativePanel.RightOf="GoBackButton"
+                       FontSize="20"
+                       FontWeight="Bold"
+                       TextWrapping="Wrap"
+                       Margin="20,6,0,0"
+                       Text="桃物业" />
+            <AutoSuggestBox Name="SearchBox"
+                            RelativePanel.AlignRightWithPanel="True"
+                            FontSize="20"
+                            Margin="0,5,10,0"
+                            Width="300"
+                            QueryIcon="Find" 
+                            PlaceholderText="搜索" />
+        </RelativePanel>
+        <SplitView Name="NavigatorSplitView"
+                   Grid.Row="1"
+                   DisplayMode="CompactOverlay"
+                   CompactPaneLength="45"
+                   OpenPaneLength="150"
+                   HorizontalAlignment="Left">
+            <SplitView.Pane>
+                <ListBox SelectionMode="Single" 
+                         SelectionChanged="ListBox_SelectionChanged">
+                    <ListBoxItem Name="HomeListBoxItem">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock 
+                                Text="&#xE80F;"
+                                FontFamily="Segoe MDL2 Assets" 
+                                VerticalAlignment="Center"
+                                FontSize="20" />
+                            <TextBlock Text="主页" 
+                                       VerticalAlignment="Center"
+                                       FontSize="18" 
+                                       Margin="20,0,0,0" />
+                        </StackPanel>
+                    </ListBoxItem>
+                    <ListBoxItem Name="ChargeListBoxItem">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock 
+                                Text="&#xE1D0;"
+                                FontFamily="Segoe MDL2 Assets" 
+                                VerticalAlignment="Center"
+                                FontSize="20" />
+                            <TextBlock Text="收费系统" 
+                                       VerticalAlignment="Center"
+                                       FontSize="18" 
+                                       Margin="20,0,0,0" />
+                        </StackPanel>
+                    </ListBoxItem>
+                    <ListBoxItem Name="PropertyManageListBoxItem">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock 
+                                Text="&#xEC06;"
+                                FontFamily="Segoe MDL2 Assets" 
+                                VerticalAlignment="Center"
+                                FontSize="20" />
+                            <TextBlock Text="财产管理" 
+                                       VerticalAlignment="Center"
+                                       FontSize="18" 
+                                       Margin="20,0,0,0" />
+                        </StackPanel>
+                    </ListBoxItem>
+                    <ListBoxItem Name="FeesCenterListBoxItem">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock 
+                                Text="&#xEE92;"
+                                FontFamily="Segoe MDL2 Assets" 
+                                VerticalAlignment="Center"
+                                FontSize="20" />
+                            <TextBlock Text="费用中心" 
+                                       FontSize="18" 
+                                       VerticalAlignment="Center"
+                                       Margin="20,0,0,0" />
+                        </StackPanel>
+                    </ListBoxItem>
+                    <ListBoxItem Name="ResidentManageListBoxItem">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock 
+                                Text="&#xEA4A;"
+                                FontFamily="Segoe MDL2 Assets" 
+                                VerticalAlignment="Center"
+                                FontSize="20" />
+                            <TextBlock Text="住户管理" 
+                                       FontSize="18" 
+                                       VerticalAlignment="Center"
+                                       Margin="20,0,0,0" />
+                        </StackPanel>
+                    </ListBoxItem>
+                    <ListBoxItem Name="SubdivisionManageListBoxItem">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock 
+                                Text="&#xF259;"
+                                FontFamily="Segoe MDL2 Assets" 
+                                VerticalAlignment="Center"
+                                FontSize="20" />
+                            <TextBlock Text="小区管理" 
+                                       FontSize="18" 
+                                       VerticalAlignment="Center"
+                                       Margin="20,0,0,0" />
+                        </StackPanel>
+                    </ListBoxItem>
+                    <ListBoxItem Name="SettingListBoxItem">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock 
+                                Text="&#xE713;"
+                                FontFamily="Segoe MDL2 Assets" 
+                                VerticalAlignment="Center"
+                                FontSize="20" />
+                            <TextBlock Text="设置" 
+                                       FontSize="18" 
+                                       VerticalAlignment="Center"
+                                       Margin="20,0,0,0" />
+                        </StackPanel>
+                    </ListBoxItem>
+                </ListBox>
+            </SplitView.Pane>
+            <SplitView.Content >
+                <Frame Name="MainContentFrame"></Frame>
+            </SplitView.Content>
+        </SplitView>
     </Grid>
 </Page>
