@@ -36,14 +36,14 @@
                     Content="&#xE7EA;" />
             <TextBlock Name="TitleTextBlock"
                        RelativePanel.RightOf="GoBackButton"
-                       FontSize="20"
+                       FontSize="24"
                        FontWeight="Bold"
                        TextWrapping="Wrap"
-                       Margin="20,6,0,0"
+                       Margin="20,5,0,0"
                        Text="桃物业" />
             <AutoSuggestBox Name="SearchBox"
                             RelativePanel.AlignRightWithPanel="True"
-                            FontSize="20"
+                            FontSize="22"
                             Margin="0,5,10,0"
                             Width="300"
                             QueryIcon="Find" 

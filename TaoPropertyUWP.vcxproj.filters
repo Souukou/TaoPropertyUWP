@@ -47,5 +47,6 @@
   <ItemGroup>
     <Page Include="MainPage.xaml" />
     <Page Include="HomePage.xaml" />
+    <Page Include="SubdivisionManagePage.xaml" />
   </ItemGroup>
 </Project>
