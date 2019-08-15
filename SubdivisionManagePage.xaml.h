@@ -6,7 +6,13 @@
 #pragma once
 
 #include "SubdivisionManagePage.g.h"
+#include "Subdivision.h"
 
+/*
+using namespace std;
+using namespace Platform::Collections;
+using namespace TaoPropertyUWP::Models;
+*/
 namespace TaoPropertyUWP
 {
 	/// <summary>
@@ -15,7 +21,16 @@ namespace TaoPropertyUWP
 	[Windows::Foundation::Metadata::WebHostHidden]
 	public ref class SubdivisionManagePage sealed
 	{
+	private:
+		TaoPropertyUWP::Models::SubdivisionViewModel^ viewModel;
 	public:
 		SubdivisionManagePage();
+		property TaoPropertyUWP::Models::SubdivisionViewModel^ ViewModel
+		{
+			TaoPropertyUWP::Models::SubdivisionViewModel^ get() { return this->viewModel; };
+		}
+		
 	};
+
+
 }

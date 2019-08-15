@@ -177,6 +177,7 @@
     <ClInclude Include="MainPage.xaml.h">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </ClInclude>
+    <ClInclude Include="Subdivision.h" />
     <ClInclude Include="SubdivisionManagePage.xaml.h">
       <DependentUpon>SubdivisionManagePage.xaml</DependentUpon>
     </ClInclude>
@@ -229,6 +230,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Subdivision.cpp" />
     <ClCompile Include="SubdivisionManagePage.xaml.cpp">
       <DependentUpon>SubdivisionManagePage.xaml</DependentUpon>
     </ClCompile>

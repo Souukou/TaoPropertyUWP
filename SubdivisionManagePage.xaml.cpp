@@ -5,6 +5,7 @@
 
 #include "pch.h"
 #include "SubdivisionManagePage.xaml.h"
+#include "Subdivision.h"
 
 using namespace TaoPropertyUWP;
 
@@ -24,4 +25,8 @@ using namespace Windows::UI::Xaml::Navigation;
 SubdivisionManagePage::SubdivisionManagePage()
 {
 	InitializeComponent();
+	//Subdivisions = SubdivisionManager::GetSubdivisions();
+	this->viewModel = ref new TaoPropertyUWP::Models::SubdivisionViewModel();
 }
+
+
