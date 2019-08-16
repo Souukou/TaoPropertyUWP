@@ -15,10 +15,14 @@
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="Subdivision.cpp" />
+    <ClCompile Include="Resident.cpp" />
+    <ClCompile Include="Operator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
     <ClInclude Include="Subdivision.h" />
+    <ClInclude Include="Resident.h" />
+    <ClInclude Include="Operator.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\LockScreenLogo.scale-200.png">
