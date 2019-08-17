@@ -1,5 +1,8 @@
 #pragma once
 
+using namespace Windows::Foundation::Collections;
+
+
 namespace TaoPropertyUWP
 {
 	namespace Models
@@ -50,27 +53,15 @@ namespace TaoPropertyUWP
 
 		};
 
-		public ref class OperatorModelView sealed
+		public ref class OperatorViewModel sealed
 		{
 		private:
-			static Windows::Foundation::Collections::IObservableVector<Operator^>^ operators;
+			static IObservableVector<Operator^>^ operators;
 		public:
-			OperatorModelView()
+			OperatorViewModel();
+			static property IObservableVector<Operator^>^ Operators
 			{
-				Windows::Globalization::Calendar^ createTime = ref new Windows::Globalization::Calendar();
-				createTime->Year = 2019;
-				createTime->Month = 1;
-				createTime->Day = 1;
-				Operator^ theoperator = ref new Operator(1, L"Operator A", L"1@qq.com", L"158", createTime);
-				this->Operators->Append(theoperator);
-				theoperator = ref new Operator(2, L"Operator B", L"2@qq.com", L"135", createTime);
-				this->Operators->Append(theoperator);
-				theoperator = ref new Operator(3, L"Operator C", L"3@qq.com", L"189", createTime);
-				this->Operators->Append(theoperator);
-			}
-			static property Windows::Foundation::Collections::IObservableVector<Operator^>^ Operators
-			{
-				Windows::Foundation::Collections::IObservableVector<Operator^>^ get()
+				IObservableVector<Operator^>^ get()
 				{
 					if (operators == nullptr)
 					{

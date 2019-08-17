@@ -8,11 +8,11 @@
 #include "SubdivisionManagePage.g.h"
 #include "Subdivision.h"
 
-/*
+
 using namespace std;
 using namespace Platform::Collections;
 using namespace TaoPropertyUWP::Models;
-*/
+
 namespace TaoPropertyUWP
 {
 	/// <summary>
@@ -22,12 +22,12 @@ namespace TaoPropertyUWP
 	public ref class SubdivisionManagePage sealed
 	{
 	private:
-		TaoPropertyUWP::Models::SubdivisionViewModel^ viewModel;
+		SubdivisionViewModel^ viewModel;
 	public:
 		SubdivisionManagePage();
-		property TaoPropertyUWP::Models::SubdivisionViewModel^ ViewModel
+		property SubdivisionViewModel^ ViewModel
 		{
-			TaoPropertyUWP::Models::SubdivisionViewModel^ get() { return this->viewModel; };
+			SubdivisionViewModel^ get() { return this->viewModel; };
 		}
 		
 	};

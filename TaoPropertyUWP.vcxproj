@@ -167,6 +167,7 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Enterprise.h" />
     <ClInclude Include="HomePage.xaml.h">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </ClInclude>
@@ -177,6 +178,9 @@
     </ClInclude>
     <ClInclude Include="MainPage.xaml.h">
       <DependentUpon>MainPage.xaml</DependentUpon>
+    </ClInclude>
+    <ClInclude Include="ResidentManagePage.xaml.h">
+      <DependentUpon>ResidentManagePage.xaml</DependentUpon>
     </ClInclude>
     <ClInclude Include="Subdivision.h" />
     <ClInclude Include="SubdivisionManagePage.xaml.h">
@@ -192,6 +196,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ResidentManagePage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Include="SubdivisionManagePage.xaml">
@@ -216,6 +223,7 @@
     <ClCompile Include="App.xaml.cpp">
       <DependentUpon>App.xaml</DependentUpon>
     </ClCompile>
+    <ClCompile Include="Enterprise.cpp" />
     <ClCompile Include="HomePage.xaml.cpp">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </ClCompile>
@@ -232,6 +240,9 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="ResidentManagePage.xaml.cpp">
+      <DependentUpon>ResidentManagePage.xaml</DependentUpon>
     </ClCompile>
     <ClCompile Include="Subdivision.cpp" />
     <ClCompile Include="SubdivisionManagePage.xaml.cpp">

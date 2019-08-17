@@ -1,23 +1,22 @@
 #pragma once
 #include <sstream>
 #include "Operator.h"
-#include "Enterprise.h"
 
-using namespace TaoPropertyUWP::Models;
 using namespace Windows::Foundation::Collections;
+using namespace TaoPropertyUWP::Models;
 
 namespace TaoPropertyUWP
 {
-	namespace Models 
+	namespace Models
 	{
-		public ref class Subdivision sealed
+		public ref class Enterprise sealed
 		{
 		private:
 			int id;
 			Platform::String^ name;
 			Windows::Globalization::Calendar^ createTime;
-			int enterprise;
-			IVector<int>^ operators;
+			int founderid;
+			IVector<int>^ managers;
 			static Platform::String^ get_operator_name(int operator_id)
 			{
 				int thesize = OperatorViewModel::Operators->Size;
@@ -28,22 +27,19 @@ namespace TaoPropertyUWP
 				}
 				return L"";
 			}
+
 		public:
-			Subdivision(
-				int id, 
+			Enterprise(
+				int id,
 				Platform::String^ name,
 				Windows::Globalization::Calendar^ createTime,
-				int enterprise,
-				Windows::Foundation::Collections::IVector<int>^ operators) :
-				id { id }, 
-				name { name },
-				createTime { createTime },
-				enterprise{ enterprise }
-				//operators { operators } 
-			{
-				this->operators = operators;
-			}
-			
+				int founder,
+				IVector<int>^ operators) :
+				id{ id },
+				name{ name },
+				createTime{ createTime },
+				founderid{ founderid },
+				managers{ managers } {}
 			property int getid
 			{
 				int get() { return id; };
@@ -56,22 +52,18 @@ namespace TaoPropertyUWP
 			{
 				Windows::Globalization::Calendar^ get() { return this->createTime; }
 			}
-			property Platform::String^ getenterprisename
+			property Platform::String^ getfounder
 			{
 				Platform::String^ get()
 				{
-					for (int i = 0; i < EnterpriseViewModel::Enterprises->Size; ++i)
-						if (EnterpriseViewModel::Enterprises->GetAt(i)->getid == enterprise)
-							return EnterpriseViewModel::Enterprises->GetAt(i)->getname;
-					return L"";
-
+					return get_operator_name(founderid);
 				}
 			}
-			property Platform::String^ getoperatorname
+			property Platform::String^ getmanagername
 			{
 				Platform::String^ get()
 				{
-					int thesize = operators->Size;
+					int thesize = managers->Size;
 					if (thesize == 0)
 					{
 						return L"нч";
@@ -80,30 +72,29 @@ namespace TaoPropertyUWP
 					wstringstream << '[' << thesize << "] ";
 					Platform::String^ re = ref new Platform::String();
 					for (int i = 0; i < thesize; ++i)
-						re += get_operator_name(operators->GetAt(i)) + L" ";
-						
+						re += get_operator_name(managers->GetAt(i)) + L" ";
+
 					return ref new Platform::String(wstringstream.str().c_str()) + re;
 				}
 			}
-
 		};
 
-		public ref class SubdivisionViewModel sealed
+		public ref class EnterpriseViewModel sealed
 		{
 		private:
-			static IObservableVector<Subdivision^>^ subdivisions;
+			static IObservableVector<Enterprise^>^ enterprises;
 		public:
-			SubdivisionViewModel();
-			static property IObservableVector<Subdivision^>^ Subdivisions
+			EnterpriseViewModel();
+			static property IObservableVector<Enterprise^>^ Enterprises
 			{
-				IObservableVector<Subdivision^>^ get()
+				IObservableVector<Enterprise^>^ get()
 				{
-					if (subdivisions == nullptr)
+					if (enterprises == nullptr)
 					{
-						subdivisions = ref new Platform::Collections::Vector<Subdivision^>();
+						enterprises = ref new Platform::Collections::Vector<Enterprise^>();
 					}
-					return subdivisions;
-				};
+					return enterprises;
+				}
 			}
 		};
 	}

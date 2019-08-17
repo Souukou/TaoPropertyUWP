@@ -1,14 +1,14 @@
 ﻿//
-// SubdivisionManagePage.xaml.cpp
-// Implementation of the SubdivisionManagePage class
+// ResidentManagePage.xaml.cpp
+// Implementation of the ResidentManagePage class
 //
 
 #include "pch.h"
-#include "SubdivisionManagePage.xaml.h"
-#include "Subdivision.h"
+#include "ResidentManagePage.xaml.h"
+#include "Resident.h"
 
 using namespace TaoPropertyUWP;
-
+using namespace TaoPropertyUWP::Models;
 using namespace Platform;
 using namespace Windows::Foundation;
 using namespace Windows::Foundation::Collections;
@@ -22,13 +22,8 @@ using namespace Windows::UI::Xaml::Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-SubdivisionManagePage::SubdivisionManagePage()
+ResidentManagePage::ResidentManagePage()
 {
 	InitializeComponent();
-	//Subdivisions = SubdivisionManager::GetSubdivisions();
-	this->viewModel = ref new TaoPropertyUWP::Models::SubdivisionViewModel();
-	ref new TaoPropertyUWP::Models::OperatorViewModel();
-	ref new TaoPropertyUWP::Models::EnterpriseViewModel();
+	this->viewModel = ref new ResidentViewModel();
 }
-
-

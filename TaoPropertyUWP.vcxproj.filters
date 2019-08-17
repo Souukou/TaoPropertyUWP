@@ -17,12 +17,14 @@
     <ClCompile Include="Subdivision.cpp" />
     <ClCompile Include="Resident.cpp" />
     <ClCompile Include="Operator.cpp" />
+    <ClCompile Include="Enterprise.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
     <ClInclude Include="Subdivision.h" />
     <ClInclude Include="Resident.h" />
     <ClInclude Include="Operator.h" />
+    <ClInclude Include="Enterprise.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\LockScreenLogo.scale-200.png">
@@ -54,5 +56,6 @@
     <Page Include="MainPage.xaml" />
     <Page Include="HomePage.xaml" />
     <Page Include="SubdivisionManagePage.xaml" />
+    <Page Include="ResidentManagePage.xaml" />
   </ItemGroup>
 </Project>
