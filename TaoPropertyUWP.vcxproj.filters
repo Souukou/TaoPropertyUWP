@@ -32,6 +32,9 @@
     <ClCompile Include="House.cpp">
       <Filter>Models</Filter>
     </ClCompile>
+    <ClCompile Include="Carport.cpp">
+      <Filter>Models</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -48,6 +51,9 @@
       <Filter>Models</Filter>
     </ClInclude>
     <ClInclude Include="House.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="Carport.h">
       <Filter>Models</Filter>
     </ClInclude>
   </ItemGroup>

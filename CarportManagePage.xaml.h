@@ -6,6 +6,9 @@
 #pragma once
 
 #include "CarportManagePage.g.h"
+#include "Carport.h"
+
+using namespace TaoPropertyUWP::Models;
 
 namespace TaoPropertyUWP
 {
@@ -15,7 +18,20 @@ namespace TaoPropertyUWP
 	[Windows::Foundation::Metadata::WebHostHidden]
 	public ref class CarportManagePage sealed
 	{
+	private:
+		static CarportViewModel^ viewModel;
 	public:
 		CarportManagePage();
+		static property CarportViewModel^ ViewModel
+		{
+			CarportViewModel^ get()
+			{
+				if (viewModel == nullptr)
+				{
+					viewModel = ref new CarportViewModel();
+				}
+				return viewModel;
+			}
+		}
 	};
 }

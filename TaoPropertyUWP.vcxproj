@@ -167,6 +167,7 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Carport.h" />
     <ClInclude Include="CarportManagePage.xaml.h">
       <DependentUpon>CarportManagePage.xaml</DependentUpon>
     </ClInclude>
@@ -242,6 +243,7 @@
     <ClCompile Include="App.xaml.cpp">
       <DependentUpon>App.xaml</DependentUpon>
     </ClCompile>
+    <ClCompile Include="Carport.cpp" />
     <ClCompile Include="CarportManagePage.xaml.cpp">
       <DependentUpon>CarportManagePage.xaml</DependentUpon>
     </ClCompile>
