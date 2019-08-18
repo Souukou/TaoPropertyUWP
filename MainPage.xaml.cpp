@@ -8,6 +8,7 @@
 #include "HomePage.xaml.h"
 #include "SubdivisionManagePage.xaml.h"
 #include "ResidentManagePage.xaml.h"
+#include "PropertyManagePage.xaml.h"
 
 
 using namespace TaoPropertyUWP;
@@ -51,6 +52,11 @@ void TaoPropertyUWP::MainPage::ListBox_SelectionChanged(Platform::Object^ sender
 	{
 		TitleTextBlock->Text = "桃物业";
 		MainContentFrame->Navigate(TypeName(HomePage::typeid));
+	}
+	if (PropertyManageListBoxItem->IsSelected)
+	{
+		TitleTextBlock->Text = "桃物业";
+		MainContentFrame->Navigate(TypeName(PropertyManagePage::typeid));
 	}
 	if (SubdivisionManageListBoxItem->IsSelected)
 	{

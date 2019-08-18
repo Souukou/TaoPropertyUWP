@@ -1,0 +1,44 @@
+﻿<Page
+    x:Class="TaoPropertyUWP.PropertyManagePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:data="using:TaoPropertyUWP::Models"
+    xmlns:local="using:TaoPropertyUWP"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    Loaded="PropertyManagePage_Loaded"
+    mc:Ignorable="d">
+
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackPanel Margin="0,0,0,5" Orientation="Horizontal">
+            <TextBlock
+                Margin="0,0,20,0"
+                VerticalAlignment="Center"
+                FontSize="18"
+                Text="财产类型" />
+            <ComboBox
+                Name="PropertyTypeComboBox"
+                VerticalAlignment="Center"
+                SelectionChanged="PropertyTypeComboBox_SelectionChanged">
+                <ComboBoxItem
+                    x:Name="HouseComboBox"
+                    Content="房产"
+                    TabIndex="0" />
+                <ComboBoxItem
+                    x:Name="CarportComboBox"
+                    Content="车位"
+                    TabIndex="1" />
+            </ComboBox>
+        </StackPanel>
+        <Frame
+            Name="PropertyContentFrame"
+            Grid.Row="1"
+            HorizontalAlignment="Stretch" />
+
+    </Grid>
+</Page>

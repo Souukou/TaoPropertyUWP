@@ -21,12 +21,19 @@ namespace TaoPropertyUWP
 	public ref class ResidentManagePage sealed
 	{
 	private:
-		ResidentViewModel^ viewModel;
+		static ResidentViewModel^ viewModel;
 	public:
 		ResidentManagePage();
-		property ResidentViewModel^ ViewModel
+		static property ResidentViewModel^ ViewModel
 		{
-			ResidentViewModel^ get() { return this->viewModel; }
+			ResidentViewModel^ get()
+			{
+				if (viewModel == nullptr)
+				{
+					viewModel = ref new ResidentViewModel();
+				}
+				return viewModel;
+			}
 		}
 	};
 }

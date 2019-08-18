@@ -1,14 +1,13 @@
 ﻿//
-// ResidentManagePage.xaml.cpp
-// Implementation of the ResidentManagePage class
+// CarportManagePage.xaml.cpp
+// Implementation of the CarportManagePage class
 //
 
 #include "pch.h"
-#include "ResidentManagePage.xaml.h"
-#include "Resident.h"
+#include "CarportManagePage.xaml.h"
 
 using namespace TaoPropertyUWP;
-using namespace TaoPropertyUWP::Models;
+
 using namespace Platform;
 using namespace Windows::Foundation;
 using namespace Windows::Foundation::Collections;
@@ -22,9 +21,7 @@ using namespace Windows::UI::Xaml::Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-ResidentViewModel^ ResidentManagePage::viewModel;
-
-ResidentManagePage::ResidentManagePage()
+CarportManagePage::CarportManagePage()
 {
 	InitializeComponent();
 }

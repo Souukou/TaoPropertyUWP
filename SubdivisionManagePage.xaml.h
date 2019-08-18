@@ -22,12 +22,19 @@ namespace TaoPropertyUWP
 	public ref class SubdivisionManagePage sealed
 	{
 	private:
-		SubdivisionViewModel^ viewModel;
+		static SubdivisionViewModel^ viewModel;
 	public:
 		SubdivisionManagePage();
-		property SubdivisionViewModel^ ViewModel
+		static property SubdivisionViewModel^ ViewModel
 		{
-			SubdivisionViewModel^ get() { return this->viewModel; };
+			SubdivisionViewModel^ get()
+			{
+				if (viewModel == nullptr)
+				{
+					viewModel = ref new SubdivisionViewModel();
+				}
+				return viewModel;
+			}
 		}
 		
 	};

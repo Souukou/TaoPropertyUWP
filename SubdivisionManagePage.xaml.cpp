@@ -22,11 +22,11 @@ using namespace Windows::UI::Xaml::Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
+SubdivisionViewModel^ SubdivisionManagePage::viewModel;
+
 SubdivisionManagePage::SubdivisionManagePage()
 {
 	InitializeComponent();
-	//Subdivisions = SubdivisionManager::GetSubdivisions();
-	this->viewModel = ref new TaoPropertyUWP::Models::SubdivisionViewModel();
 	ref new TaoPropertyUWP::Models::OperatorViewModel();
 	ref new TaoPropertyUWP::Models::EnterpriseViewModel();
 }

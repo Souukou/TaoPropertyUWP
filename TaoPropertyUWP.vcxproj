@@ -167,9 +167,16 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CarportManagePage.xaml.h">
+      <DependentUpon>CarportManagePage.xaml</DependentUpon>
+    </ClInclude>
     <ClInclude Include="Enterprise.h" />
     <ClInclude Include="HomePage.xaml.h">
       <DependentUpon>HomePage.xaml</DependentUpon>
+    </ClInclude>
+    <ClInclude Include="House.h" />
+    <ClInclude Include="HouseManagePage.xaml.h">
+      <DependentUpon>HouseManagePage.xaml</DependentUpon>
     </ClInclude>
     <ClInclude Include="Operator.h" />
     <ClInclude Include="pch.h" />
@@ -178,6 +185,9 @@
     </ClInclude>
     <ClInclude Include="MainPage.xaml.h">
       <DependentUpon>MainPage.xaml</DependentUpon>
+    </ClInclude>
+    <ClInclude Include="PropertyManagePage.xaml.h">
+      <DependentUpon>PropertyManagePage.xaml</DependentUpon>
     </ClInclude>
     <ClInclude Include="ResidentManagePage.xaml.h">
       <DependentUpon>ResidentManagePage.xaml</DependentUpon>
@@ -192,10 +202,19 @@
     <ApplicationDefinition Include="App.xaml">
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="CarportManagePage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="HomePage.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="HouseManagePage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PropertyManagePage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Include="ResidentManagePage.xaml">
@@ -223,9 +242,16 @@
     <ClCompile Include="App.xaml.cpp">
       <DependentUpon>App.xaml</DependentUpon>
     </ClCompile>
+    <ClCompile Include="CarportManagePage.xaml.cpp">
+      <DependentUpon>CarportManagePage.xaml</DependentUpon>
+    </ClCompile>
     <ClCompile Include="Enterprise.cpp" />
     <ClCompile Include="HomePage.xaml.cpp">
       <DependentUpon>HomePage.xaml</DependentUpon>
+    </ClCompile>
+    <ClCompile Include="House.cpp" />
+    <ClCompile Include="HouseManagePage.xaml.cpp">
+      <DependentUpon>HouseManagePage.xaml</DependentUpon>
     </ClCompile>
     <ClCompile Include="MainPage.xaml.cpp">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -240,6 +266,9 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="PropertyManagePage.xaml.cpp">
+      <DependentUpon>PropertyManagePage.xaml</DependentUpon>
     </ClCompile>
     <ClCompile Include="ResidentManagePage.xaml.cpp">
       <DependentUpon>ResidentManagePage.xaml</DependentUpon>

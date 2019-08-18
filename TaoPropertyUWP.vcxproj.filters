@@ -8,23 +8,48 @@
       <UniqueIdentifier>907dc045-68f8-4edf-810b-ccb5e02d69ad</UniqueIdentifier>
       <Extensions>bmp;fbx;gif;jpg;jpeg;tga;tiff;tif;png</Extensions>
     </Filter>
+    <Filter Include="Models">
+      <UniqueIdentifier>{2209fa5b-dc7c-473f-81aa-c3c5825ad438}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
-    <ClCompile Include="Subdivision.cpp" />
-    <ClCompile Include="Resident.cpp" />
-    <ClCompile Include="Operator.cpp" />
-    <ClCompile Include="Enterprise.cpp" />
+    <ClCompile Include="Operator.cpp">
+      <Filter>Models</Filter>
+    </ClCompile>
+    <ClCompile Include="Subdivision.cpp">
+      <Filter>Models</Filter>
+    </ClCompile>
+    <ClCompile Include="Resident.cpp">
+      <Filter>Models</Filter>
+    </ClCompile>
+    <ClCompile Include="Enterprise.cpp">
+      <Filter>Models</Filter>
+    </ClCompile>
+    <ClCompile Include="House.cpp">
+      <Filter>Models</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
-    <ClInclude Include="Subdivision.h" />
-    <ClInclude Include="Resident.h" />
-    <ClInclude Include="Operator.h" />
-    <ClInclude Include="Enterprise.h" />
+    <ClInclude Include="Operator.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="Subdivision.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="Resident.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="Enterprise.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="House.h">
+      <Filter>Models</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\LockScreenLogo.scale-200.png">
@@ -57,5 +82,8 @@
     <Page Include="HomePage.xaml" />
     <Page Include="SubdivisionManagePage.xaml" />
     <Page Include="ResidentManagePage.xaml" />
+    <Page Include="PropertyManagePage.xaml" />
+    <Page Include="HouseManagePage.xaml" />
+    <Page Include="CarportManagePage.xaml" />
   </ItemGroup>
 </Project>

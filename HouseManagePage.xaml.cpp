@@ -1,14 +1,13 @@
 ﻿//
-// ResidentManagePage.xaml.cpp
-// Implementation of the ResidentManagePage class
+// HouseManagePage.xaml.cpp
+// Implementation of the HouseManagePage class
 //
 
 #include "pch.h"
-#include "ResidentManagePage.xaml.h"
-#include "Resident.h"
+#include "HouseManagePage.xaml.h"
 
 using namespace TaoPropertyUWP;
-using namespace TaoPropertyUWP::Models;
+
 using namespace Platform;
 using namespace Windows::Foundation;
 using namespace Windows::Foundation::Collections;
@@ -22,9 +21,9 @@ using namespace Windows::UI::Xaml::Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-ResidentViewModel^ ResidentManagePage::viewModel;
+HouseViewModel^ HouseManagePage::viewModel;
 
-ResidentManagePage::ResidentManagePage()
+HouseManagePage::HouseManagePage()
 {
 	InitializeComponent();
 }
