@@ -15,7 +15,7 @@ namespace TaoPropertyUWP
 		private:
 			int id;
 			int subdivisionid;
-			int proprietorid;
+			IVector<int>^ proprietorid;
 			Platform::String^ note;
 			Platform::String^ no; //√≈≈∆∫≈
 			float netFloorArea;
@@ -29,7 +29,7 @@ namespace TaoPropertyUWP
 		public:
 			House(int id,
 				int subdivisionid,
-				int proprietorid,
+				IVector<int>^ proprietorid,
 				Platform::String^ note,
 				Platform::String^ no,
 				float netFloorArea,
@@ -77,14 +77,19 @@ namespace TaoPropertyUWP
 			{
 				Platform::String^ get()
 				{
-					for (int i = 0; i < ResidentViewModel::Residents->Size; ++i)
+					Platform::String^ re = L"";
+					for (int i = 0; i < proprietorid->Size; ++i)
 					{
-						if (ResidentViewModel::Residents->GetAt(i)->getid == subdivisionid)
+						int curr_proprietorid = proprietorid->GetAt(i);
+						for (int j = 0; j < ResidentViewModel::Residents->Size; ++j)
 						{
-							return ResidentViewModel::Residents->GetAt(i)->getname;
+							if (ResidentViewModel::Residents->GetAt(j)->getid == curr_proprietorid)
+							{
+								re += ResidentViewModel::Residents->GetAt(j)->getname + L" ";
+							}
 						}
 					}
-					return L"";
+					return re;
 				}
 			}
 			property Platform::String^ getnote
