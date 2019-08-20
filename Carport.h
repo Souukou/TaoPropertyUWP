@@ -86,14 +86,7 @@ namespace TaoPropertyUWP
 			CarportViewModel();
 			static property IObservableVector<Carport^>^ Carports
 			{
-				IObservableVector<Carport^>^ get()
-				{
-					if (carports == nullptr)
-					{
-						carports = ref new Platform::Collections::Vector<Carport^>();
-					}
-					return carports;
-				}
+				IObservableVector<Carport^>^ get();
 			}
 		};
 	}

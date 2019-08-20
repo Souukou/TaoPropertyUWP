@@ -59,6 +59,6 @@ void TaoPropertyUWP::PropertyManagePage::RefreshButton_Click(Platform::Object^ s
 	}
 	if (CarportComboBox->IsSelected)
 	{
-		true;// PropertyContentFrame->Navigate(TypeName(CarportManagePage::typeid));
+		TaoConnector::RefreshCarports();
 	}
 }

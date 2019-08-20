@@ -182,3 +182,66 @@ void TaoConnector::RefreshHouses()
 				}
 			});
 }
+
+void TaoConnector::RefreshOperators()
+{
+	auto request = GenerateRequest(GenerateUri(L"user/"), HttpMethod::Get, GetBase64Cred());
+	create_task(httpClient->TrySendRequestAsync(request))
+		.then([=](HttpRequestResult^ result)
+			{
+				if (result->Succeeded)
+				{
+					HttpResponseMessage^ response = result->ResponseMessage;
+					JsonArray^ theJsons = JsonArray::Parse(result->ResponseMessage->Content->ToString());
+
+					OperatorViewModel::Operators->Clear();
+					for (int i = 0; i < theJsons->Size; ++i)
+					{
+						JsonObject^ nowJson = theJsons->GetObjectAt(i);
+						int id = nowJson->Lookup("id")->GetNumber();
+						Platform::String^ name = nowJson->Lookup("name")->GetString();
+						Platform::String^ email = nowJson->Lookup("email")->GetString();
+						Platform::String^ phone = nowJson->Lookup("phone")->GetString();
+						//Platform::String^ createTime = nowJson->Lookup("createTime")->GetString();
+						Platform::String^ createTime = L"";
+
+						OperatorViewModel::Operators->Append(ref new Operator(id, name, email, phone, createTime));
+					}
+				}
+			});
+}
+
+void TaoConnector::RefreshCarports()
+{
+	auto request = GenerateRequest(GenerateUri(L"carport/"), HttpMethod::Get, GetBase64Cred());
+	create_task(httpClient->TrySendRequestAsync(request))
+		.then([=](HttpRequestResult^ result)
+			{
+				if (result->Succeeded)
+				{
+					HttpResponseMessage^ response = result->ResponseMessage;
+					JsonArray^ theJsons = JsonArray::Parse(result->ResponseMessage->Content->ToString());
+
+					CarportViewModel::Carports->Clear();
+					for (int i = 0; i < theJsons->Size; ++i)
+					{
+						JsonObject^ nowJson = theJsons->GetObjectAt(i);
+						int id = nowJson->Lookup("id")->GetNumber();
+						int subdivisionId = nowJson->Lookup("subdivision")->GetNumber();
+
+						auto proprietorArray = nowJson->Lookup("proprietor")->GetArray();
+						Platform::Collections::Vector<int>^ proprietor = ref new Platform::Collections::Vector<int>();
+						for (int j = 0; j < proprietorArray->Size; ++j)
+						{
+							proprietor->Append(proprietorArray->GetNumberAt(j));
+						}
+
+						Platform::String^ note = nowJson->Lookup("note")->GetString();
+						Platform::String^ no = nowJson->Lookup("no")->GetString();
+						//Platform::String^ createTime = nowJson->Lookup("createTime")->GetString();
+
+						CarportViewModel::Carports->Append(ref new Carport(id, subdivisionId, proprietor, note, no));
+					}
+				}
+			});
+}

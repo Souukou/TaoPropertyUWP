@@ -59,14 +59,7 @@ namespace TaoPropertyUWP
 			ResidentViewModel();
 			static property IObservableVector<Resident^>^ Residents
 			{
-				IObservableVector<Resident^>^ get()
-				{
-					if (residents == nullptr)
-					{
-						residents = ref new Platform::Collections::Vector<Resident^>();
-					}
-					return residents;
-				}
+				IObservableVector<Resident^>^ get();
 			}
 		};
 	}

@@ -87,14 +87,7 @@ namespace TaoPropertyUWP
 			EnterpriseViewModel();
 			static property IObservableVector<Enterprise^>^ Enterprises
 			{
-				IObservableVector<Enterprise^>^ get()
-				{
-					if (enterprises == nullptr)
-					{
-						enterprises = ref new Platform::Collections::Vector<Enterprise^>();
-					}
-					return enterprises;
-				}
+				IObservableVector<Enterprise^>^ get();
 			}
 		};
 	}

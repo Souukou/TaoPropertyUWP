@@ -146,14 +146,7 @@ namespace TaoPropertyUWP
 			HouseViewModel();
 			static property IObservableVector<House^>^ Houses
 			{
-				IObservableVector<House^>^ get()
-				{
-					if (houses == nullptr)
-					{
-						houses = ref new Platform::Collections::Vector<House^>();
-					}
-					return houses;
-				}
+				IObservableVector<House^>^ get();
 			}
 		};
 

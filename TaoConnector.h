@@ -5,6 +5,8 @@
 #include "Enterprise.h"
 #include "Resident.h"
 #include "House.h"
+#include "Carport.h"
+#include "Operator.h"
 using namespace TaoPropertyUWP;
 using namespace Windows::Data::Json;
 using namespace concurrency;
@@ -37,7 +39,8 @@ namespace TaoPropertyUWP
 		static void RefreshEnterprises();
 		static void RefreshResidents();
 		static void RefreshHouses();
-		//static void RefreshCarports();
+		static void RefreshCarports();
+		static void RefreshOperators();
 		
 	};
 

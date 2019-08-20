@@ -33,9 +33,6 @@ SubdivisionViewModel^ SubdivisionManagePage::viewModel;
 SubdivisionManagePage::SubdivisionManagePage()
 {
 	InitializeComponent();
-	ref new TaoPropertyUWP::Models::OperatorViewModel();
-	ref new TaoPropertyUWP::Models::EnterpriseViewModel();
-	
 }
 
 
