@@ -15,10 +15,21 @@
             <RowDefinition Height="auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <TextBlock
-            Margin="0,0,0,5"
-            FontSize="18"
-            Text="所有住户" />
+        <RelativePanel>
+            <TextBlock
+                x:Name="SubTitle"
+                Margin="0,0,0,5"
+                FontSize="20"
+                RelativePanel.AlignLeftWithPanel="True"
+                Text="所有住户" />
+            <Button
+                x:Name="RefreshButton"
+                Click="RefreshButton_Click"
+                Content="&#xE72C;"
+                FontFamily="Segoe MDL2 Assets"
+                FontSize="20"
+                RelativePanel.AlignRightWithPanel="True" />
+        </RelativePanel>
         <Grid
             Grid.Row="1"
             Height="30"

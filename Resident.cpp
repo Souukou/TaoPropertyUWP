@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "Resident.h"
+#include "TaoConnector.h"
 using namespace TaoPropertyUWP::Models;
 using namespace Windows::Foundation::Collections;
 
@@ -7,6 +8,8 @@ IObservableVector<Resident^> ^ ResidentViewModel::residents;
 
 ResidentViewModel::ResidentViewModel()
 {
+	TaoConnector::RefreshResidents();
+	/*
 	Windows::Globalization::Calendar^ createTime = ref new Windows::Globalization::Calendar();
 	createTime->Year = 2019;
 	createTime->Month = 1;
@@ -17,4 +20,6 @@ ResidentViewModel::ResidentViewModel()
 	this->Residents->Append(resident);
 	resident = ref new Resident(3, L"C", L"3@qq.com", L"189", createTime);
 	this->Residents->Append(resident);
+	*/
+	
 }

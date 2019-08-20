@@ -13,13 +13,13 @@ namespace TaoPropertyUWP
 			Platform::String^ name;
 			Platform::String^ email;
 			Platform::String^ phone;
-			Windows::Globalization::Calendar^ createTime;
+			Platform::String^ createTime;
 		public:
 			Resident(int id,
 				Platform::String^ name,
 				Platform::String^ email,
 				Platform::String^ phone,
-				Windows::Globalization::Calendar^ createTime) :
+				Platform::String^ createTime) :
 				id {id},
 				name{name},
 				phone{phone},
@@ -44,10 +44,10 @@ namespace TaoPropertyUWP
 				Platform::String^ get() { return this->phone; }
 				void set(Platform::String^ phone) { this->phone = phone; }
 			}
-			property  Windows::Globalization::Calendar^ getcreatetime
+			property  Platform::String^ getcreatetime
 			{
-				Windows::Globalization::Calendar^ get() { return this->createTime; }
-				void set(Windows::Globalization::Calendar^ createTime) { this->createTime = createTime; }
+				Platform::String^ get() { return this->createTime; }
+				//void set(Windows::Globalization::Calendar^ createTime) { this->createTime = createTime; }
 			}
 		};
 

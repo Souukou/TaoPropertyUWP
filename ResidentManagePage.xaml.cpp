@@ -6,7 +6,7 @@
 #include "pch.h"
 #include "ResidentManagePage.xaml.h"
 #include "Resident.h"
-
+#include "TaoConnector.h"
 using namespace TaoPropertyUWP;
 using namespace TaoPropertyUWP::Models;
 using namespace Platform;
@@ -27,4 +27,10 @@ ResidentViewModel^ ResidentManagePage::viewModel;
 ResidentManagePage::ResidentManagePage()
 {
 	InitializeComponent();
+}
+
+
+void TaoPropertyUWP::ResidentManagePage::RefreshButton_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+	TaoConnector::RefreshResidents();
 }

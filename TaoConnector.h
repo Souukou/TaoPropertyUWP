@@ -3,6 +3,7 @@
 #include "pch.h"
 #include "Subdivision.h"
 #include "Enterprise.h"
+#include "Resident.h"
 using namespace TaoPropertyUWP;
 using namespace Windows::Data::Json;
 using namespace concurrency;
@@ -33,7 +34,7 @@ namespace TaoPropertyUWP
 		static Uri^ GenerateUri(Platform::String^ subUri);
 		static void RefreshSubdivisions();
 		static void RefreshEnterprises();
-		//static void RefreshResidents();
+		static void RefreshResidents();
 		//static void RefreshHouses();
 		//static void RefreshCarports();
 		

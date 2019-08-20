@@ -47,9 +47,9 @@ void TaoConnector::RefreshSubdivisions()
 					for (int i = 0; i < theJsons->Size; ++i)
 					{
 						JsonObject^ nowJson = theJsons->GetObjectAt(i);
-						Platform::String^ nowName = nowJson->Lookup("name")->GetString();
-						int nowId = nowJson->Lookup("id")->GetNumber();
-						int nowEnterpriseId = nowJson->Lookup("enterprise")->GetNumber();
+						Platform::String^ name = nowJson->Lookup("name")->GetString();
+						int id = nowJson->Lookup("id")->GetNumber();
+						int enterpriseId = nowJson->Lookup("enterprise")->GetNumber();
 						Platform::String^ createTime = nowJson->Lookup("createdTime")->GetString();
 
 						auto operatorArray = nowJson->Lookup("operator")->GetArray();
@@ -63,7 +63,7 @@ void TaoConnector::RefreshSubdivisions()
 
 
 
-						SubdivisionViewModel::Subdivisions->Append(ref new Subdivision(nowId, nowName, createTime, nowEnterpriseId, nowOperator));
+						SubdivisionViewModel::Subdivisions->Append(ref new Subdivision(id, name, createTime, enterpriseId, nowOperator));
 
 					}
 
@@ -93,8 +93,8 @@ void TaoConnector::RefreshEnterprises()
 					for (int i = 0; i < theJsons->Size; ++i)
 					{
 						JsonObject^ nowJson = theJsons->GetObjectAt(i);
-						int nowId = nowJson->Lookup("id")->GetNumber();
-						Platform::String^ nowName = nowJson->Lookup("name")->GetString();
+						int id = nowJson->Lookup("id")->GetNumber();
+						Platform::String^ name = nowJson->Lookup("name")->GetString();
 						Platform::String^ createTime = nowJson->Lookup("createdTime")->GetString();
 						int nowEnterpriseId = nowJson->Lookup("founder")->GetNumber();
 						
@@ -105,7 +105,35 @@ void TaoConnector::RefreshEnterprises()
 							nowOperator->Append(operatorArray->GetNumberAt(j));
 						}
 
-						EnterpriseViewModel::Enterprises->Append(ref new Enterprise(nowId, nowName, createTime, nowEnterpriseId, nowOperator));
+						EnterpriseViewModel::Enterprises->Append(ref new Enterprise(id, name, createTime, nowEnterpriseId, nowOperator));
+					}
+				}
+			});
+}
+
+void TaoConnector::RefreshResidents()
+{
+	auto request = GenerateRequest(GenerateUri(L"user/"), HttpMethod::Get, GetBase64Cred());
+	create_task(httpClient->TrySendRequestAsync(request))
+		.then([=](HttpRequestResult^ result)
+			{
+				if (result->Succeeded)
+				{
+					HttpResponseMessage^ response = result->ResponseMessage;
+					JsonArray^ theJsons = JsonArray::Parse(result->ResponseMessage->Content->ToString());
+
+					ResidentViewModel::Residents->Clear();
+					for (int i = 0; i < theJsons->Size; ++i)
+					{
+						JsonObject^ nowJson = theJsons->GetObjectAt(i);
+						int id = nowJson->Lookup("id")->GetNumber();
+						Platform::String^ name = nowJson->Lookup("name")->GetString();
+						Platform::String^ email = nowJson->Lookup("email")->GetString();
+						Platform::String^ phone = nowJson->Lookup("phone")->GetString();
+						//Platform::String^ createTime = nowJson->Lookup("createTime")->GetString();
+						Platform::String^ createTime = L"";
+
+						ResidentViewModel::Residents->Append(ref new Resident(id, name, email, phone, createTime));
 					}
 				}
 			});

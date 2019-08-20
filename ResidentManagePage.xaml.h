@@ -35,5 +35,7 @@ namespace TaoPropertyUWP
 				return viewModel;
 			}
 		}
+	private:
+		void RefreshButton_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
 	};
 }
