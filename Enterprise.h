@@ -14,7 +14,7 @@ namespace TaoPropertyUWP
 		private:
 			int id;
 			Platform::String^ name;
-			Windows::Globalization::Calendar^ createTime;
+			Platform::String^ createTime;
 			int founderid;
 			IVector<int>^ managers;
 			static Platform::String^ get_operator_name(int operator_id)
@@ -32,7 +32,7 @@ namespace TaoPropertyUWP
 			Enterprise(
 				int id,
 				Platform::String^ name,
-				Windows::Globalization::Calendar^ createTime,
+				Platform::String^ createTime,
 				int founder,
 				IVector<int>^ operators) :
 				id{ id },
@@ -48,9 +48,9 @@ namespace TaoPropertyUWP
 			{
 				Platform::String^ get() { return this->name; }
 			}
-			property Windows::Globalization::Calendar^ getcreatetime
+			property Platform::String^ getcreatetime
 			{
-				Windows::Globalization::Calendar^ get() { return this->createTime; }
+				Platform::String^ get() { return this->createTime; }
 			}
 			property Platform::String^ getfounder
 			{

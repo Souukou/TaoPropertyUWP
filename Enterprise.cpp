@@ -1,10 +1,14 @@
 #include "pch.h"
 #include "Enterprise.h"
+#include "TaoConnector.h"
 
 IObservableVector<Enterprise^>^ EnterpriseViewModel::enterprises;
 
 EnterpriseViewModel::EnterpriseViewModel()
 {
+	TaoConnector::RefreshEnterprises();
+	
+	/*
 	Windows::Globalization::Calendar^ createTime = ref new Windows::Globalization::Calendar();
 	createTime->Year = 2019;
 	createTime->Month = 1;
@@ -22,5 +26,7 @@ EnterpriseViewModel::EnterpriseViewModel()
 
 	theenterprise = ref new Enterprise(2, L"ÌÒÌÒÎïÒµ-2", createTime, 1, themanager);
 	Enterprises->Append(theenterprise);
+	*/
+	
 
 }

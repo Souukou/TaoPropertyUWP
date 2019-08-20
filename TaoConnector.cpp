@@ -77,3 +77,36 @@ void TaoConnector::RefreshSubdivisions()
 				}
 			});
 }
+
+void TaoConnector::RefreshEnterprises()
+{
+	auto request = GenerateRequest(GenerateUri(L"enterprise/"), HttpMethod::Get, GetBase64Cred());
+	create_task(httpClient->TrySendRequestAsync(request))
+		.then([=](HttpRequestResult^ result)
+			{
+				if (result->Succeeded)
+				{
+					HttpResponseMessage^ response = result->ResponseMessage;
+					JsonArray^ theJsons = JsonArray::Parse(result->ResponseMessage->Content->ToString());
+
+					EnterpriseViewModel::Enterprises->Clear();
+					for (int i = 0; i < theJsons->Size; ++i)
+					{
+						JsonObject^ nowJson = theJsons->GetObjectAt(i);
+						int nowId = nowJson->Lookup("id")->GetNumber();
+						Platform::String^ nowName = nowJson->Lookup("name")->GetString();
+						Platform::String^ createTime = nowJson->Lookup("createdTime")->GetString();
+						int nowEnterpriseId = nowJson->Lookup("founder")->GetNumber();
+						
+						auto operatorArray = nowJson->Lookup("manager")->GetArray();
+						Platform::Collections::Vector<int>^ nowOperator = ref new Platform::Collections::Vector<int>();
+						for (int j = 0; j < operatorArray->Size; ++j)
+						{
+							nowOperator->Append(operatorArray->GetNumberAt(j));
+						}
+
+						EnterpriseViewModel::Enterprises->Append(ref new Enterprise(nowId, nowName, createTime, nowEnterpriseId, nowOperator));
+					}
+				}
+			});
+}
