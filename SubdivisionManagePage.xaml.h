@@ -23,7 +23,6 @@ namespace TaoPropertyUWP
 	{
 	private:
 		static SubdivisionViewModel^ viewModel;
-		Windows::Web::Http::HttpClient^ httpClient;
 	public:
 		SubdivisionManagePage();
 		static property SubdivisionViewModel^ ViewModel

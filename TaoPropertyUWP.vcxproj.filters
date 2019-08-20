@@ -35,6 +35,7 @@
     <ClCompile Include="Carport.cpp">
       <Filter>Models</Filter>
     </ClCompile>
+    <ClCompile Include="TaoConnector.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -56,6 +57,7 @@
     <ClInclude Include="Carport.h">
       <Filter>Models</Filter>
     </ClInclude>
+    <ClInclude Include="TaoConnector.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\LockScreenLogo.scale-200.png">

@@ -198,6 +198,7 @@
       <DependentUpon>SubdivisionManagePage.xaml</DependentUpon>
     </ClInclude>
     <ClInclude Include="Resident.h" />
+    <ClInclude Include="TaoConnector.h" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -280,6 +281,7 @@
       <DependentUpon>SubdivisionManagePage.xaml</DependentUpon>
     </ClCompile>
     <ClCompile Include="Resident.cpp" />
+    <ClCompile Include="TaoConnector.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
