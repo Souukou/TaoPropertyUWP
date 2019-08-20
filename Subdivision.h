@@ -96,14 +96,7 @@ namespace TaoPropertyUWP
 			SubdivisionViewModel();
 			static property IObservableVector<Subdivision^>^ Subdivisions
 			{
-				IObservableVector<Subdivision^>^ get()
-				{
-					if (subdivisions == nullptr)
-					{
-						subdivisions = ref new Platform::Collections::Vector<Subdivision^>();
-					}
-					return subdivisions;
-				};
+				IObservableVector<Subdivision^>^ get();
 			}
 		};
 	}

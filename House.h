@@ -21,7 +21,7 @@ namespace TaoPropertyUWP
 			float netFloorArea;
 			float grossFloorArea;
 			Platform::String^ building;
-			Platform::String^ unit;
+			int unit;
 			int floor;
 			Platform::String^ houseStatus;
 			Platform::String^ layout;
@@ -35,7 +35,7 @@ namespace TaoPropertyUWP
 				float netFloorArea,
 				float grossFloorArea,
 				Platform::String^ building,
-				Platform::String^ unit,
+				int unit,
 				int floor,
 				Platform::String^ houseStatus,
 				Platform::String^ layout,
@@ -112,9 +112,9 @@ namespace TaoPropertyUWP
 			{
 				Platform::String^ get() { return this->building; }
 			}
-			property Platform::String^ getunit
+			property int getunit
 			{
-				Platform::String^ get() { return this->unit; }
+				int get() { return this->unit; }
 			}
 			property int getfloor
 			{
@@ -122,7 +122,12 @@ namespace TaoPropertyUWP
 			}
 			property Platform::String^ getHouseStatus
 			{
-				Platform::String^ get() { return this->houseStatus; }
+				Platform::String^ get() 
+				{
+					if (this->houseStatus == L"normal")
+						return L"Õý³£";
+					return this->houseStatus;
+				}
 			}
 			property Platform::String^ getlayout
 			{

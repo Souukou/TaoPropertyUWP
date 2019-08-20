@@ -7,6 +7,7 @@
 
 #include "PropertyManagePage.g.h"
 #include "Resident.h"
+
 using namespace TaoPropertyUWP::Models;
 
 namespace TaoPropertyUWP
@@ -22,5 +23,6 @@ namespace TaoPropertyUWP
 	private:
 		void PropertyManagePage_Loaded(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
 		void PropertyTypeComboBox_SelectionChanged(Platform::Object^ sender, Windows::UI::Xaml::Controls::SelectionChangedEventArgs^ e);
+		void RefreshButton_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
 	};
 }

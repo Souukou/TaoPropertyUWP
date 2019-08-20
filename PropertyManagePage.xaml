@@ -15,15 +15,18 @@
             <RowDefinition Height="auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <StackPanel Margin="0,0,0,5" Orientation="Horizontal">
+        <RelativePanel Margin="0,0,0,5">
             <TextBlock
+                Name="PropertyTypeTextBlock"
                 Margin="0,0,20,0"
                 VerticalAlignment="Center"
-                FontSize="18"
+                FontSize="20"
+                RelativePanel.AlignLeftWithPanel="True"
                 Text="财产类型" />
             <ComboBox
                 Name="PropertyTypeComboBox"
                 VerticalAlignment="Center"
+                RelativePanel.RightOf="PropertyTypeTextBlock"
                 SelectionChanged="PropertyTypeComboBox_SelectionChanged">
                 <ComboBoxItem
                     x:Name="HouseComboBox"
@@ -34,7 +37,14 @@
                     Content="车位"
                     TabIndex="1" />
             </ComboBox>
-        </StackPanel>
+            <Button
+                x:Name="RefreshButton"
+                Click="RefreshButton_Click"
+                Content="&#xE72C;"
+                FontFamily="Segoe MDL2 Assets"
+                FontSize="20"
+                RelativePanel.AlignRightWithPanel="True" />
+        </RelativePanel>
         <Frame
             Name="PropertyContentFrame"
             Grid.Row="1"

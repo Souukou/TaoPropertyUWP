@@ -8,7 +8,7 @@ IObservableVector<Subdivision^>^ SubdivisionViewModel::subdivisions;
 
 SubdivisionViewModel::SubdivisionViewModel()
 {
-	TaoConnector::RefreshSubdivisions();
+	//TaoConnector::RefreshSubdivisions();
 	/*
 	Windows::Globalization::Calendar^ createTime = ref new Windows::Globalization::Calendar();
 	createTime->Year = 2019;
@@ -38,3 +38,14 @@ SubdivisionViewModel::SubdivisionViewModel()
 	*/
 }
 
+IObservableVector<Subdivision^>^ SubdivisionViewModel::Subdivisions::get()
+{
+	{
+		if (subdivisions == nullptr)
+		{
+			subdivisions = ref new Platform::Collections::Vector<Subdivision^>();
+			TaoConnector::RefreshSubdivisions();
+		}
+		return subdivisions;
+	};
+}

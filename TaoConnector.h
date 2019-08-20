@@ -4,6 +4,7 @@
 #include "Subdivision.h"
 #include "Enterprise.h"
 #include "Resident.h"
+#include "House.h"
 using namespace TaoPropertyUWP;
 using namespace Windows::Data::Json;
 using namespace concurrency;
@@ -35,7 +36,7 @@ namespace TaoPropertyUWP
 		static void RefreshSubdivisions();
 		static void RefreshEnterprises();
 		static void RefreshResidents();
-		//static void RefreshHouses();
+		static void RefreshHouses();
 		//static void RefreshCarports();
 		
 	};
