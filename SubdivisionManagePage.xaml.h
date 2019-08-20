@@ -23,6 +23,7 @@ namespace TaoPropertyUWP
 	{
 	private:
 		static SubdivisionViewModel^ viewModel;
+		Windows::Web::Http::HttpClient^ httpClient;
 	public:
 		SubdivisionManagePage();
 		static property SubdivisionViewModel^ ViewModel
@@ -36,6 +37,9 @@ namespace TaoPropertyUWP
 				return viewModel;
 			}
 		}
+		
+	private:
+		void RefreshButton_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
 		
 	};
 

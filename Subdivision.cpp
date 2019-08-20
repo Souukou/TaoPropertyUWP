@@ -8,11 +8,14 @@ IObservableVector<Subdivision^>^ SubdivisionViewModel::subdivisions;
 
 SubdivisionViewModel::SubdivisionViewModel()
 {
+	/*
 	Windows::Globalization::Calendar^ createTime = ref new Windows::Globalization::Calendar();
 	createTime->Year = 2019;
 	createTime->Month = 1;
 	createTime->Day = 1;
-
+	*/
+	
+	Platform::String^ createTime = ref new Platform::String(L"2019-01-01");
 	Windows::Foundation::Collections::IVector<int>^ theoperator = ref new Platform::Collections::Vector<int>();
 	theoperator->Append(1);
 
