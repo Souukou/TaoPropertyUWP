@@ -274,3 +274,40 @@ void TaoConnector::RefreshChargeTemplates()
 				}
 			});
 }
+
+void TaoConnector::RefreshTransactions()
+{
+	auto request = GenerateRequest(GenerateUri(L"transaction/"), HttpMethod::Get, GetBase64Cred());
+	create_task(httpClient->TrySendRequestAsync(request))
+		.then([=](HttpRequestResult^ result)
+			{
+				if (result->Succeeded)
+				{
+					HttpResponseMessage^ response = result->ResponseMessage;
+					JsonArray^ theJsons = JsonArray::Parse(result->ResponseMessage->Content->ToString());
+
+					TransactionViewModel::Transactions->Clear();
+					for (int i = 0; i < theJsons->Size; ++i)
+					{
+						JsonObject^ nowJson = theJsons->GetObjectAt(i);
+						int id = nowJson->Lookup("id")->GetNumber();
+						int subdivisionId = nowJson->Lookup("subdivision")->GetNumber();
+
+						auto billsArray = nowJson->Lookup("bills")->GetArray();
+						Platform::Collections::Vector<int>^ bills = ref new Platform::Collections::Vector<int>();
+						for (int j = 0; j < billsArray->Size; ++j)
+						{
+							bills->Append(billsArray->GetNumberAt(j));
+						}
+
+						Platform::String^ createTime = nowJson->Lookup("createdTime")->GetString();
+						int totalCost = nowJson->Lookup("totalCost")->GetNumber();
+						int feePayable = nowJson->Lookup("feePayable")->GetNumber();
+						int feeWaiver = nowJson->Lookup("feeWaiver")->GetNumber();
+						Platform::String^ paymentMethod = nowJson->Lookup("paymentMethod")->GetString();
+						
+						TransactionViewModel::Transactions->Append(ref new Transaction(id, subdivisionId, bills, createTime, totalCost, feePayable, feeWaiver, paymentMethod));
+					}
+				}
+			});
+}

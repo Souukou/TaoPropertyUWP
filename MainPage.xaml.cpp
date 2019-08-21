@@ -10,6 +10,7 @@
 #include "ResidentManagePage.xaml.h"
 #include "PropertyManagePage.xaml.h"
 #include "ChargeTemplatePage.xaml.h"
+#include "TransactionPage.xaml.h"
 
 
 using namespace TaoPropertyUWP;
@@ -54,9 +55,19 @@ void TaoPropertyUWP::MainPage::ListBox_SelectionChanged(Platform::Object^ sender
 		TitleTextBlock->Text = "桃物业";
 		MainContentFrame->Navigate(TypeName(HomePage::typeid));
 	}
+	if (TransactionHistoryBoxItem->IsSelected)
+	{
+		TitleTextBlock->Text = "交易流水";
+		MainContentFrame->Navigate(TypeName(TransactionPage::typeid));
+	}
+	if (ChargeTemplateListBoxItem->IsSelected)
+	{
+		TitleTextBlock->Text = "收费项目管理";
+		MainContentFrame->Navigate(TypeName(ChargeTemplatePage::typeid));
+	}
 	if (PropertyManageListBoxItem->IsSelected)
 	{
-		TitleTextBlock->Text = "桃物业";
+		TitleTextBlock->Text = "资产管理";
 		MainContentFrame->Navigate(TypeName(PropertyManagePage::typeid));
 	}
 	if (SubdivisionManageListBoxItem->IsSelected)
@@ -69,11 +80,7 @@ void TaoPropertyUWP::MainPage::ListBox_SelectionChanged(Platform::Object^ sender
 		TitleTextBlock->Text = "住户管理";
 		MainContentFrame->Navigate(TypeName(ResidentManagePage::typeid));
 	}
-	if (ChargeTemplateListBoxItem->IsSelected)
-	{
-		TitleTextBlock->Text = "收费项目管理";
-		MainContentFrame->Navigate(TypeName(ChargeTemplatePage::typeid));
-	}
+	
 }
 
 

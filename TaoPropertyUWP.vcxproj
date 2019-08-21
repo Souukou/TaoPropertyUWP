@@ -203,6 +203,10 @@
     </ClInclude>
     <ClInclude Include="Resident.h" />
     <ClInclude Include="TaoConnector.h" />
+    <ClInclude Include="Transaction.h" />
+    <ClInclude Include="TransactionPage.xaml.h">
+      <DependentUpon>TransactionPage.xaml</DependentUpon>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -230,6 +234,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="SubdivisionManagePage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TransactionPage.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
@@ -293,6 +300,10 @@
     </ClCompile>
     <ClCompile Include="Resident.cpp" />
     <ClCompile Include="TaoConnector.cpp" />
+    <ClCompile Include="Transaction.cpp" />
+    <ClCompile Include="TransactionPage.xaml.cpp">
+      <DependentUpon>TransactionPage.xaml</DependentUpon>
+    </ClCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

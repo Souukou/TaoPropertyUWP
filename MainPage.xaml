@@ -90,18 +90,18 @@
                                 Text="收费系统" />
                         </StackPanel>
                     </ListBoxItem>
-                    <ListBoxItem Name="PropertyManageListBoxItem">
+                    <ListBoxItem Name="TransactionHistoryBoxItem">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock
                                 VerticalAlignment="Center"
                                 FontFamily="Segoe MDL2 Assets"
                                 FontSize="20"
-                                Text="&#xEC06;" />
+                                Text="&#xE8A6;" />
                             <TextBlock
                                 Margin="20,0,0,0"
                                 VerticalAlignment="Center"
                                 FontSize="18"
-                                Text="财产管理" />
+                                Text="交易记录" />
                         </StackPanel>
                     </ListBoxItem>
                     <ListBoxItem Name="ChargeTemplateListBoxItem">
@@ -116,6 +116,20 @@
                                 VerticalAlignment="Center"
                                 FontSize="18"
                                 Text="收费项目" />
+                        </StackPanel>
+                    </ListBoxItem>
+                    <ListBoxItem Name="PropertyManageListBoxItem">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                FontFamily="Segoe MDL2 Assets"
+                                FontSize="20"
+                                Text="&#xEC06;" />
+                            <TextBlock
+                                Margin="20,0,0,0"
+                                VerticalAlignment="Center"
+                                FontSize="18"
+                                Text="财产管理" />
                         </StackPanel>
                     </ListBoxItem>
                     <ListBoxItem Name="ResidentManageListBoxItem">

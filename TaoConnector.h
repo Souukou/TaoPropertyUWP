@@ -8,6 +8,7 @@
 #include "Carport.h"
 #include "Operator.h"
 #include "ChargeTemplate.h"
+#include "Transaction.h"
 using namespace TaoPropertyUWP;
 using namespace Windows::Data::Json;
 using namespace concurrency;
@@ -43,6 +44,7 @@ namespace TaoPropertyUWP
 		static void RefreshCarports();
 		static void RefreshOperators();
 		static void RefreshChargeTemplates();
+		static void RefreshTransactions();
 		
 	};
 
