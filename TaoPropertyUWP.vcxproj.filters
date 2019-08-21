@@ -36,6 +36,9 @@
       <Filter>Models</Filter>
     </ClCompile>
     <ClCompile Include="TaoConnector.cpp" />
+    <ClCompile Include="ChargeTemplate.cpp">
+      <Filter>Models</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -58,6 +61,9 @@
       <Filter>Models</Filter>
     </ClInclude>
     <ClInclude Include="TaoConnector.h" />
+    <ClInclude Include="ChargeTemplate.h">
+      <Filter>Models</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\LockScreenLogo.scale-200.png">
@@ -93,5 +99,6 @@
     <Page Include="PropertyManagePage.xaml" />
     <Page Include="HouseManagePage.xaml" />
     <Page Include="CarportManagePage.xaml" />
+    <Page Include="ChargeTemplatePage.xaml" />
   </ItemGroup>
 </Project>

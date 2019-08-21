@@ -104,7 +104,7 @@
                                 Text="财产管理" />
                         </StackPanel>
                     </ListBoxItem>
-                    <ListBoxItem Name="FeesCenterListBoxItem">
+                    <ListBoxItem Name="ChargeTemplateListBoxItem">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock
                                 VerticalAlignment="Center"
@@ -115,7 +115,7 @@
                                 Margin="20,0,0,0"
                                 VerticalAlignment="Center"
                                 FontSize="18"
-                                Text="费用中心" />
+                                Text="收费项目" />
                         </StackPanel>
                     </ListBoxItem>
                     <ListBoxItem Name="ResidentManageListBoxItem">

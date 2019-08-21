@@ -1,12 +1,12 @@
 ﻿//
-// ResidentManagePage.xaml.h
-// Declaration of the ResidentManagePage class
+// ChargeTemplatePage.xaml.h
+// Declaration of the ChargeTemplatePage class
 //
 
 #pragma once
 
-#include "ResidentManagePage.g.h"
-#include "Resident.h"
+#include "ChargeTemplatePage.g.h"
+#include "ChargeTemplate.h"
 
 using namespace std;
 using namespace Platform::Collections;
@@ -18,23 +18,23 @@ namespace TaoPropertyUWP
 	/// An empty page that can be used on its own or navigated to within a Frame.
 	/// </summary>
 	[Windows::Foundation::Metadata::WebHostHidden]
-	public ref class ResidentManagePage sealed
+	public ref class ChargeTemplatePage sealed
 	{
 	public:
-		ResidentManagePage();
-		static property ResidentViewModel^ ViewModel
+		ChargeTemplatePage();
+		static property ChargeTemplateViewModel^ ViewModel
 		{
-			ResidentViewModel^ get()
+			ChargeTemplateViewModel^ get()
 			{
 				if (viewModel == nullptr)
 				{
-					viewModel = ref new ResidentViewModel();
+					viewModel = ref new ChargeTemplateViewModel();
 				}
 				return viewModel;
 			}
 		}
 	private:
-		static ResidentViewModel^ viewModel;
+		static ChargeTemplateViewModel^ viewModel;
 		void RefreshButton_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
 	};
 }

@@ -5,7 +5,7 @@ IObservableVector<House^>^ HouseViewModel::houses;
 
 HouseViewModel::HouseViewModel()
 {
-	TaoConnector::RefreshHouses();
+
 }
 
 IObservableVector<House^>^ HouseViewModel::Houses::get()

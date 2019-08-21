@@ -9,6 +9,7 @@
 #include "SubdivisionManagePage.xaml.h"
 #include "ResidentManagePage.xaml.h"
 #include "PropertyManagePage.xaml.h"
+#include "ChargeTemplatePage.xaml.h"
 
 
 using namespace TaoPropertyUWP;
@@ -67,6 +68,11 @@ void TaoPropertyUWP::MainPage::ListBox_SelectionChanged(Platform::Object^ sender
 	{
 		TitleTextBlock->Text = "住户管理";
 		MainContentFrame->Navigate(TypeName(ResidentManagePage::typeid));
+	}
+	if (ChargeTemplateListBoxItem->IsSelected)
+	{
+		TitleTextBlock->Text = "收费项目管理";
+		MainContentFrame->Navigate(TypeName(ChargeTemplatePage::typeid));
 	}
 }
 

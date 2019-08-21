@@ -245,3 +245,32 @@ void TaoConnector::RefreshCarports()
 				}
 			});
 }
+
+void TaoConnector::RefreshChargeTemplates()
+{
+	auto request = GenerateRequest(GenerateUri(L"charge_template/"), HttpMethod::Get, GetBase64Cred());
+	create_task(httpClient->TrySendRequestAsync(request))
+		.then([=](HttpRequestResult^ result)
+			{
+				if (result->Succeeded)
+				{
+					HttpResponseMessage^ response = result->ResponseMessage;
+					JsonArray^ theJsons = JsonArray::Parse(result->ResponseMessage->Content->ToString());
+
+					ChargeTemplateViewModel::ChargeTemplates->Clear();
+					for (int i = 0; i < theJsons->Size; ++i)
+					{
+						JsonObject^ nowJson = theJsons->GetObjectAt(i);
+						int id = nowJson->Lookup("id")->GetNumber();
+						int subdivisionId = nowJson->Lookup("subdivision")->GetNumber();
+						Platform::String^ name = nowJson->Lookup("name")->GetString();
+						Platform::String^ chargeType = nowJson->Lookup("chargeType")->GetString();
+						float unitPrice = nowJson->Lookup("unitPrice")->GetNumber();
+						int billingCycle = nowJson->Lookup("billingCycle")->GetNumber();
+						//Platform::String^ createTime = nowJson->Lookup("createTime")->GetString();
+
+						ChargeTemplateViewModel::ChargeTemplates->Append(ref new ChargeTemplate(id, subdivisionId, name, chargeType, unitPrice, billingCycle));
+					}
+				}
+			});
+}
