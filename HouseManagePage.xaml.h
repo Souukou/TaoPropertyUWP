@@ -9,7 +9,7 @@
 #include "House.h"
 
 using namespace TaoPropertyUWP::Models;
-
+using namespace Windows::UI::Xaml::Input;
 namespace TaoPropertyUWP
 {
 	/// <summary>
@@ -35,5 +35,7 @@ namespace TaoPropertyUWP
 				return viewModel;
 			}
 		}
+	private:
+		void DeleteFlyoutButton_Click(Platform::Object^ sender, Windows::UI::Xaml::Controls::ItemClickEventArgs^ e);
 	};
 }

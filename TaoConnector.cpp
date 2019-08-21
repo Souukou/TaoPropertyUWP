@@ -311,3 +311,15 @@ void TaoConnector::RefreshTransactions()
 				}
 			});
 }
+
+bool TaoConnector::DeleteHouse(int id)
+{
+	auto request = GenerateRequest(GenerateUri(L"house/" + id + "/"), HttpMethod::Delete, GetBase64Cred());
+	//bool isSucceeded = false;
+	create_task(httpClient->TrySendRequestAsync(request))
+		.then([=](HttpRequestResult^ result)mutable
+			{
+				//isSucceeded = result->Succeeded;
+			});
+	return true;
+}

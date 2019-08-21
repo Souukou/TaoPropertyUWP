@@ -54,7 +54,7 @@ namespace TaoPropertyUWP
 				layout { layout },
 				direction { direction }
 			{}
-
+			bool Delete();
 			property int getid
 			{
 				int get() { return id; }

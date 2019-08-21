@@ -17,3 +17,26 @@ IObservableVector<House^>^ HouseViewModel::Houses::get()
 	}
 	return houses;
 }
+
+bool House::Delete()
+{
+	bool ret = TaoConnector::DeleteHouse(this->id);
+	if (ret)
+	{
+		int theDeleteOne = -1;
+		for (int i = 0; i < HouseViewModel::Houses->Size; ++i)
+		{
+			if (HouseViewModel::Houses->GetAt(i)->getid == this->id)
+			{
+				theDeleteOne = i;
+				break;
+			}
+		}
+		if (theDeleteOne != -1)
+		{
+			HouseViewModel::Houses->RemoveAt(theDeleteOne);
+		}
+		
+	}
+	return ret;
+}

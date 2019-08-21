@@ -27,3 +27,20 @@ HouseManagePage::HouseManagePage()
 {
 	InitializeComponent();
 }
+
+
+void TaoPropertyUWP::HouseManagePage::DeleteFlyoutButton_Click(Platform::Object^ sender, Windows::UI::Xaml::Controls::ItemClickEventArgs^ e)
+{
+	
+	Object^ ClickedObject = e->ClickedItem;
+	
+	Button^ ClickedButton = (Button^)ClickedObject;
+	auto ClickedHouse = (House^)ClickedButton->DataContext;
+
+	ClickedHouse->Delete();
+	
+
+
+}
+
+

@@ -45,6 +45,7 @@ namespace TaoPropertyUWP
 		static void RefreshOperators();
 		static void RefreshChargeTemplates();
 		static void RefreshTransactions();
+		static bool DeleteHouse(int id);
 		
 	};
 
