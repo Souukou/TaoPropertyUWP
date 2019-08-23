@@ -2,8 +2,10 @@
 #include "TaoConnector.h"
 #include "NewHousePage.xaml.h"
 
-String^ TaoConnector::username = L"15882381309";
-String^ TaoConnector::password = L"123456";
+//String^ TaoConnector::username = L"15882381309";
+String^ TaoConnector::username = L"";
+//String^ TaoConnector::password = L"123456";
+String^ TaoConnector::password = L"";
 Windows::Foundation::Uri^ TaoConnector::BaseUri = ref new Windows::Foundation::Uri(L"http://api.tp.tmiao.tech:16000/api/v1/");
 Windows::Web::Http::HttpClient^ TaoConnector::httpClient = ref new HttpClient();
 
@@ -390,6 +392,29 @@ bool TaoConnector::DeleteChargeTemplate(int id)
 	return true;
 }
 
+bool TaoConnector::AddEnterprise(
+	String^ name //int
+	)
+{
+	JsonObject^ requestJson = ref new JsonObject();
+	if (name != L"")
+		requestJson->Insert("name", JsonValue::CreateStringValue(name));
+	requestJson->Insert("manager", JsonArray::Parse("[]"));
+	HttpStringContent^ requestContent = ref new HttpStringContent(requestJson->ToString());
+	auto request = GenerateRequest(GenerateUri(L"enterprise/"), HttpMethod::Post, GetBase64Cred());
+	request->Content = requestContent;
+	request->Content->Headers->ContentType = ref new HttpMediaTypeHeaderValue("application/json");
+	create_task(httpClient->TrySendRequestAsync(request))
+		.then([=](HttpRequestResult^ result)
+			{
+				if (result->Succeeded)
+				{
+					true;
+				}
+			});
+	return true;// request->Content->ToString();
+}
+
 bool TaoConnector::AddHouse(
 	String^ subdivisionid, //int
 	String^ proprietorid,
@@ -488,6 +513,41 @@ bool TaoConnector::AddSubdivision(
 		requestJson->Insert("operator", JsonArray::Parse("[" + operators + "]"));
 	HttpStringContent^ requestContent = ref new HttpStringContent(requestJson->ToString());
 	auto request = GenerateRequest(GenerateUri(L"subdivision/"), HttpMethod::Post, GetBase64Cred());
+	request->Content = requestContent;
+	request->Content->Headers->ContentType = ref new HttpMediaTypeHeaderValue("application/json");
+	create_task(httpClient->TrySendRequestAsync(request))
+		.then([=](HttpRequestResult^ result)
+			{
+				if (result->Succeeded)
+				{
+					true;
+				}
+			});
+	return true;
+}
+
+bool TaoConnector::AddOperator(
+	String^ name,
+	String^ email,
+	String^ phone,
+	String^ password)
+{
+	JsonObject^ requestJson = ref new JsonObject();
+	if (name != L"")
+		requestJson->Insert("name", JsonValue::CreateStringValue(name));
+	if (email != L"")
+		requestJson->Insert("email", JsonValue::CreateStringValue(email));
+	if (phone != L"")
+		requestJson->Insert("phone", JsonValue::CreateStringValue(phone));
+	requestJson->Insert("username", JsonValue::CreateStringValue(phone));
+	if (password != L"")
+		requestJson->Insert("password", JsonValue::CreateStringValue(password));
+	requestJson->Insert("is_active", JsonValue::CreateNumberValue(1));
+	requestJson->Insert("is_staff", JsonValue::CreateNumberValue(1));
+
+	HttpStringContent^ requestContent = ref new HttpStringContent(requestJson->ToString());
+	//auto request = GenerateRequest(GenerateUri(L"user/"), HttpMethod::Post, GetBase64Cred());
+	auto request = ref new HttpRequestMessage(HttpMethod::Post, GenerateUri(L"user/"));
 	request->Content = requestContent;
 	request->Content->Headers->ContentType = ref new HttpMediaTypeHeaderValue("application/json");
 	create_task(httpClient->TrySendRequestAsync(request))

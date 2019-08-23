@@ -63,11 +63,13 @@ namespace TaoPropertyUWP
 		static bool DeleteHouse(int id);
 		static bool DeleteCarport(int id);
 		static bool DeleteChargeTemplate(int id);
+		static bool AddEnterprise(String^);
 		static bool AddHouse(String^,String^,String^,String^,String^,String^,
 			String^,String^,String^,String^,String^,String^);
 		static bool AddCarport(String^, String^, String^, String^);
 		static bool AddSubdivision(String^, String^, String^);
 		static bool AddResidnet(String^, String^, String^, String^);
+		static bool AddOperator(String^, String^, String^, String^);
 		static bool AddChargeTemplate(String^, String^, String^, String^, String^);
 		static bool PatchHouse(String^, String^, String^, String^, String^, String^, String^,
 			String^, String^, String^, String^, String^, String^);

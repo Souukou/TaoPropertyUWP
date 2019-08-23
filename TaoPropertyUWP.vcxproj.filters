@@ -114,5 +114,7 @@
     <Page Include="NewChargeTemplatePage.xaml" />
     <Page Include="ResidentDetailPage.xaml" />
     <Page Include="HouseDetailPage.xaml" />
+    <Page Include="LoginPage.xaml" />
+    <Page Include="RegistPage.xaml" />
   </ItemGroup>
 </Project>

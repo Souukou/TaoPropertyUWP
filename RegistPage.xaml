@@ -1,0 +1,125 @@
+﻿<Page
+    x:Class="TaoPropertyUWP.RegistPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:TaoPropertyUWP"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    mc:Ignorable="d">
+
+    <RelativePanel>
+        <Grid
+            Margin="0,10,0,0"
+            RelativePanel.AlignHorizontalCenterWithPanel="True"
+            RelativePanel.AlignTopWithPanel="True">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150" />
+                <ColumnDefinition Width="350" />
+            </Grid.ColumnDefinitions>
+            <TextBlock
+                Grid.ColumnSpan="2"
+                Margin="0,0,0,50"
+                HorizontalAlignment="Center"
+                FontSize="42"
+                Text="注册" />
+
+            <TextBlock
+                Grid.Row="1"
+                Grid.Column="0"
+                Margin="0,10,10,30"
+                VerticalAlignment="Center"
+                FontSize="28"
+                Text="手机号" />
+            <TextBox
+                Name="PhoneBox"
+                Grid.Row="1"
+                Grid.Column="1"
+                VerticalAlignment="Center"
+                FontSize="20" />
+            <TextBlock
+                Grid.Row="2"
+                Grid.Column="0"
+                Margin="0,10,10,30"
+                VerticalAlignment="Center"
+                FontSize="28"
+                Text="邮箱" />
+            <TextBox
+                Name="EmailBox"
+                Grid.Row="2"
+                Grid.Column="1"
+                VerticalAlignment="Center"
+                FontSize="20" />
+            <TextBlock
+                Grid.Row="3"
+                Grid.Column="0"
+                Margin="0,10,10,30"
+                VerticalAlignment="Center"
+                FontSize="28"
+                Text="密码" />
+            <PasswordBox
+                x:Name="ThePasswordBox"
+                Grid.Row="3"
+                Grid.Column="1"
+                VerticalAlignment="Center"
+                FontSize="18" />
+            <TextBlock
+                Grid.Row="4"
+                Grid.Column="0"
+                Margin="0,10,10,30"
+                VerticalAlignment="Center"
+                FontSize="28"
+                Text="姓名" />
+            <TextBox
+                Name="NameBox"
+                Grid.Row="4"
+                Grid.Column="1"
+                VerticalAlignment="Center"
+                FontSize="20" />
+            <TextBlock
+                Grid.Row="5"
+                Grid.Column="0"
+                Margin="0,10,10,30"
+                VerticalAlignment="Center"
+                FontSize="28"
+                Text="物业公司名" />
+            <TextBox
+                Name="EnterpriseNameBox"
+                Grid.Row="5"
+                Grid.Column="1"
+                VerticalAlignment="Center"
+                FontSize="20" />
+            <RelativePanel Grid.Row="6" Grid.ColumnSpan="2">
+                <Button
+                    x:Name="RegistButton"
+                    Grid.Row="6"
+                    Margin="0,30,00,0"
+                    Background="{ThemeResource SystemAccentColorLight2}"
+                    Click="RegistButton_Click"
+                    Content="注册"
+                    FontSize="28"
+                    RelativePanel.AlignRightWithPanel="True" />
+                <Button
+                    x:Name="CancelButton"
+                    Grid.Row="6"
+                    Margin="0,30,50,0"
+                    Click="CancelButton_Click"
+                    Content="取消"
+                    FontSize="28"
+                    RelativePanel.LeftOf="RegistButton" />
+
+            </RelativePanel>
+
+        </Grid>
+
+    </RelativePanel>
+</Page>

@@ -11,6 +11,7 @@
 #include "PropertyManagePage.xaml.h"
 #include "ChargeTemplatePage.xaml.h"
 #include "TransactionPage.xaml.h"
+#include "LoginPage.xaml.h"
 #include "TaoConnector.h"
 
 
@@ -33,13 +34,16 @@ using namespace Windows::UI::Xaml::Interop;
 MainPage::MainPage()
 {
 	InitializeComponent();
-
 }
 
 
 void TaoPropertyUWP::MainPage::Page_Loaded(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
 {
 	HomeListBoxItem->IsSelected = true;
+	if (TaoConnector::UserName->Equals("") || TaoConnector::PassWord->Equals(""))
+	{
+		MainContentFrame->Navigate(TypeName(LoginPage::typeid));
+	}
 }
 
 
