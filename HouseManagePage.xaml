@@ -8,231 +8,273 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
-
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
+    <RelativePanel x:Name="theRelativePanel" SizeChanged="TheRelativePanel_SizeChanged">
+        <Rectangle
+            x:Name="CoverRectangle"
+            Fill="Black"
+            Opacity="0.5"
+            RelativePanel.Above="MainGrid"
+            RelativePanel.AlignBottomWithPanel="True"
+            RelativePanel.AlignLeftWithPanel="True"
+            RelativePanel.AlignRightWithPanel="True"
+            RelativePanel.AlignTopWithPanel="True"
+            Visibility="Collapsed" />
         <Grid
-            Grid.Row="0"
-            Height="30"
-            Margin="0,0,0,2"
-            HorizontalAlignment="Stretch"
-            VerticalAlignment="Center">
-            <Grid.Background>
-                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                    <GradientStop Offset="0" Color="{ThemeResource SystemAccentColorLight3}" />
-                    <GradientStop Offset="1" Color="{ThemeResource SystemAltHighColor}" />
-                </LinearGradientBrush>
-            </Grid.Background>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*" />
-                <ColumnDefinition Width="4*" />
-                <ColumnDefinition Width="4*" />
-                <ColumnDefinition Width="4*" />
-                <ColumnDefinition Width="2*" />
-                <ColumnDefinition Width="2*" />
-                <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="3*" />
-                <ColumnDefinition Width="6*" />
-                <ColumnDefinition Width="3*" />
-                <ColumnDefinition Width="3*" />
-                <ColumnDefinition Width="2*" />
-                <ColumnDefinition Width="2*" />
-                <ColumnDefinition Width="50" />
-            </Grid.ColumnDefinitions>
-            <TextBlock
-                Grid.Column="0"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                FontSize="16"
-                Text="ID" />
-            <TextBlock
-                Grid.Column="1"
-                VerticalAlignment="Center"
-                FontSize="16"
-                Text="门牌号" />
-            <TextBlock
-                Grid.Column="2"
-                VerticalAlignment="Center"
-                FontSize="16"
-                Text="所有者" />
-            <TextBlock
-                Grid.Column="3"
-                VerticalAlignment="Center"
-                FontSize="16"
-                Text="小区" />
-            <TextBlock
-                Grid.Column="4"
-                VerticalAlignment="Center"
-                FontSize="16"
-                Text="楼栋" />
-            <TextBlock
-                Grid.Column="5"
-                VerticalAlignment="Center"
-                FontSize="16"
-                Text="单元号" />
-            <TextBlock
-                Grid.Column="6"
-                VerticalAlignment="Center"
-                FontSize="16"
-                Text="楼层" />
-            <TextBlock
-                Grid.Column="7"
-                VerticalAlignment="Center"
-                FontSize="16"
-                Text="房屋状态" />
-            <TextBlock
-                Grid.Column="8"
-                VerticalAlignment="Center"
-                FontSize="16"
-                Text="备注" />
-            <TextBlock
-                Grid.Column="9"
-                VerticalAlignment="Center"
-                FontSize="16"
-                Text="朝向" />
-            <TextBlock
-                Grid.Column="10"
-                VerticalAlignment="Center"
-                FontSize="16"
-                Text="布局" />
-            <TextBlock
-                Grid.Column="11"
-                VerticalAlignment="Center"
-                FontSize="16"
-                Text="净面积" />
-            <TextBlock
-                Grid.Column="12"
-                VerticalAlignment="Center"
-                FontSize="16"
-                Text="总面积" />
+            x:Name="MainGrid"
+            Margin="15"
+            RelativePanel.AlignBottomWithPanel="True"
+            RelativePanel.AlignLeftWithPanel="True"
+            RelativePanel.AlignRightWithPanel="True"
+            RelativePanel.AlignTopWithPanel="True">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid
+                x:Name="TitleGrid"
+                Grid.Row="0"
+                Height="30"
+                Margin="0,0,0,2"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Center">
+                <Grid.Background>
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <GradientStop Offset="0" Color="{ThemeResource SystemAccentColorLight3}" />
+                        <GradientStop Offset="1" Color="{ThemeResource SystemAltHighColor}" />
+                    </LinearGradientBrush>
+                </Grid.Background>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="4*" />
+                    <ColumnDefinition Width="4*" />
+                    <ColumnDefinition Width="4*" />
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="6*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="50" />
+                </Grid.ColumnDefinitions>
+                <TextBlock
+                    Grid.Column="0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="16"
+                    Text="ID" />
+                <TextBlock
+                    Grid.Column="1"
+                    VerticalAlignment="Center"
+                    FontSize="16"
+                    Text="门牌号" />
+                <TextBlock
+                    Grid.Column="2"
+                    VerticalAlignment="Center"
+                    FontSize="16"
+                    Text="所有者" />
+                <TextBlock
+                    Grid.Column="3"
+                    VerticalAlignment="Center"
+                    FontSize="16"
+                    Text="小区" />
+                <TextBlock
+                    Grid.Column="4"
+                    VerticalAlignment="Center"
+                    FontSize="16"
+                    Text="楼栋" />
+                <TextBlock
+                    Grid.Column="5"
+                    VerticalAlignment="Center"
+                    FontSize="16"
+                    Text="单元号" />
+                <TextBlock
+                    Grid.Column="6"
+                    VerticalAlignment="Center"
+                    FontSize="16"
+                    Text="楼层" />
+                <TextBlock
+                    Grid.Column="7"
+                    VerticalAlignment="Center"
+                    FontSize="16"
+                    Text="房屋状态" />
+                <TextBlock
+                    Grid.Column="8"
+                    VerticalAlignment="Center"
+                    FontSize="16"
+                    Text="备注" />
+                <TextBlock
+                    Grid.Column="9"
+                    VerticalAlignment="Center"
+                    FontSize="16"
+                    Text="朝向" />
+                <TextBlock
+                    Grid.Column="10"
+                    VerticalAlignment="Center"
+                    FontSize="16"
+                    Text="布局" />
+                <TextBlock
+                    Grid.Column="11"
+                    VerticalAlignment="Center"
+                    FontSize="16"
+                    Text="净面积" />
+                <TextBlock
+                    Grid.Column="12"
+                    VerticalAlignment="Center"
+                    FontSize="16"
+                    Text="总面积" />
+            </Grid>
+            <ListView
+                Name="TheListView"
+                Grid.Row="2"
+                IsItemClickEnabled="True"
+                ItemClick="TheListView_ItemClick"
+                ItemsSource="{x:Bind ViewModel.Houses}"
+                SelectionMode="Extended">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+                        <Setter Property="Padding" Value="0" />
+
+                    </Style>
+
+                </ListView.ItemContainerStyle>
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="data:House">
+                        <Grid BorderThickness="1" RelativePanel.AlignLeftWithPanel="True">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="4*" />
+                                <ColumnDefinition Width="4*" />
+                                <ColumnDefinition Width="4*" />
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="6*" />
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="50" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock
+                                Grid.Column="0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                FontSize="16"
+                                Text="{x:Bind getid}" />
+                            <TextBlock
+                                Grid.Column="1"
+                                VerticalAlignment="Center"
+                                FontSize="16"
+                                Text="{x:Bind getno}" />
+                            <TextBlock
+                                Grid.Column="2"
+                                VerticalAlignment="Center"
+                                FontSize="16"
+                                Text="{x:Bind getproprietorname}" />
+                            <TextBlock
+                                Grid.Column="3"
+                                VerticalAlignment="Center"
+                                FontSize="16"
+                                Text="{x:Bind getsubdivisionname}" />
+                            <TextBlock
+                                Grid.Column="4"
+                                VerticalAlignment="Center"
+                                FontSize="16"
+                                Text="{x:Bind getbuilding}" />
+                            <TextBlock
+                                Grid.Column="5"
+                                VerticalAlignment="Center"
+                                FontSize="16"
+                                Text="{x:Bind getunit}" />
+                            <TextBlock
+                                Grid.Column="6"
+                                VerticalAlignment="Center"
+                                FontSize="16"
+                                Text="{x:Bind getfloor}" />
+                            <TextBlock
+                                Grid.Column="7"
+                                VerticalAlignment="Center"
+                                FontSize="16"
+                                Text="{x:Bind getHouseStatus}" />
+                            <TextBlock
+                                Grid.Column="8"
+                                VerticalAlignment="Center"
+                                FontSize="16"
+                                Text="{x:Bind getnote}" />
+                            <TextBlock
+                                Grid.Column="9"
+                                VerticalAlignment="Center"
+                                FontSize="16"
+                                Text="{x:Bind getdirection}" />
+                            <TextBlock
+                                Grid.Column="10"
+                                VerticalAlignment="Center"
+                                FontSize="16"
+                                Text="{x:Bind getlayout}" />
+                            <TextBlock
+                                Grid.Column="11"
+                                VerticalAlignment="Center"
+                                FontSize="16"
+                                Text="{x:Bind getNetFloorArea}" />
+                            <TextBlock
+                                Grid.Column="12"
+                                VerticalAlignment="Center"
+                                FontSize="16"
+                                Text="{x:Bind getGrossFloorArea}" />
+
+                            <Button
+                                x:Name="DeleteButton"
+                                Grid.Column="13"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Stretch"
+                                Content="&#xE74D;"
+                                FontFamily="Segoe MDL2 Assets"
+                                FontSize="18"
+                                RelativePanel.AlignRightWithPanel="True">
+                                <Button.Flyout>
+                                    <Flyout x:Name="DeleteFlyout">
+                                        <StackPanel Margin="5">
+                                            <TextBlock Margin="0,0,0,10" Text="确定删除该房产？" />
+                                            <Button
+                                                x:Name="DeleteFlyoutButton"
+                                                HorizontalAlignment="Right"
+                                                Click="DeleteFlyoutButton_Click"
+                                                Content="确定" />
+                                        </StackPanel>
+                                    </Flyout>
+                                </Button.Flyout>
+                            </Button>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </Grid>
-        <ListView
-            Grid.Row="2"
-            ItemsSource="{x:Bind ViewModel.Houses}"
-            SelectionMode="Extended">
-            <ListView.ItemContainerStyle>
-                <Style TargetType="ListViewItem">
-                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                    <Setter Property="VerticalContentAlignment" Value="Stretch" />
-                    <Setter Property="Padding" Value="0" />
-
-                </Style>
-
-            </ListView.ItemContainerStyle>
-            <ListView.ItemTemplate>
-                <DataTemplate x:DataType="data:House">
-                    <Grid BorderThickness="1" RelativePanel.AlignLeftWithPanel="True">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="2*" />
-                            <ColumnDefinition Width="4*" />
-                            <ColumnDefinition Width="4*" />
-                            <ColumnDefinition Width="4*" />
-                            <ColumnDefinition Width="2*" />
-                            <ColumnDefinition Width="2*" />
-                            <ColumnDefinition Width="1*" />
-                            <ColumnDefinition Width="3*" />
-                            <ColumnDefinition Width="6*" />
-                            <ColumnDefinition Width="3*" />
-                            <ColumnDefinition Width="3*" />
-                            <ColumnDefinition Width="2*" />
-                            <ColumnDefinition Width="2*" />
-                            <ColumnDefinition Width="50" />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock
-                            Grid.Column="0"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            FontSize="16"
-                            Text="{x:Bind getid}" />
-                        <TextBlock
-                            Grid.Column="1"
-                            VerticalAlignment="Center"
-                            FontSize="16"
-                            Text="{x:Bind getno}" />
-                        <TextBlock
-                            Grid.Column="2"
-                            VerticalAlignment="Center"
-                            FontSize="16"
-                            Text="{x:Bind getproprietorname}" />
-                        <TextBlock
-                            Grid.Column="3"
-                            VerticalAlignment="Center"
-                            FontSize="16"
-                            Text="{x:Bind getsubdivisionname}" />
-                        <TextBlock
-                            Grid.Column="4"
-                            VerticalAlignment="Center"
-                            FontSize="16"
-                            Text="{x:Bind getbuilding}" />
-                        <TextBlock
-                            Grid.Column="5"
-                            VerticalAlignment="Center"
-                            FontSize="16"
-                            Text="{x:Bind getunit}" />
-                        <TextBlock
-                            Grid.Column="6"
-                            VerticalAlignment="Center"
-                            FontSize="16"
-                            Text="{x:Bind getfloor}" />
-                        <TextBlock
-                            Grid.Column="7"
-                            VerticalAlignment="Center"
-                            FontSize="16"
-                            Text="{x:Bind getHouseStatus}" />
-                        <TextBlock
-                            Grid.Column="8"
-                            VerticalAlignment="Center"
-                            FontSize="16"
-                            Text="{x:Bind getnote}" />
-                        <TextBlock
-                            Grid.Column="9"
-                            VerticalAlignment="Center"
-                            FontSize="16"
-                            Text="{x:Bind getdirection}" />
-                        <TextBlock
-                            Grid.Column="10"
-                            VerticalAlignment="Center"
-                            FontSize="16"
-                            Text="{x:Bind getlayout}" />
-                        <TextBlock
-                            Grid.Column="11"
-                            VerticalAlignment="Center"
-                            FontSize="16"
-                            Text="{x:Bind getNetFloorArea}" />
-                        <TextBlock
-                            Grid.Column="12"
-                            VerticalAlignment="Center"
-                            FontSize="16"
-                            Text="{x:Bind getGrossFloorArea}" />
-
-                        <Button
-                            x:Name="DeleteButton"
-                            Grid.Column="13"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Stretch"
-                            Content="&#xE74D;"
-                            FontFamily="Segoe MDL2 Assets"
-                            FontSize="18"
-                            RelativePanel.AlignRightWithPanel="True">
-                            <Button.Flyout>
-                                <Flyout x:Name="DeleteFlyout">
-                                    <StackPanel Margin="5">
-                                        <TextBlock Margin="0,0,0,10" Text="确定删除该房产？" />
-                                        <Button
-                                            x:Name="DeleteFlyoutButton"
-                                            HorizontalAlignment="Right"
-                                            Click="DeleteFlyoutButton_Click"
-                                            Content="确定" />
-                                    </StackPanel>
-                                </Flyout>
-                            </Button.Flyout>
-                        </Button>
-                    </Grid>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </Grid>
+        <Popup
+            x:Name="DetailPopup"
+            Width="600"
+            Closed="DetailPopup_Closed"
+            IsLightDismissEnabled="True"
+            IsOpen="False"
+            LightDismissOverlayMode="Auto"
+            Opened="DetailPopup_Opened"
+            RelativePanel.AlignRightWithPanel="True">
+            <Popup.ChildTransitions>
+                <TransitionCollection>
+                    <PaneThemeTransition Edge="Right" />
+                </TransitionCollection>
+            </Popup.ChildTransitions>
+            <Popup.Child>
+                <Frame
+                    x:Name="PopupFrame"
+                    Width="600"
+                    Height="{Binding ElementName=theRelativePanel, Path=ActualHeight}" />
+            </Popup.Child>
+        </Popup>
+    </RelativePanel>
 </Page>

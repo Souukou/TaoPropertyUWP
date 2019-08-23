@@ -60,6 +60,12 @@ namespace TaoPropertyUWP
 		static bool AddSubdivision(String^, String^, String^);
 		static bool AddResidnet(String^, String^, String^, String^);
 		static bool AddChargeTemplate(String^, String^, String^, String^, String^);
+		static bool PatchHouse(String^, String^, String^, String^, String^, String^, String^,
+			String^, String^, String^, String^, String^, String^);
+		static bool PatchCarport(String^, String^, String^, String^, String^);
+		static bool PatchSubdivision(String^, String^, String^, String^);
+		static bool PatchChargeTemplate(String^, String^, String^, String^, String^, String^);
+		static bool PatchResident(String^, String^, String^, String^, String^);
 	};
 
 }

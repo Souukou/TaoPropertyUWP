@@ -102,6 +102,18 @@ namespace TaoPropertyUWP
 					return L""; 
 				}
 			}
+			property Platform::String^ getonlyproprietorid
+			{
+				Platform::String^ get()
+				{
+					Platform::String^ re = L"";
+					for (int i = 0; i < proprietorid->Size; ++i)
+					{
+						re += "" + proprietorid->GetAt(i);
+					}
+					return re;
+				}
+			}
 			property Platform::String^ getproprietorname
 			{
 				Platform::String^ get()

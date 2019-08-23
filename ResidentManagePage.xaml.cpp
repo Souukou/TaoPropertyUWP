@@ -7,6 +7,7 @@
 #include "ResidentManagePage.xaml.h"
 #include "NewResidentPage.xaml.h"
 #include "Resident.h"
+#include "ResidentDetailPage.xaml.h"
 #include "TaoConnector.h"
 using namespace TaoPropertyUWP;
 using namespace TaoPropertyUWP::Models;
@@ -52,4 +53,36 @@ void TaoPropertyUWP::ResidentManagePage::DeleteFlyoutButton_Click(Platform::Obje
 	auto ClickedResident = (Resident^)ClickedButton->DataContext;
 
 	ClickedResident->Delete();
+}
+
+
+void TaoPropertyUWP::ResidentManagePage::ListView_ItemClick(Platform::Object^ sender, Windows::UI::Xaml::Controls::ItemClickEventArgs^ e)
+{
+	
+	DetailPopup->IsOpen = true;
+	
+	Object^ ClickedObject = e->ClickedItem;
+	Resident^ ClickedResident = (Resident^)ClickedObject;
+	PopupFrame->Navigate(TypeName(ResidentDetailPage::typeid), ClickedResident);
+}
+
+
+void TaoPropertyUWP::ResidentManagePage::TheRelativePanel_SizeChanged(Platform::Object^ sender, Windows::UI::Xaml::SizeChangedEventArgs^ e)
+{
+	PopupFrame->Height = theRelativePanel->ActualHeight;
+}
+
+
+void TaoPropertyUWP::ResidentManagePage::DetailPopup_Closed(Platform::Object^ sender, Platform::Object^ e)
+{
+	TitleGrid->Background = this->SavedBackground;
+	CoverRectangle->Visibility = Windows::UI::Xaml::Visibility::Collapsed;
+}
+
+
+void TaoPropertyUWP::ResidentManagePage::DetailPopup_Opened(Platform::Object^ sender, Platform::Object^ e)
+{
+	this->SavedBackground = TitleGrid->Background;
+	TitleGrid->Background = nullptr;
+	CoverRectangle->Visibility = Windows::UI::Xaml::Visibility::Visible;
 }

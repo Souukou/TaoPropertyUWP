@@ -180,6 +180,9 @@
       <DependentUpon>HomePage.xaml</DependentUpon>
     </ClInclude>
     <ClInclude Include="House.h" />
+    <ClInclude Include="HouseDetailPage.xaml.h">
+      <DependentUpon>HouseDetailPage.xaml</DependentUpon>
+    </ClInclude>
     <ClInclude Include="HouseManagePage.xaml.h">
       <DependentUpon>HouseManagePage.xaml</DependentUpon>
     </ClInclude>
@@ -209,6 +212,9 @@
     <ClInclude Include="PropertyManagePage.xaml.h">
       <DependentUpon>PropertyManagePage.xaml</DependentUpon>
     </ClInclude>
+    <ClInclude Include="ResidentDetailPage.xaml.h">
+      <DependentUpon>ResidentDetailPage.xaml</DependentUpon>
+    </ClInclude>
     <ClInclude Include="ResidentManagePage.xaml.h">
       <DependentUpon>ResidentManagePage.xaml</DependentUpon>
     </ClInclude>
@@ -236,6 +242,9 @@
     <Page Include="HomePage.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="HouseDetailPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="HouseManagePage.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -258,6 +267,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="PropertyManagePage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ResidentDetailPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Include="ResidentManagePage.xaml">
@@ -301,6 +313,9 @@
       <DependentUpon>HomePage.xaml</DependentUpon>
     </ClCompile>
     <ClCompile Include="House.cpp" />
+    <ClCompile Include="HouseDetailPage.xaml.cpp">
+      <DependentUpon>HouseDetailPage.xaml</DependentUpon>
+    </ClCompile>
     <ClCompile Include="HouseManagePage.xaml.cpp">
       <DependentUpon>HouseManagePage.xaml</DependentUpon>
     </ClCompile>
@@ -335,6 +350,9 @@
     </ClCompile>
     <ClCompile Include="PropertyManagePage.xaml.cpp">
       <DependentUpon>PropertyManagePage.xaml</DependentUpon>
+    </ClCompile>
+    <ClCompile Include="ResidentDetailPage.xaml.cpp">
+      <DependentUpon>ResidentDetailPage.xaml</DependentUpon>
     </ClCompile>
     <ClCompile Include="ResidentManagePage.xaml.cpp">
       <DependentUpon>ResidentManagePage.xaml</DependentUpon>

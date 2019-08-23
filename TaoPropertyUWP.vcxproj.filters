@@ -112,5 +112,7 @@
     <Page Include="NewCarportPage.xaml" />
     <Page Include="NewResidentPage.xaml" />
     <Page Include="NewChargeTemplatePage.xaml" />
+    <Page Include="ResidentDetailPage.xaml" />
+    <Page Include="HouseDetailPage.xaml" />
   </ItemGroup>
 </Project>

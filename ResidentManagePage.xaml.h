@@ -35,8 +35,13 @@ namespace TaoPropertyUWP
 		}
 	private:
 		static ResidentViewModel^ viewModel;
+		Windows::UI::Xaml::Media::Brush^ SavedBackground;
 		void RefreshButton_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
 		void NewButton_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
 		void DeleteFlyoutButton_Click(Platform::Object^ sender, Windows::UI::Xaml::Controls::ItemClickEventArgs^ e);
+		void ListView_ItemClick(Platform::Object^ sender, Windows::UI::Xaml::Controls::ItemClickEventArgs^ e);
+		void TheRelativePanel_SizeChanged(Platform::Object^ sender, Windows::UI::Xaml::SizeChangedEventArgs^ e);
+		void DetailPopup_Closed(Platform::Object^ sender, Platform::Object^ e);
+		void DetailPopup_Opened(Platform::Object^ sender, Platform::Object^ e);
 	};
 }

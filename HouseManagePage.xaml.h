@@ -37,5 +37,10 @@ namespace TaoPropertyUWP
 		}
 	private:
 		void DeleteFlyoutButton_Click(Platform::Object^ sender, Windows::UI::Xaml::Controls::ItemClickEventArgs^ e);
+		void TheListView_ItemClick(Platform::Object^ sender, Windows::UI::Xaml::Controls::ItemClickEventArgs^ e);
+		void DetailPopup_Closed(Platform::Object^ sender, Platform::Object^ e);
+		void DetailPopup_Opened(Platform::Object^ sender, Platform::Object^ e);
+		Windows::UI::Xaml::Media::Brush^ SavedBackground;
+		void TheRelativePanel_SizeChanged(Platform::Object^ sender, Windows::UI::Xaml::SizeChangedEventArgs^ e);
 	};
 }
