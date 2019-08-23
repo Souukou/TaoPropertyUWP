@@ -107,5 +107,10 @@
     <Page Include="CarportManagePage.xaml" />
     <Page Include="ChargeTemplatePage.xaml" />
     <Page Include="TransactionPage.xaml" />
+    <Page Include="NewHousePage.xaml" />
+    <Page Include="NewSubdivisionPage.xaml" />
+    <Page Include="NewCarportPage.xaml" />
+    <Page Include="NewResidentPage.xaml" />
+    <Page Include="NewChargeTemplatePage.xaml" />
   </ItemGroup>
 </Project>

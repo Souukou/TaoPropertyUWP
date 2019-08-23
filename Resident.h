@@ -49,6 +49,7 @@ namespace TaoPropertyUWP
 				Platform::String^ get() { return this->createTime; }
 				//void set(Windows::Globalization::Calendar^ createTime) { this->createTime = createTime; }
 			}
+			bool Delete();
 		};
 
 		public ref class ResidentViewModel sealed

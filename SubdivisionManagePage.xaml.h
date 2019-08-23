@@ -21,8 +21,6 @@ namespace TaoPropertyUWP
 	[Windows::Foundation::Metadata::WebHostHidden]
 	public ref class SubdivisionManagePage sealed
 	{
-	private:
-		static SubdivisionViewModel^ viewModel;
 	public:
 		SubdivisionManagePage();
 		static property SubdivisionViewModel^ ViewModel
@@ -38,8 +36,10 @@ namespace TaoPropertyUWP
 		}
 		
 	private:
+		static SubdivisionViewModel^ viewModel;
 		void RefreshButton_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
-		
+		void DeleteFlyoutButton_Click(Platform::Object^ sender, Windows::UI::Xaml::Controls::ItemClickEventArgs^ e);
+		void NewButton_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
 	};
 
 

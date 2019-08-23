@@ -8,6 +8,8 @@
 #include "HouseManagePage.xaml.h"
 #include "CarportManagePage.xaml.h"
 #include "TaoConnector.h"
+#include "NewHousePage.xaml.h"
+#include "NewCarportPage.xaml.h"
 
 using namespace TaoPropertyUWP;
 
@@ -60,5 +62,18 @@ void TaoPropertyUWP::PropertyManagePage::RefreshButton_Click(Platform::Object^ s
 	if (CarportComboBox->IsSelected)
 	{
 		TaoConnector::RefreshCarports();
+	}
+}
+
+
+void TaoPropertyUWP::PropertyManagePage::NewButton_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+	if (HouseComboBox->IsSelected)
+	{
+		PropertyContentFrame->Navigate(TypeName(NewHousePage::typeid));
+	}
+	if (CarportComboBox->IsSelected)
+	{
+		PropertyContentFrame->Navigate(TypeName(NewCarportPage::typeid));
 	}
 }

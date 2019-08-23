@@ -33,5 +33,7 @@ namespace TaoPropertyUWP
 				return viewModel;
 			}
 		}
+	private:
+		void DeleteFlyoutButton_Click(Platform::Object^ sender, Windows::UI::Xaml::Controls::ItemClickEventArgs^ e);
 	};
 }

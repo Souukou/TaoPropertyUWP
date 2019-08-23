@@ -54,10 +54,39 @@ namespace TaoPropertyUWP
 				layout { layout },
 				direction { direction }
 			{}
+			House(int subdivisionid,
+				IVector<int>^ proprietorid,
+				Platform::String^ note,
+				Platform::String^ no,
+				float netFloorArea,
+				float grossFloorArea,
+				Platform::String^ building,
+				int unit,
+				int floor,
+				Platform::String^ houseStatus,
+				Platform::String^ layout,
+				Platform::String^ direction) :
+				subdivisionid{ subdivisionid },
+				proprietorid{ proprietorid },
+				note{ note },
+				no{ no },
+				netFloorArea{ netFloorArea },
+				grossFloorArea{ grossFloorArea },
+				building{ building },
+				unit{ unit },
+				floor{ floor },
+				houseStatus{ houseStatus },
+				layout{ layout },
+				direction{ direction }
+			{}
 			bool Delete();
 			property int getid
 			{
 				int get() { return id; }
+			}
+			property int getsubdivisionid
+			{
+				int get() { return this->subdivisionid; }
 			}
 			property Platform::String^ getsubdivisionname
 			{
@@ -89,6 +118,21 @@ namespace TaoPropertyUWP
 							}
 						}
 					}
+					return re;
+				}
+			}
+			property Platform::String^ getproprietorid
+			{
+				Platform::String^ get()
+				{
+					Platform::String^ re = L"[";
+					if (proprietorid->Size > 0)
+						re += proprietorid->GetAt(0);
+					for (int i = 1; i < proprietorid->Size; ++i)
+					{					
+						re += "," + proprietorid->GetAt(i);
+					}
+					re += "]";
 					return re;
 				}
 			}

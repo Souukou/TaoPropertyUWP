@@ -38,8 +38,6 @@ void TaoPropertyUWP::HouseManagePage::DeleteFlyoutButton_Click(Platform::Object^
 	auto ClickedHouse = (House^)ClickedButton->DataContext;
 
 	ClickedHouse->Delete();
-	
-
 
 }
 

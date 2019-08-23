@@ -38,11 +38,8 @@ namespace TaoPropertyUWP
 				id { id }, 
 				name { name },
 				createTime { createTime },
-				enterprise{ enterprise }
-				//operators { operators } 
-			{
-				this->operators = operators;
-			}
+				enterprise{ enterprise },
+				operators{ operators } {}
 			
 			property int getid
 			{
@@ -85,6 +82,7 @@ namespace TaoPropertyUWP
 					return ref new Platform::String(wstringstream.str().c_str()) + re;
 				}
 			}
+			bool Delete();
 
 		};
 

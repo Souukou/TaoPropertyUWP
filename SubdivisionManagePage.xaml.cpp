@@ -6,6 +6,7 @@
 #include "pch.h"
 #include "SubdivisionManagePage.xaml.h"
 #include "Subdivision.h"
+#include "NewSubdivisionPage.xaml.h"
 #include "TaoConnector.h"
 #include <sstream>
 
@@ -22,6 +23,7 @@ using namespace Windows::UI::Xaml::Data;
 using namespace Windows::UI::Xaml::Input;
 using namespace Windows::UI::Xaml::Media;
 using namespace Windows::UI::Xaml::Navigation;
+using namespace Windows::UI::Xaml::Interop;
 using namespace Windows::Web::Http;
 using namespace Windows::Web::Http::Headers;
 using namespace Windows::Web::Http::Filters;
@@ -40,3 +42,21 @@ void TaoPropertyUWP::SubdivisionManagePage::RefreshButton_Click(Platform::Object
 {
 	TaoConnector::RefreshSubdivisions();
 }
+
+
+void TaoPropertyUWP::SubdivisionManagePage::DeleteFlyoutButton_Click(Platform::Object^ sender, Windows::UI::Xaml::Controls::ItemClickEventArgs^ e)
+{
+	Object^ ClickedObject = e->ClickedItem;
+
+	Button^ ClickedButton = (Button^)ClickedObject;
+	auto ClickedSubdivision = (Subdivision^)ClickedButton->DataContext;
+
+	ClickedSubdivision->Delete();
+}
+
+
+void TaoPropertyUWP::SubdivisionManagePage::NewButton_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+	this->Frame->Navigate(TypeName(NewSubdivisionPage::typeid));
+}
+

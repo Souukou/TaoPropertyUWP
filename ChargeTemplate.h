@@ -89,7 +89,7 @@ namespace TaoPropertyUWP
 			{
 				int get() { return this->billingCycle; }
 			}
-
+			bool Delete();
 		};
 
 		public ref class ChargeTemplateViewModel sealed

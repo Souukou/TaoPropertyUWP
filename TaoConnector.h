@@ -19,6 +19,8 @@ using namespace Windows::Web::Http;
 using namespace Windows::Web::Http::Headers;
 using namespace Windows::Web::Http::Filters;
 using namespace Windows::Security::Cryptography::Certificates;
+using namespace std;
+
 namespace TaoPropertyUWP
 {
 	public ref class TaoConnector sealed
@@ -45,8 +47,19 @@ namespace TaoPropertyUWP
 		static void RefreshOperators();
 		static void RefreshChargeTemplates();
 		static void RefreshTransactions();
+		static bool DeleteSubdivision(int id);
+		static bool DeleteEnterprise(int id);
+		static bool DeleteResident(String^);
+		static bool DeleteOperator(int id);
 		static bool DeleteHouse(int id);
-		
+		static bool DeleteCarport(int id);
+		static bool DeleteChargeTemplate(int id);
+		static bool AddHouse(String^,String^,String^,String^,String^,String^,
+			String^,String^,String^,String^,String^,String^);
+		static bool AddCarport(String^, String^, String^, String^);
+		static bool AddSubdivision(String^, String^, String^);
+		static bool AddResidnet(String^, String^, String^, String^);
+		static bool AddChargeTemplate(String^, String^, String^, String^, String^);
 	};
 
 }

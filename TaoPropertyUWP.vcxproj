@@ -183,6 +183,21 @@
     <ClInclude Include="HouseManagePage.xaml.h">
       <DependentUpon>HouseManagePage.xaml</DependentUpon>
     </ClInclude>
+    <ClInclude Include="NewCarportPage.xaml.h">
+      <DependentUpon>NewCarportPage.xaml</DependentUpon>
+    </ClInclude>
+    <ClInclude Include="NewChargeTemplatePage.xaml.h">
+      <DependentUpon>NewChargeTemplatePage.xaml</DependentUpon>
+    </ClInclude>
+    <ClInclude Include="NewHousePage.xaml.h">
+      <DependentUpon>NewHousePage.xaml</DependentUpon>
+    </ClInclude>
+    <ClInclude Include="NewResidentPage.xaml.h">
+      <DependentUpon>NewResidentPage.xaml</DependentUpon>
+    </ClInclude>
+    <ClInclude Include="NewSubdivisionPage.xaml.h">
+      <DependentUpon>NewSubdivisionPage.xaml</DependentUpon>
+    </ClInclude>
     <ClInclude Include="Operator.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="App.xaml.h">
@@ -225,6 +240,21 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="NewCarportPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="NewChargeTemplatePage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="NewHousePage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="NewResidentPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="NewSubdivisionPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Include="PropertyManagePage.xaml">
@@ -276,6 +306,21 @@
     </ClCompile>
     <ClCompile Include="MainPage.xaml.cpp">
       <DependentUpon>MainPage.xaml</DependentUpon>
+    </ClCompile>
+    <ClCompile Include="NewCarportPage.xaml.cpp">
+      <DependentUpon>NewCarportPage.xaml</DependentUpon>
+    </ClCompile>
+    <ClCompile Include="NewChargeTemplatePage.xaml.cpp">
+      <DependentUpon>NewChargeTemplatePage.xaml</DependentUpon>
+    </ClCompile>
+    <ClCompile Include="NewHousePage.xaml.cpp">
+      <DependentUpon>NewHousePage.xaml</DependentUpon>
+    </ClCompile>
+    <ClCompile Include="NewResidentPage.xaml.cpp">
+      <DependentUpon>NewResidentPage.xaml</DependentUpon>
+    </ClCompile>
+    <ClCompile Include="NewSubdivisionPage.xaml.cpp">
+      <DependentUpon>NewSubdivisionPage.xaml</DependentUpon>
     </ClCompile>
     <ClCompile Include="Operator.cpp" />
     <ClCompile Include="pch.cpp">

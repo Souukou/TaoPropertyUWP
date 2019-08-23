@@ -76,6 +76,7 @@ namespace TaoPropertyUWP
 			{
 				Platform::String^ get() { return this->no; }
 			}
+			bool Delete();
 		};
 
 		public ref class CarportViewModel sealed

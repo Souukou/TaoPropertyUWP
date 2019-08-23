@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "TaoConnector.h"
+#include "NewHousePage.xaml.h"
 
 std::wstring TaoConnector::username = L"15882381309";
 std::wstring TaoConnector::password = L"123456";
@@ -312,6 +313,50 @@ void TaoConnector::RefreshTransactions()
 			});
 }
 
+bool TaoConnector::DeleteSubdivision(int id)
+{
+	auto request = GenerateRequest(GenerateUri(L"subdivision/" + id + "/"), HttpMethod::Delete, GetBase64Cred());
+	//bool isSucceeded = false;
+	create_task(httpClient->TrySendRequestAsync(request))
+		.then([=](HttpRequestResult^ result)mutable
+			{
+				//isSucceeded = result->Succeeded;
+			});
+	return true;
+}
+bool TaoConnector::DeleteEnterprise(int id)
+{
+	auto request = GenerateRequest(GenerateUri(L"enterprise/" + id + "/"), HttpMethod::Delete, GetBase64Cred());
+	//bool isSucceeded = false;
+	create_task(httpClient->TrySendRequestAsync(request))
+		.then([=](HttpRequestResult^ result)mutable
+			{
+				//isSucceeded = result->Succeeded;
+			});
+	return true;
+}
+bool TaoConnector::DeleteResident(String^ phone)
+{
+	auto request = GenerateRequest(GenerateUri(L"user/" + phone + "/"), HttpMethod::Delete, GetBase64Cred());
+	//bool isSucceeded = false;
+	create_task(httpClient->TrySendRequestAsync(request))
+		.then([=](HttpRequestResult^ result)mutable
+			{
+				//isSucceeded = result->Succeeded;
+			});
+	return true;
+}
+bool TaoConnector::DeleteOperator(int id)
+{
+	auto request = GenerateRequest(GenerateUri(L"user/" + id + "/"), HttpMethod::Delete, GetBase64Cred());
+	//bool isSucceeded = false;
+	create_task(httpClient->TrySendRequestAsync(request))
+		.then([=](HttpRequestResult^ result)mutable
+			{
+				//isSucceeded = result->Succeeded;
+			});
+	return true;
+}
 bool TaoConnector::DeleteHouse(int id)
 {
 	auto request = GenerateRequest(GenerateUri(L"house/" + id + "/"), HttpMethod::Delete, GetBase64Cred());
@@ -320,6 +365,209 @@ bool TaoConnector::DeleteHouse(int id)
 		.then([=](HttpRequestResult^ result)mutable
 			{
 				//isSucceeded = result->Succeeded;
+			});
+	return true;
+}
+bool TaoConnector::DeleteCarport(int id)
+{
+	auto request = GenerateRequest(GenerateUri(L"carport/" + id + "/"), HttpMethod::Delete, GetBase64Cred());
+	//bool isSucceeded = false;
+	create_task(httpClient->TrySendRequestAsync(request))
+		.then([=](HttpRequestResult^ result)mutable
+			{
+				//isSucceeded = result->Succeeded;
+			});
+	return true;
+}
+
+bool TaoConnector::DeleteChargeTemplate(int id)
+{
+	auto request = GenerateRequest(GenerateUri(L"charge_template/" + id + "/"), HttpMethod::Delete, GetBase64Cred());
+	//bool isSucceeded = false;
+	create_task(httpClient->TrySendRequestAsync(request))
+		.then([=](HttpRequestResult^ result)mutable
+			{
+				//isSucceeded = result->Succeeded;
+			});
+	return true;
+}
+
+bool TaoConnector::AddHouse(
+	String^ subdivisionid, //int
+	String^ proprietorid,
+	String^ note,
+	String^ no,
+	String^ netFloorArea, //float
+	String^ grossFloorArea, //float
+	String^ building,
+	String^ unit, //int
+	String^ floor, //int
+	String^ houseStatus,
+	String^ layout,
+	String^ direction)
+{
+	JsonObject^ requestJson = ref new JsonObject();
+	if(subdivisionid != L"")
+		requestJson->Insert("subdivision", JsonValue::CreateNumberValue(stoi(subdivisionid->Data())));
+	if (proprietorid != L"")
+		requestJson->Insert("proprietor", JsonArray::Parse("[" + proprietorid + "]"));
+	if (note != L"")
+		requestJson->Insert("note", JsonValue::CreateStringValue(note));
+	if (no != L"")
+		requestJson->Insert("no", JsonValue::CreateStringValue(no));
+	if (netFloorArea != L"")
+		requestJson->Insert("netFloorArea", JsonValue::CreateNumberValue(stof(netFloorArea->Data())));
+	if (grossFloorArea != L"")
+		requestJson->Insert("grossFloorArea", JsonValue::CreateNumberValue(stof(grossFloorArea->Data())));
+	if (building != L"")
+		requestJson->Insert("building", JsonValue::CreateStringValue(building));
+	if (unit != L"")
+		requestJson->Insert("unit", JsonValue::CreateNumberValue(stoi(unit->Data())));
+	if (floor != L"")
+		requestJson->Insert("floor", JsonValue::CreateNumberValue(stoi(floor->Data())));
+	if (houseStatus != L"")
+		requestJson->Insert("houseStatus", JsonValue::CreateStringValue(houseStatus));
+	if (layout != L"")
+		requestJson->Insert("layout", JsonValue::CreateStringValue(layout));
+	if (direction != L"")
+		requestJson->Insert("direction", JsonValue::CreateStringValue(direction));
+	HttpStringContent^ requestContent = ref new HttpStringContent(requestJson->ToString());
+	auto request = GenerateRequest(GenerateUri(L"house/"), HttpMethod::Post, GetBase64Cred());
+	request->Content = requestContent;
+	request->Content->Headers->ContentType = ref new HttpMediaTypeHeaderValue("application/json");
+	create_task(httpClient->TrySendRequestAsync(request))
+		.then([=](HttpRequestResult^ result)
+			{
+				if (result->Succeeded)
+				{
+					true;					
+				}
+			});
+	return true;
+}
+
+bool TaoConnector::AddCarport(
+	String^ subdivisionid, //int
+	String^ proprietorid,
+	String^ note,
+	String^ no)
+{
+	JsonObject^ requestJson = ref new JsonObject();
+	if (subdivisionid != L"")
+		requestJson->Insert("subdivision", JsonValue::CreateNumberValue(stoi(subdivisionid->Data())));
+	if (proprietorid != L"")
+		requestJson->Insert("proprietor", JsonArray::Parse("[" + proprietorid + "]"));
+	if (note != L"")
+		requestJson->Insert("note", JsonValue::CreateStringValue(note));
+	if (no != L"")
+		requestJson->Insert("no", JsonValue::CreateStringValue(no));
+	HttpStringContent^ requestContent = ref new HttpStringContent(requestJson->ToString());
+	auto request = GenerateRequest(GenerateUri(L"carport/"), HttpMethod::Post, GetBase64Cred());
+	request->Content = requestContent;
+	request->Content->Headers->ContentType = ref new HttpMediaTypeHeaderValue("application/json");
+	create_task(httpClient->TrySendRequestAsync(request))
+		.then([=](HttpRequestResult^ result)
+			{
+				if (result->Succeeded)
+				{
+					true;
+				}
+			});
+	return true;
+}
+
+bool TaoConnector::AddSubdivision(
+	String^ name,
+	String^ enterprise, //int
+	String^ operators)
+{
+	JsonObject^ requestJson = ref new JsonObject();
+	if (name != L"")
+		requestJson->Insert("name", JsonValue::CreateStringValue(name));
+	if (enterprise != L"")
+		requestJson->Insert("enterprise", JsonValue::CreateNumberValue(stoi(enterprise->Data())));
+	if (operators != L"")
+		requestJson->Insert("operator", JsonArray::Parse("[" + operators + "]"));
+	HttpStringContent^ requestContent = ref new HttpStringContent(requestJson->ToString());
+	auto request = GenerateRequest(GenerateUri(L"subdivision/"), HttpMethod::Post, GetBase64Cred());
+	request->Content = requestContent;
+	request->Content->Headers->ContentType = ref new HttpMediaTypeHeaderValue("application/json");
+	create_task(httpClient->TrySendRequestAsync(request))
+		.then([=](HttpRequestResult^ result)
+			{
+				if (result->Succeeded)
+				{
+					true;
+				}
+			});
+	return true;
+}
+
+bool TaoConnector::AddResidnet(
+	String^ name,
+	String^ email,
+	String^ phone,
+	String^ password)
+{
+	JsonObject^ requestJson = ref new JsonObject();
+	if (name != L"")
+		requestJson->Insert("name", JsonValue::CreateStringValue(name));
+	if (email != L"")
+		requestJson->Insert("email", JsonValue::CreateStringValue(email));
+	if (phone != L"")
+		requestJson->Insert("phone", JsonValue::CreateStringValue(phone));	
+		requestJson->Insert("username", JsonValue::CreateStringValue(phone));
+	if (password != L"")
+		requestJson->Insert("password", JsonValue::CreateStringValue(password));
+	requestJson->Insert("is_active", JsonValue::CreateNumberValue(1));
+	requestJson->Insert("is_staff", JsonValue::CreateNumberValue(0));
+
+	HttpStringContent^ requestContent = ref new HttpStringContent(requestJson->ToString());
+	auto request = GenerateRequest(GenerateUri(L"user/"), HttpMethod::Post, GetBase64Cred());
+	request->Content = requestContent;
+	request->Content->Headers->ContentType = ref new HttpMediaTypeHeaderValue("application/json");
+	create_task(httpClient->TrySendRequestAsync(request))
+		.then([=](HttpRequestResult^ result)
+			{
+				if (result->Succeeded)
+				{
+					true;
+				}
+			});
+	return true;
+}
+
+bool TaoConnector::AddChargeTemplate(
+	String^ subdivisionId, //int
+	String^ name,
+	String^ chargeType,
+	String^ unitPrice, //float
+	String^ billingCycle //int 
+)
+{
+	JsonObject^ requestJson = ref new JsonObject();
+	if (subdivisionId != L"")
+		requestJson->Insert("subdivision", JsonValue::CreateNumberValue(stoi(subdivisionId->Data())));
+	if (name != L"")
+		requestJson->Insert("name", JsonValue::CreateStringValue(name));
+	if (chargeType != L"")
+		requestJson->Insert("chargeType", JsonValue::CreateStringValue(chargeType));
+	if (unitPrice != L"")
+		requestJson->Insert("unitPrice", JsonValue::CreateNumberValue(stof(unitPrice->Data())));
+	if (billingCycle != L"")
+		requestJson->Insert("billingCycle", JsonValue::CreateNumberValue(stoi(billingCycle->Data())));
+
+	HttpStringContent^ requestContent = ref new HttpStringContent(requestJson->ToString());
+	auto request = GenerateRequest(GenerateUri(L"charge_template/"), HttpMethod::Post, GetBase64Cred());
+	request->Content = requestContent;
+	request->Content->Headers->ContentType = ref new HttpMediaTypeHeaderValue("application/json");
+	create_task(httpClient->TrySendRequestAsync(request))
+		.then([=](HttpRequestResult^ result)
+			{
+				if (result->Succeeded)
+				{
+					true;
+				}
 			});
 	return true;
 }

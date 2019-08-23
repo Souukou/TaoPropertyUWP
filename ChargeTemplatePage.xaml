@@ -28,6 +28,14 @@
                 Content="&#xE72C;"
                 FontFamily="Segoe MDL2 Assets"
                 FontSize="20"
+                RelativePanel.LeftOf="NewButton" />
+            <Button
+                x:Name="NewButton"
+                VerticalAlignment="Stretch"
+                Click="NewButton_Click"
+                Content="&#xE710;"
+                FontFamily="Segoe MDL2 Assets"
+                FontSize="20"
                 RelativePanel.AlignRightWithPanel="True" />
         </RelativePanel>
         <Grid
@@ -49,6 +57,7 @@
                 <ColumnDefinition Width="3*" />
                 <ColumnDefinition Width="3*" />
                 <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="50" />
             </Grid.ColumnDefinitions>
             <TextBlock
                 Grid.Column="0"
@@ -103,6 +112,7 @@
                             <ColumnDefinition Width="3*" />
                             <ColumnDefinition Width="3*" />
                             <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="50" />
                         </Grid.ColumnDefinitions>
                         <TextBlock
                             Grid.Column="0"
@@ -131,10 +141,32 @@
                             FontSize="16"
                             Text="{x:Bind getUnitPrice}" />
                         <TextBlock
-                            Grid.Column="6"
+                            Grid.Column="5"
                             VerticalAlignment="Center"
                             FontSize="16"
                             Text="{x:Bind getBillingCycle}" />
+                        <Button
+                            x:Name="DeleteButton"
+                            Grid.Column="6"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Stretch"
+                            Content="&#xE74D;"
+                            FontFamily="Segoe MDL2 Assets"
+                            FontSize="18"
+                            RelativePanel.AlignRightWithPanel="True">
+                            <Button.Flyout>
+                                <Flyout x:Name="DeleteFlyout">
+                                    <StackPanel Margin="5">
+                                        <TextBlock Margin="0,0,0,10" Text="确定删除该收费项目？" />
+                                        <Button
+                                            x:Name="DeleteFlyoutButton"
+                                            HorizontalAlignment="Right"
+                                            Click="DeleteFlyoutButton_Click"
+                                            Content="确定" />
+                                    </StackPanel>
+                                </Flyout>
+                            </Button.Flyout>
+                        </Button>
                     </Grid>
 
                 </DataTemplate>

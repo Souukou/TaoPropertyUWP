@@ -43,7 +43,16 @@
                 Content="&#xE72C;"
                 FontFamily="Segoe MDL2 Assets"
                 FontSize="20"
+                RelativePanel.LeftOf="NewButton" />
+            <Button
+                x:Name="NewButton"
+                VerticalAlignment="Stretch"
+                Click="NewButton_Click"
+                Content="&#xE710;"
+                FontFamily="Segoe MDL2 Assets"
+                FontSize="20"
                 RelativePanel.AlignRightWithPanel="True" />
+
         </RelativePanel>
         <Frame
             Name="PropertyContentFrame"

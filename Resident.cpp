@@ -20,3 +20,27 @@ IObservableVector<Resident^>^ ResidentViewModel::Residents::get()
 	}
 	return residents;
 }
+
+bool Resident::Delete()
+{
+	bool ret = TaoConnector::DeleteResident(this->phone);
+	if (ret)
+	{
+		int theDeleteOne = -1;
+		for (int i = 0; i < ResidentViewModel::Residents->Size; ++i)
+		{
+			if (ResidentViewModel::Residents->GetAt(i)->getid == this->id)
+			{
+				theDeleteOne = i;
+				break;
+			}
+		}
+		if (theDeleteOne != -1)
+		{
+			ResidentViewModel::Residents->RemoveAt(theDeleteOne);
+		}
+
+	}
+	return ret;
+
+}
