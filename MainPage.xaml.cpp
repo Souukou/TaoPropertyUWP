@@ -11,6 +11,7 @@
 #include "PropertyManagePage.xaml.h"
 #include "ChargeTemplatePage.xaml.h"
 #include "TransactionPage.xaml.h"
+#include "TaoConnector.h"
 
 
 using namespace TaoPropertyUWP;

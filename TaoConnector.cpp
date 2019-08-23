@@ -2,17 +2,15 @@
 #include "TaoConnector.h"
 #include "NewHousePage.xaml.h"
 
-std::wstring TaoConnector::username = L"15882381309";
-std::wstring TaoConnector::password = L"123456";
+String^ TaoConnector::username = L"15882381309";
+String^ TaoConnector::password = L"123456";
 Windows::Foundation::Uri^ TaoConnector::BaseUri = ref new Windows::Foundation::Uri(L"http://api.tp.tmiao.tech:16000/api/v1/");
 Windows::Web::Http::HttpClient^ TaoConnector::httpClient = ref new HttpClient();
 
 Platform::String^ TaoConnector::GetBase64Cred()
 {
-	std::wstringstream wstringstream;
-	wstringstream << username << ":" << password;
 	auto buffer = Windows::Security::Cryptography::CryptographicBuffer::ConvertStringToBinary(
-		ref new Platform::String(wstringstream.str().c_str()),
+		UserName + ":" + PassWord,
 		Windows::Security::Cryptography::BinaryStringEncoding::Utf8);
 	Platform::String^ base64token = Windows::Security::Cryptography::CryptographicBuffer::EncodeToBase64String(buffer);
 	return base64token;

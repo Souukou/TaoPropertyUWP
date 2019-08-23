@@ -26,12 +26,21 @@ namespace TaoPropertyUWP
 	public ref class TaoConnector sealed
 	{
 	private:
-		static std::wstring username;
-		static std::wstring password;
+		static String^ username;
+		static String^ password;
 		static Windows::Foundation::Uri^ BaseUri;
 		static Windows::Web::Http::HttpClient^ httpClient;
 	public:
-		
+		static property String^ UserName
+		{
+			String^ get() { return username; }
+			void set(String^ e) { username = e; }
+		}
+		static property String^ PassWord
+		{
+			String^ get() {	return password; }
+			void set(String^ e) { password = e; }
+		}
 		TaoConnector()
 		{
 
