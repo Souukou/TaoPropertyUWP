@@ -1,11 +1,11 @@
 ﻿//
-// HomePage.xaml.h
-// Declaration of the HomePage class
+// PayBillPage.xaml.h
+// Declaration of the PayBillPage class
 //
 
 #pragma once
 
-#include "HomePage.g.h"
+#include "PayBillPage.g.h"
 
 namespace TaoPropertyUWP
 {
@@ -13,11 +13,11 @@ namespace TaoPropertyUWP
 	/// An empty page that can be used on its own or navigated to within a Frame.
 	/// </summary>
 	[Windows::Foundation::Metadata::WebHostHidden]
-	public ref class HomePage sealed
+	public ref class PayBillPage sealed
 	{
 	public:
-		HomePage();
+		PayBillPage();
 	private:
-		void Page_Loaded(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
+		void AddButton_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
 	};
 }

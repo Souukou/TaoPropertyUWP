@@ -76,6 +76,7 @@ namespace TaoPropertyUWP
 		static bool AddChargeTemplate(String^, String^, String^, String^, String^);
 		static bool AddBill(String^, String^, String^, String^, String^, 
 			String^, String^, String^, String^, String^, String^);
+		static bool AddTransaction(String^, String^, String^, String^, String^, String^);
 		static bool PatchHouse(String^, String^, String^, String^, String^, String^, String^,
 			String^, String^, String^, String^, String^, String^);
 		static bool PatchCarport(String^, String^, String^, String^, String^);

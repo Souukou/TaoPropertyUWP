@@ -730,6 +730,44 @@ bool TaoConnector::AddBill(
 			});
 	return true;
 }
+bool TaoConnector::AddTransaction(
+	String^ subdivisionid, //int
+	String^ bills, //IVector<int>^
+	String^ totalCost, //float
+	String^ feePayable, //float
+	String^ feeWaiver, //float
+	String^ paymentMethod
+)
+{
+	JsonObject^ requestJson = ref new JsonObject();
+	if (subdivisionid != L"")
+		requestJson->Insert("subdivision", JsonValue::CreateNumberValue(stoi(subdivisionid->Data())));
+	if (bills != L"")
+		requestJson->Insert("bills", JsonArray::Parse("[" + bills + "]"));
+	if (totalCost != L"")
+		requestJson->Insert("totalCost", JsonValue::CreateNumberValue(stof(totalCost->Data())));
+	if (feePayable != L"")
+		requestJson->Insert("feePayable", JsonValue::CreateNumberValue(stof(feePayable->Data())));
+	if (feeWaiver != L"")
+		requestJson->Insert("feeWaiver", JsonValue::CreateNumberValue(stof(feeWaiver->Data())));
+	if (paymentMethod != L"")
+		requestJson->Insert("paymentMethod", JsonValue::CreateStringValue(paymentMethod));
+
+	HttpStringContent^ requestContent = ref new HttpStringContent(requestJson->ToString());
+	auto request = GenerateRequest(GenerateUri(L"transaction/"), HttpMethod::Post, GetBase64Cred());
+	request->Content = requestContent;
+	request->Content->Headers->ContentType = ref new HttpMediaTypeHeaderValue("application/json");
+	create_task(httpClient->TrySendRequestAsync(request))
+		.then([=](HttpRequestResult^ result)
+			{
+				if (result->Succeeded)
+				{
+					true;
+				}
+			});
+	return true;
+}
+
 bool TaoConnector::PatchResident(
 	String^ id,
 	String^ name,

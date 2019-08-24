@@ -1,13 +1,12 @@
 ﻿//
-// HomePage.xaml.cpp
-// Implementation of the HomePage class
+// PayBillPage.xaml.cpp
+// Implementation of the PayBillPage class
 //
 
 #include "pch.h"
-#include "HomePage.xaml.h"
-#include "LoginPage.xaml.h"
+#include "PayBillPage.xaml.h"
 #include "TaoConnector.h"
-
+#include "TransactionPage.xaml.h"
 using namespace TaoPropertyUWP;
 
 using namespace Platform;
@@ -24,16 +23,22 @@ using namespace Windows::UI::Xaml::Interop;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-HomePage::HomePage()
+PayBillPage::PayBillPage()
 {
 	InitializeComponent();
 }
 
 
-void TaoPropertyUWP::HomePage::Page_Loaded(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+void TaoPropertyUWP::PayBillPage::AddButton_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
 {
-	if (TaoConnector::UserName->Equals("") || TaoConnector::PassWord->Equals(""))
-	{
-		this->Frame->Navigate(TypeName(LoginPage::typeid));
-	}
+	TaoConnector::AddTransaction(
+		SubdivisionIdBox->Text,
+		BillIdBox->Text,
+		TotalCostBox->Text,
+		FeePayableBox->Text,
+		FeeWaiverBox->Text,
+		PaymentMethodBox->Text
+	);
+	TaoConnector::RefreshTransactions();
+	this->Frame->Navigate(TypeName(TransactionPage::typeid));
 }

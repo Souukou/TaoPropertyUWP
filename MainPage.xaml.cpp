@@ -15,6 +15,7 @@
 #include "SettingPage.xaml.h"
 #include "TaoConnector.h"
 #include "BillManagePage.xaml.h"
+#include "PayBillPage.xaml.h"
 
 using namespace TaoPropertyUWP;
 
@@ -41,10 +42,6 @@ MainPage::MainPage()
 void TaoPropertyUWP::MainPage::Page_Loaded(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
 {
 	HomeListBoxItem->IsSelected = true;
-	if (TaoConnector::UserName->Equals("") || TaoConnector::PassWord->Equals(""))
-	{
-		MainContentFrame->Navigate(TypeName(LoginPage::typeid));
-	}
 }
 
 
@@ -60,6 +57,11 @@ void TaoPropertyUWP::MainPage::ListBox_SelectionChanged(Platform::Object^ sender
 	{
 		TitleTextBlock->Text = "桃物业";
 		MainContentFrame->Navigate(TypeName(HomePage::typeid));
+	}
+	if (ChargeListBoxItem->IsSelected)
+	{
+		TitleTextBlock->Text = "收费系统";
+		MainContentFrame->Navigate(TypeName(PayBillPage::typeid));
 	}
 	if (BillManageListBoxItem->IsSelected)
 	{
