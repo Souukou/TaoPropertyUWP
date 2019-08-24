@@ -76,7 +76,7 @@
                                 Text="主页" />
                         </StackPanel>
                     </ListBoxItem>
-                    <ListBoxItem Name="ChargeListBoxItem">
+                    <!--<ListBoxItem Name="ChargeListBoxItem">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock
                                 VerticalAlignment="Center"
@@ -89,7 +89,7 @@
                                 FontSize="18"
                                 Text="收费系统" />
                         </StackPanel>
-                    </ListBoxItem>
+                    </ListBoxItem>-->
                     <ListBoxItem Name="TransactionHistoryBoxItem">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock

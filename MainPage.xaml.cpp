@@ -12,6 +12,7 @@
 #include "ChargeTemplatePage.xaml.h"
 #include "TransactionPage.xaml.h"
 #include "LoginPage.xaml.h"
+#include "SettingPage.xaml.h"
 #include "TaoConnector.h"
 
 
@@ -85,7 +86,11 @@ void TaoPropertyUWP::MainPage::ListBox_SelectionChanged(Platform::Object^ sender
 		TitleTextBlock->Text = "住户管理";
 		MainContentFrame->Navigate(TypeName(ResidentManagePage::typeid));
 	}
-	
+	if (SettingListBoxItem->IsSelected)
+	{
+		TitleTextBlock->Text = "设置";
+		MainContentFrame->Navigate(TypeName(SettingPage::typeid));
+	}
 }
 
 

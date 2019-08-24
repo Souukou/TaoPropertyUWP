@@ -814,3 +814,31 @@ bool TaoConnector::PatchChargeTemplate(
 			});
 	return true;
 }
+
+
+bool TaoConnector::PatchEnterprise(
+	String^ id, //int
+	String^ name,
+	String^ founder  //int
+)
+{
+	JsonObject^ requestJson = ref new JsonObject();
+	if (name != L"")
+		requestJson->Insert("name", JsonValue::CreateStringValue(name));
+	if (founder != L"")
+		requestJson->Insert("founder", JsonValue::CreateNumberValue(stoi(founder->Data())));
+	requestJson->Insert("manager", JsonArray::Parse("[]"));
+	HttpStringContent^ requestContent = ref new HttpStringContent(requestJson->ToString());
+	auto request = GenerateRequest(GenerateUri(L"enterprise/" + id + "/"), HttpMethod::Patch, GetBase64Cred());
+	request->Content = requestContent;
+	request->Content->Headers->ContentType = ref new HttpMediaTypeHeaderValue("application/json");
+	create_task(httpClient->TrySendRequestAsync(request))
+		.then([=](HttpRequestResult^ result)
+			{
+				if (result->Succeeded)
+				{
+					true;
+				}
+			});
+	return true;// request->Content->ToString();
+}

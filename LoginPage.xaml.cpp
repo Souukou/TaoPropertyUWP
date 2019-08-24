@@ -5,7 +5,7 @@
 
 #include "pch.h"
 #include "LoginPage.xaml.h"
-#include "MainPage.xaml.h"
+#include "HomePage.xaml.h"
 #include "RegistPage.xaml.h"
 #include "TaoConnector.h"
 
@@ -35,11 +35,27 @@ void TaoPropertyUWP::LoginPage::LoginButton_Click(Platform::Object^ sender, Wind
 {
 	TaoConnector::UserName = PhoneBox->Text;
 	TaoConnector::PassWord = ThePasswordBox->Password;
-	this->Frame->Navigate(TypeName(MainPage::typeid));
+	this->Frame->Navigate(TypeName(HomePage::typeid));
+	TaoConnector::RefreshCarports();
+	TaoConnector::RefreshChargeTemplates();
+	TaoConnector::RefreshEnterprises();
+	TaoConnector::RefreshHouses();
+	TaoConnector::RefreshOperators();
+	TaoConnector::RefreshResidents();
+	TaoConnector::RefreshSubdivisions();
+	TaoConnector::RefreshTransactions();
 }
 
 
 void TaoPropertyUWP::LoginPage::RegistButton_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
 {
 	this->Frame->Navigate(TypeName(RegistPage::typeid));
+	TaoConnector::RefreshCarports();
+	TaoConnector::RefreshChargeTemplates();
+	TaoConnector::RefreshEnterprises();
+	TaoConnector::RefreshHouses();
+	TaoConnector::RefreshOperators();
+	TaoConnector::RefreshResidents();
+	TaoConnector::RefreshSubdivisions();
+	TaoConnector::RefreshTransactions();
 }

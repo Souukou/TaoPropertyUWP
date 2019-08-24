@@ -59,6 +59,13 @@ namespace TaoPropertyUWP
 					return get_operator_name(founderid);
 				}
 			}
+			property int getfounderid
+			{
+				int get()
+				{
+					return this->founderid;
+				}
+			}
 			property Platform::String^ getmanagername
 			{
 				Platform::String^ get()

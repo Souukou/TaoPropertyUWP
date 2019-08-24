@@ -72,9 +72,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Assets\LockScreenLogo.scale-200.png">
-      <Filter>Assets</Filter>
-    </Image>
     <Image Include="Assets\SplashScreen.scale-200.png">
       <Filter>Assets</Filter>
     </Image>
@@ -91,6 +88,18 @@
       <Filter>Assets</Filter>
     </Image>
     <Image Include="Assets\Wide310x150Logo.scale-200.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Tao400x400.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\TaoWide.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Square71x71Logo.scale-400.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Wide310x150Logo.scale-400.png">
       <Filter>Assets</Filter>
     </Image>
   </ItemGroup>
@@ -116,5 +125,6 @@
     <Page Include="HouseDetailPage.xaml" />
     <Page Include="LoginPage.xaml" />
     <Page Include="RegistPage.xaml" />
+    <Page Include="SettingPage.xaml" />
   </ItemGroup>
 </Project>
