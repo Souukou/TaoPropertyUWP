@@ -133,5 +133,6 @@
     <Page Include="RegistPage.xaml" />
     <Page Include="SettingPage.xaml" />
     <Page Include="SubdivisionDetailPage.xaml" />
+    <Page Include="ChargeTemplateDetailPage.xaml" />
   </ItemGroup>
 </Project>

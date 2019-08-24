@@ -39,6 +39,10 @@ namespace TaoPropertyUWP
 			{
 				int get() { return id; };
 			}
+			property int getSubdivisionId
+			{
+				int get() { return subdivisionId; };
+			}
 			property Platform::String^ getSubdivisionName
 			{
 				Platform::String^ get()
@@ -81,9 +85,9 @@ namespace TaoPropertyUWP
 					return this->chargeType;
 				}
 			}
-			property int getUnitPrice
+			property float getUnitPrice
 			{
-				int get() { return unitPrice; };
+				float get() { return unitPrice; };
 			}
 			property int getBillingCycle
 			{

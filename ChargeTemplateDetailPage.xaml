@@ -1,0 +1,186 @@
+﻿<Page
+    x:Class="TaoPropertyUWP.ChargeTemplateDetailPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:TaoPropertyUWP"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    mc:Ignorable="d">
+
+    <Page.Transitions>
+        <TransitionCollection>
+            <EdgeUIThemeTransition Edge="Left" />
+        </TransitionCollection>
+    </Page.Transitions>
+    <Page.Resources>
+        <Style x:Key="TextBlockTitleStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Margin" Value="0,4,0,4" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+        </Style>
+        <Style x:Key="TextBoxStyle" TargetType="TextBox">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Margin" Value="0,4,0,4" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Width" Value="200" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+        </Style>
+        <Style x:Key="PasswordBoxStyle" TargetType="PasswordBox">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Margin" Value="0,4,0,4" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Width" Value="200" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+        </Style>
+    </Page.Resources>
+    <Grid Margin="25">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <TextBlock
+            Grid.ColumnSpan="2"
+            Margin="0,0,0,10"
+            FontSize="20"
+            FontWeight="Bold"
+            Text="收费项目详情" />
+        <TextBlock
+            Grid.Row="1"
+            Style="{StaticResource TextBlockTitleStyle}"
+            Text="收费项目ID" />
+        <TextBlock
+            x:Name="SubdivisionTitleTextBlock"
+            Grid.Row="2"
+            Style="{StaticResource TextBlockTitleStyle}"
+            Text="小区" />
+        <TextBlock
+            Grid.Row="3"
+            Style="{StaticResource TextBlockTitleStyle}"
+            Text="收费项目名称" />
+        <TextBlock
+            Grid.Row="4"
+            Style="{StaticResource TextBlockTitleStyle}"
+            Text="收费类型" />
+        <TextBlock
+            Grid.Row="5"
+            Style="{StaticResource TextBlockTitleStyle}"
+            Text="单价" />
+        <TextBlock
+            Grid.Row="6"
+            Style="{StaticResource TextBlockTitleStyle}"
+            Text="收费周期" />
+        <TextBlock
+            x:Name="ChargeTemplateIdBlock"
+            Grid.Row="1"
+            Grid.Column="1"
+            Style="{StaticResource TextBlockTitleStyle}"
+            Text="{x:Bind TheChargeTemplate.getid}" />
+        <TextBlock
+            x:Name="SubdivisionBlock"
+            Grid.Row="2"
+            Grid.Column="1"
+            Style="{StaticResource TextBlockTitleStyle}"
+            Text="{x:Bind TheChargeTemplate.getSubdivisionName}" />
+        <TextBlock
+            x:Name="ChargeTemplateNameBlock"
+            Grid.Row="3"
+            Grid.Column="1"
+            Style="{StaticResource TextBlockTitleStyle}"
+            Text="{x:Bind TheChargeTemplate.getname}" />
+        <TextBlock
+            x:Name="ChargeTypeBlock"
+            Grid.Row="4"
+            Grid.Column="1"
+            Style="{StaticResource TextBlockTitleStyle}"
+            Text="{x:Bind TheChargeTemplate.getchargeType}" />
+        <TextBlock
+            x:Name="UnitPriceBlock"
+            Grid.Row="5"
+            Grid.Column="1"
+            Style="{StaticResource TextBlockTitleStyle}"
+            Text="{x:Bind TheChargeTemplate.getUnitPrice}" />
+        <TextBlock
+            x:Name="BillingCycleBlock"
+            Grid.Row="6"
+            Grid.Column="1"
+            Style="{StaticResource TextBlockTitleStyle}"
+            Text="{x:Bind TheChargeTemplate.getBillingCycle}" />
+        <TextBox
+            x:Name="SubdivisionIdBox"
+            Grid.Row="2"
+            Grid.Column="1"
+            Style="{StaticResource TextBoxStyle}"
+            Text="{x:Bind TheChargeTemplate.getSubdivisionId}" />
+        <TextBox
+            x:Name="ChargeTemplateNameBox"
+            Grid.Row="3"
+            Grid.Column="1"
+            Style="{StaticResource TextBoxStyle}"
+            Text="{x:Bind TheChargeTemplate.getname}" />
+        <TextBox
+            x:Name="ChargeTypeBox"
+            Grid.Row="4"
+            Grid.Column="1"
+            Style="{StaticResource TextBoxStyle}"
+            Text="{x:Bind TheChargeTemplate.getchargeType}" />
+        <TextBox
+            x:Name="UnitPriceBox"
+            Grid.Row="5"
+            Grid.Column="1"
+            Style="{StaticResource TextBoxStyle}"
+            Text="{x:Bind TheChargeTemplate.getUnitPrice}" />
+        <TextBox
+            x:Name="BillingCycleBox"
+            Grid.Row="6"
+            Grid.Column="1"
+            Style="{StaticResource TextBoxStyle}"
+            Text="{x:Bind TheChargeTemplate.getBillingCycle}" />
+
+
+
+
+        <RelativePanel Grid.Row="7" Grid.ColumnSpan="2">
+            <Button
+                x:Name="ModifyButton"
+                Margin="0,0,30,0"
+                Background="LightGreen"
+                Click="ModifyButton_Click"
+                Content="修改"
+                FontSize="18"
+                RelativePanel.AlignRightWithPanel="True" />
+            <Button
+                x:Name="ConfirmButton"
+                Margin="0,0,30,0"
+                Background="LightGreen"
+                Click="ConfirmButton_Click"
+                Content="确定"
+                FontSize="18"
+                RelativePanel.AlignRightWithPanel="True"
+                Visibility="Collapsed" />
+            <Button
+                x:Name="CancelButton"
+                Margin="0,0,30,0"
+                Click="CancelButton_Click"
+                Content="取消"
+                FontSize="18"
+                RelativePanel.LeftOf="ConfirmButton"
+                Visibility="Collapsed" />
+        </RelativePanel>
+    </Grid>
+</Page>

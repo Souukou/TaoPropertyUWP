@@ -5,6 +5,7 @@
 
 #include "pch.h"
 #include "ChargeTemplatePage.xaml.h"
+#include "ChargeTemplateDetailPage.xaml.h"
 #include "ChargeTemplate.h"
 #include "TaoConnector.h"
 #include "NewChargeTemplatePage.xaml.h"
@@ -52,4 +53,36 @@ void TaoPropertyUWP::ChargeTemplatePage::DeleteFlyoutButton_Click(Platform::Obje
 void TaoPropertyUWP::ChargeTemplatePage::NewButton_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
 {
 	this->Frame->Navigate(TypeName(NewChargeTemplatePage::typeid));
+}
+
+
+void TaoPropertyUWP::ChargeTemplatePage::TheRelativePanel_SizeChanged(Platform::Object^ sender, Windows::UI::Xaml::SizeChangedEventArgs^ e)
+{
+	PopupFrame->Height = theRelativePanel->ActualHeight;
+}
+
+
+void TaoPropertyUWP::ChargeTemplatePage::ListView_ItemClick(Platform::Object^ sender, Windows::UI::Xaml::Controls::ItemClickEventArgs^ e)
+{
+	DetailPopup->IsOpen = true;
+
+	Object^ ClickedObject = e->ClickedItem;
+	ChargeTemplate^ ClickedChargeTemplate = (ChargeTemplate^)ClickedObject;
+	PopupFrame->Navigate(TypeName(ChargeTemplateDetailPage::typeid), ClickedChargeTemplate);
+
+}
+
+
+void TaoPropertyUWP::ChargeTemplatePage::DetailPopup_Closed(Platform::Object^ sender, Platform::Object^ e)
+{
+	TitleGrid->Background = this->SavedBackground;
+	CoverRectangle->Visibility = Windows::UI::Xaml::Visibility::Collapsed;
+}
+
+
+void TaoPropertyUWP::ChargeTemplatePage::DetailPopup_Opened(Platform::Object^ sender, Platform::Object^ e)
+{
+	this->SavedBackground = TitleGrid->Background;
+	TitleGrid->Background = nullptr;
+	CoverRectangle->Visibility = Windows::UI::Xaml::Visibility::Visible;
 }

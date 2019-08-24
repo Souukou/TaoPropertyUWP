@@ -8,171 +8,211 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
-
-    <Grid Margin="15">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <RelativePanel>
-            <TextBlock
-                x:Name="SubTitle"
-                Margin="0,0,0,5"
-                FontSize="20"
-                RelativePanel.AlignLeftWithPanel="True"
-                Text="所有收费项目" />
-            <Button
-                x:Name="RefreshButton"
-                Click="RefreshButton_Click"
-                Content="&#xE72C;"
-                FontFamily="Segoe MDL2 Assets"
-                FontSize="20"
-                RelativePanel.LeftOf="NewButton" />
-            <Button
-                x:Name="NewButton"
-                VerticalAlignment="Stretch"
-                Click="NewButton_Click"
-                Content="&#xE710;"
-                FontFamily="Segoe MDL2 Assets"
-                FontSize="20"
-                RelativePanel.AlignRightWithPanel="True" />
-        </RelativePanel>
+    <RelativePanel x:Name="theRelativePanel" SizeChanged="TheRelativePanel_SizeChanged">
+        <Rectangle
+            x:Name="CoverRectangle"
+            Fill="Black"
+            Opacity="0.5"
+            RelativePanel.Above="MainGrid"
+            RelativePanel.AlignBottomWithPanel="True"
+            RelativePanel.AlignLeftWithPanel="True"
+            RelativePanel.AlignRightWithPanel="True"
+            RelativePanel.AlignTopWithPanel="True"
+            Visibility="Collapsed" />
         <Grid
-            Grid.Row="1"
-            Height="30"
-            Margin="0,0,0,2"
-            HorizontalAlignment="Stretch"
-            VerticalAlignment="Center">
-            <Grid.Background>
-                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                    <GradientStop Offset="0" Color="{ThemeResource SystemAccentColorLight3}" />
-                    <GradientStop Offset="1" Color="{ThemeResource SystemAltHighColor}" />
-                </LinearGradientBrush>
-            </Grid.Background>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*" />
-                <ColumnDefinition Width="6*" />
-                <ColumnDefinition Width="4*" />
-                <ColumnDefinition Width="3*" />
-                <ColumnDefinition Width="3*" />
-                <ColumnDefinition Width="3*" />
-                <ColumnDefinition Width="50" />
-            </Grid.ColumnDefinitions>
-            <TextBlock
-                Grid.Column="0"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                FontSize="16"
-                Text="ID" />
-            <TextBlock
-                Grid.Column="1"
-                VerticalAlignment="Center"
-                FontSize="16"
-                Text="项目名" />
-            <TextBlock
-                Grid.Column="2"
-                VerticalAlignment="Center"
-                FontSize="16"
-                Text="小区" />
-            <TextBlock
-                Grid.Column="3"
-                VerticalAlignment="Center"
-                FontSize="16"
-                Text="计价方式" />
-            <TextBlock
-                Grid.Column="4"
-                VerticalAlignment="Center"
-                FontSize="16"
-                Text="单价" />
-            <TextBlock
-                Grid.Column="5"
-                VerticalAlignment="Center"
-                FontSize="16"
-                Text="周期（月）" />
+            x:Name="MainGrid"
+            Margin="15"
+            RelativePanel.AlignBottomWithPanel="True"
+            RelativePanel.AlignLeftWithPanel="True"
+            RelativePanel.AlignRightWithPanel="True"
+            RelativePanel.AlignTopWithPanel="True">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <RelativePanel>
+                <TextBlock
+                    x:Name="SubTitle"
+                    Margin="0,0,0,5"
+                    FontSize="20"
+                    RelativePanel.AlignLeftWithPanel="True"
+                    Text="所有收费项目" />
+                <Button
+                    x:Name="RefreshButton"
+                    Click="RefreshButton_Click"
+                    Content="&#xE72C;"
+                    FontFamily="Segoe MDL2 Assets"
+                    FontSize="20"
+                    RelativePanel.LeftOf="NewButton" />
+                <Button
+                    x:Name="NewButton"
+                    VerticalAlignment="Stretch"
+                    Click="NewButton_Click"
+                    Content="&#xE710;"
+                    FontFamily="Segoe MDL2 Assets"
+                    FontSize="20"
+                    RelativePanel.AlignRightWithPanel="True" />
+            </RelativePanel>
+            <Grid
+                x:Name="TitleGrid"
+                Grid.Row="1"
+                Height="30"
+                Margin="0,0,0,2"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Center">
+                <Grid.Background>
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <GradientStop Offset="0" Color="{ThemeResource SystemAccentColorLight3}" />
+                        <GradientStop Offset="1" Color="{ThemeResource SystemAltHighColor}" />
+                    </LinearGradientBrush>
+                </Grid.Background>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="6*" />
+                    <ColumnDefinition Width="4*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="50" />
+                </Grid.ColumnDefinitions>
+                <TextBlock
+                    Grid.Column="0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="16"
+                    Text="ID" />
+                <TextBlock
+                    Grid.Column="1"
+                    VerticalAlignment="Center"
+                    FontSize="16"
+                    Text="项目名" />
+                <TextBlock
+                    Grid.Column="2"
+                    VerticalAlignment="Center"
+                    FontSize="16"
+                    Text="小区" />
+                <TextBlock
+                    Grid.Column="3"
+                    VerticalAlignment="Center"
+                    FontSize="16"
+                    Text="计价方式" />
+                <TextBlock
+                    Grid.Column="4"
+                    VerticalAlignment="Center"
+                    FontSize="16"
+                    Text="单价" />
+                <TextBlock
+                    Grid.Column="5"
+                    VerticalAlignment="Center"
+                    FontSize="16"
+                    Text="周期（月）" />
+            </Grid>
+            <ListView
+                Grid.Row="2"
+                IsItemClickEnabled="True"
+                ItemClick="ListView_ItemClick"
+                ItemsSource="{x:Bind ViewModel.ChargeTemplates}"
+                SelectionMode="Extended">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+                        <Setter Property="Padding" Value="0" />
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="data:ChargeTemplate">
+                        <Grid BorderThickness="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="6*" />
+                                <ColumnDefinition Width="4*" />
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="50" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock
+                                Grid.Column="0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                FontSize="16"
+                                Text="{x:Bind getid}" />
+                            <TextBlock
+                                Grid.Column="1"
+                                VerticalAlignment="Center"
+                                FontSize="16"
+                                Text="{x:Bind getname}" />
+                            <TextBlock
+                                Grid.Column="2"
+                                VerticalAlignment="Center"
+                                FontSize="16"
+                                Text="{x:Bind getSubdivisionName}" />
+                            <TextBlock
+                                Grid.Column="3"
+                                VerticalAlignment="Center"
+                                FontSize="16"
+                                Text="{x:Bind getchargeType}" />
+                            <TextBlock
+                                Grid.Column="4"
+                                VerticalAlignment="Center"
+                                FontSize="16"
+                                Text="{x:Bind getUnitPrice}" />
+                            <TextBlock
+                                Grid.Column="5"
+                                VerticalAlignment="Center"
+                                FontSize="16"
+                                Text="{x:Bind getBillingCycle}" />
+                            <Button
+                                x:Name="DeleteButton"
+                                Grid.Column="6"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Stretch"
+                                Content="&#xE74D;"
+                                FontFamily="Segoe MDL2 Assets"
+                                FontSize="18"
+                                RelativePanel.AlignRightWithPanel="True">
+                                <Button.Flyout>
+                                    <Flyout x:Name="DeleteFlyout">
+                                        <StackPanel Margin="5">
+                                            <TextBlock Margin="0,0,0,10" Text="确定删除该收费项目？" />
+                                            <Button
+                                                x:Name="DeleteFlyoutButton"
+                                                HorizontalAlignment="Right"
+                                                Click="DeleteFlyoutButton_Click"
+                                                Content="确定" />
+                                        </StackPanel>
+                                    </Flyout>
+                                </Button.Flyout>
+                            </Button>
+                        </Grid>
+
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
         </Grid>
-        <ListView
-            Grid.Row="2"
-            ItemsSource="{x:Bind ViewModel.ChargeTemplates}"
-            SelectionMode="Extended">
-            <ListView.ItemContainerStyle>
-                <Style TargetType="ListViewItem">
-                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                    <Setter Property="VerticalContentAlignment" Value="Stretch" />
-                    <Setter Property="Padding" Value="0" />
-                </Style>
-            </ListView.ItemContainerStyle>
-            <ListView.ItemTemplate>
-                <DataTemplate x:DataType="data:ChargeTemplate">
-                    <Grid BorderThickness="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="2*" />
-                            <ColumnDefinition Width="6*" />
-                            <ColumnDefinition Width="4*" />
-                            <ColumnDefinition Width="3*" />
-                            <ColumnDefinition Width="3*" />
-                            <ColumnDefinition Width="3*" />
-                            <ColumnDefinition Width="50" />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock
-                            Grid.Column="0"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            FontSize="16"
-                            Text="{x:Bind getid}" />
-                        <TextBlock
-                            Grid.Column="1"
-                            VerticalAlignment="Center"
-                            FontSize="16"
-                            Text="{x:Bind getname}" />
-                        <TextBlock
-                            Grid.Column="2"
-                            VerticalAlignment="Center"
-                            FontSize="16"
-                            Text="{x:Bind getSubdivisionName}" />
-                        <TextBlock
-                            Grid.Column="3"
-                            VerticalAlignment="Center"
-                            FontSize="16"
-                            Text="{x:Bind getchargeType}" />
-                        <TextBlock
-                            Grid.Column="4"
-                            VerticalAlignment="Center"
-                            FontSize="16"
-                            Text="{x:Bind getUnitPrice}" />
-                        <TextBlock
-                            Grid.Column="5"
-                            VerticalAlignment="Center"
-                            FontSize="16"
-                            Text="{x:Bind getBillingCycle}" />
-                        <Button
-                            x:Name="DeleteButton"
-                            Grid.Column="6"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Stretch"
-                            Content="&#xE74D;"
-                            FontFamily="Segoe MDL2 Assets"
-                            FontSize="18"
-                            RelativePanel.AlignRightWithPanel="True">
-                            <Button.Flyout>
-                                <Flyout x:Name="DeleteFlyout">
-                                    <StackPanel Margin="5">
-                                        <TextBlock Margin="0,0,0,10" Text="确定删除该收费项目？" />
-                                        <Button
-                                            x:Name="DeleteFlyoutButton"
-                                            HorizontalAlignment="Right"
-                                            Click="DeleteFlyoutButton_Click"
-                                            Content="确定" />
-                                    </StackPanel>
-                                </Flyout>
-                            </Button.Flyout>
-                        </Button>
-                    </Grid>
-
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-
-    </Grid>
-
+        <Popup
+            x:Name="DetailPopup"
+            Width="600"
+            Closed="DetailPopup_Closed"
+            IsLightDismissEnabled="True"
+            IsOpen="False"
+            LightDismissOverlayMode="Auto"
+            Opened="DetailPopup_Opened"
+            RelativePanel.AlignRightWithPanel="True">
+            <Popup.ChildTransitions>
+                <TransitionCollection>
+                    <PaneThemeTransition Edge="Right" />
+                </TransitionCollection>
+            </Popup.ChildTransitions>
+            <Popup.Child>
+                <Frame
+                    x:Name="PopupFrame"
+                    Width="600"
+                    Height="{Binding ElementName=theRelativePanel, Path=ActualHeight}" />
+            </Popup.Child>
+        </Popup>
+    </RelativePanel>
 </Page>

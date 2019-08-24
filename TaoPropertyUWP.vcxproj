@@ -180,6 +180,9 @@
       <DependentUpon>CarportManagePage.xaml</DependentUpon>
     </ClInclude>
     <ClInclude Include="ChargeTemplate.h" />
+    <ClInclude Include="ChargeTemplateDetailPage.xaml.h">
+      <DependentUpon>ChargeTemplateDetailPage.xaml</DependentUpon>
+    </ClInclude>
     <ClInclude Include="ChargeTemplatePage.xaml.h">
       <DependentUpon>ChargeTemplatePage.xaml</DependentUpon>
     </ClInclude>
@@ -254,6 +257,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="CarportManagePage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ChargeTemplateDetailPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Include="ChargeTemplatePage.xaml">
@@ -360,6 +366,9 @@
       <DependentUpon>CarportManagePage.xaml</DependentUpon>
     </ClCompile>
     <ClCompile Include="ChargeTemplate.cpp" />
+    <ClCompile Include="ChargeTemplateDetailPage.xaml.cpp">
+      <DependentUpon>ChargeTemplateDetailPage.xaml</DependentUpon>
+    </ClCompile>
     <ClCompile Include="ChargeTemplatePage.xaml.cpp">
       <DependentUpon>ChargeTemplatePage.xaml</DependentUpon>
     </ClCompile>
