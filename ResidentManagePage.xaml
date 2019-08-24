@@ -100,7 +100,7 @@
                     Grid.Column="4"
                     VerticalAlignment="Center"
                     FontSize="16"
-                    Text="财产" />
+                    Text="登录名" />
             </Grid>
             <ListView
                 x:Name="TheListView"

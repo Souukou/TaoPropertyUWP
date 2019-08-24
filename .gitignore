@@ -35,3 +35,7 @@
 Debug
 Generated Files
 x64
+AppPackages
+ARM
+Release
+BundleArtifacts
