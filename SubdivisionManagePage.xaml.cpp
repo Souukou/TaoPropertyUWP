@@ -7,6 +7,7 @@
 #include "SubdivisionManagePage.xaml.h"
 #include "Subdivision.h"
 #include "NewSubdivisionPage.xaml.h"
+#include "SubdivisionDetailPage.xaml.h"
 #include "TaoConnector.h"
 #include <sstream>
 
@@ -60,3 +61,33 @@ void TaoPropertyUWP::SubdivisionManagePage::NewButton_Click(Platform::Object^ se
 	this->Frame->Navigate(TypeName(NewSubdivisionPage::typeid));
 }
 
+
+
+void TaoPropertyUWP::SubdivisionManagePage::TheRelativePanel_SizeChanged(Platform::Object^ sender, Windows::UI::Xaml::SizeChangedEventArgs^ e)
+{
+	PopupFrame->Height = theRelativePanel->ActualHeight;
+}
+
+
+void TaoPropertyUWP::SubdivisionManagePage::ListView_ItemClick(Platform::Object^ sender, Windows::UI::Xaml::Controls::ItemClickEventArgs^ e)
+{
+	DetailPopup->IsOpen = true;
+	Object^ ClickedObject = e->ClickedItem;
+	Subdivision^ ClickedSubdivision = (Subdivision^)ClickedObject;
+	PopupFrame->Navigate(TypeName(SubdivisionDetailPage::typeid), ClickedSubdivision);
+}
+
+
+void TaoPropertyUWP::SubdivisionManagePage::DetailPopup_Closed(Platform::Object^ sender, Platform::Object^ e)
+{
+	TitleGrid->Background = this->SavedBackground;
+	CoverRectangle->Visibility = Windows::UI::Xaml::Visibility::Collapsed;
+}
+
+
+void TaoPropertyUWP::SubdivisionManagePage::DetailPopup_Opened(Platform::Object^ sender, Platform::Object^ e)
+{
+	this->SavedBackground = TitleGrid->Background;
+	TitleGrid->Background = nullptr;
+	CoverRectangle->Visibility = Windows::UI::Xaml::Visibility::Visible;
+}

@@ -236,6 +236,9 @@
       <DependentUpon>SettingPage.xaml</DependentUpon>
     </ClInclude>
     <ClInclude Include="Subdivision.h" />
+    <ClInclude Include="SubdivisionDetailPage.xaml.h">
+      <DependentUpon>SubdivisionDetailPage.xaml</DependentUpon>
+    </ClInclude>
     <ClInclude Include="SubdivisionManagePage.xaml.h">
       <DependentUpon>SubdivisionManagePage.xaml</DependentUpon>
     </ClInclude>
@@ -299,6 +302,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="SettingPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SubdivisionDetailPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Include="SubdivisionManagePage.xaml">
@@ -416,6 +422,9 @@
       <DependentUpon>SettingPage.xaml</DependentUpon>
     </ClCompile>
     <ClCompile Include="Subdivision.cpp" />
+    <ClCompile Include="SubdivisionDetailPage.xaml.cpp">
+      <DependentUpon>SubdivisionDetailPage.xaml</DependentUpon>
+    </ClCompile>
     <ClCompile Include="SubdivisionManagePage.xaml.cpp">
       <DependentUpon>SubdivisionManagePage.xaml</DependentUpon>
     </ClCompile>

@@ -4,6 +4,7 @@
 #include "Enterprise.h"
 
 using namespace TaoPropertyUWP::Models;
+using namespace Platform;
 using namespace Windows::Foundation::Collections;
 
 namespace TaoPropertyUWP
@@ -53,6 +54,10 @@ namespace TaoPropertyUWP
 			{
 				Platform::String^ get() { return this->createTime; }
 			}
+			property int getenterpriseid
+			{
+				int get() { return enterprise; };
+			}
 			property Platform::String^ getenterprisename
 			{
 				Platform::String^ get()
@@ -62,6 +67,18 @@ namespace TaoPropertyUWP
 							return EnterpriseViewModel::Enterprises->GetAt(i)->getname;
 					return L"";
 
+				}
+			}
+			property Platform::String^ getoperatorid
+			{
+				Platform::String^ get()
+				{
+					String^ re = "";
+					if(operators->Size)
+						re += "" + operators->GetAt(0);
+					for (int i = 1; i < operators->Size; ++i)
+						re += "," + operators->GetAt(i);
+					return re;
 				}
 			}
 			property Platform::String^ getoperatorname

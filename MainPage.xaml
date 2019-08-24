@@ -76,7 +76,7 @@
                                 Text="主页" />
                         </StackPanel>
                     </ListBoxItem>
-                    <!--<ListBoxItem Name="ChargeListBoxItem">
+                    <ListBoxItem Name="ChargeListBoxItem">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock
                                 VerticalAlignment="Center"
@@ -89,7 +89,21 @@
                                 FontSize="18"
                                 Text="收费系统" />
                         </StackPanel>
-                    </ListBoxItem>-->
+                    </ListBoxItem>
+                    <ListBoxItem Name="BillManageListBoxItem">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                FontFamily="Segoe MDL2 Assets"
+                                FontSize="20"
+                                Text="&#xE8FC;" />
+                            <TextBlock
+                                Margin="20,0,0,0"
+                                VerticalAlignment="Center"
+                                FontSize="18"
+                                Text="账单管理" />
+                        </StackPanel>
+                    </ListBoxItem>
                     <ListBoxItem Name="TransactionHistoryBoxItem">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock
