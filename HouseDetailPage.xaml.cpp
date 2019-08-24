@@ -24,11 +24,12 @@ using namespace Windows::UI::Xaml::Navigation;
 HouseDetailPage::HouseDetailPage()
 {
 	InitializeComponent();
+	GoToNormalState();
 }
 
 void HouseDetailPage::OnNavigatedTo(Windows::UI::Xaml::Navigation::NavigationEventArgs^ e)
 {
-	TheHouse = (House^)e->Parameter;
+	house = (House^)e->Parameter;
 	GoToNormalState();
 }
 

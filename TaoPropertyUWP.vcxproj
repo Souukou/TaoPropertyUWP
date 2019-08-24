@@ -175,6 +175,13 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Bill.h" />
+    <ClInclude Include="BillDetailPage.xaml.h">
+      <DependentUpon>BillDetailPage.xaml</DependentUpon>
+    </ClInclude>
+    <ClInclude Include="BillManagePage.xaml.h">
+      <DependentUpon>BillManagePage.xaml</DependentUpon>
+    </ClInclude>
     <ClInclude Include="Carport.h" />
     <ClInclude Include="CarportManagePage.xaml.h">
       <DependentUpon>CarportManagePage.xaml</DependentUpon>
@@ -199,6 +206,9 @@
     </ClInclude>
     <ClInclude Include="LoginPage.xaml.h">
       <DependentUpon>LoginPage.xaml</DependentUpon>
+    </ClInclude>
+    <ClInclude Include="NewBillPage.xaml.h">
+      <DependentUpon>NewBillPage.xaml</DependentUpon>
     </ClInclude>
     <ClInclude Include="NewCarportPage.xaml.h">
       <DependentUpon>NewCarportPage.xaml</DependentUpon>
@@ -256,6 +266,12 @@
     <ApplicationDefinition Include="App.xaml">
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="BillDetailPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="BillManagePage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="CarportManagePage.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -278,6 +294,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="NewBillPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Include="NewCarportPage.xaml">
@@ -361,6 +380,13 @@
     <ClCompile Include="App.xaml.cpp">
       <DependentUpon>App.xaml</DependentUpon>
     </ClCompile>
+    <ClCompile Include="Bill.cpp" />
+    <ClCompile Include="BillDetailPage.xaml.cpp">
+      <DependentUpon>BillDetailPage.xaml</DependentUpon>
+    </ClCompile>
+    <ClCompile Include="BillManagePage.xaml.cpp">
+      <DependentUpon>BillManagePage.xaml</DependentUpon>
+    </ClCompile>
     <ClCompile Include="Carport.cpp" />
     <ClCompile Include="CarportManagePage.xaml.cpp">
       <DependentUpon>CarportManagePage.xaml</DependentUpon>
@@ -388,6 +414,9 @@
     </ClCompile>
     <ClCompile Include="MainPage.xaml.cpp">
       <DependentUpon>MainPage.xaml</DependentUpon>
+    </ClCompile>
+    <ClCompile Include="NewBillPage.xaml.cpp">
+      <DependentUpon>NewBillPage.xaml</DependentUpon>
     </ClCompile>
     <ClCompile Include="NewCarportPage.xaml.cpp">
       <DependentUpon>NewCarportPage.xaml</DependentUpon>

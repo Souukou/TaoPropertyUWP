@@ -9,6 +9,7 @@
 #include "Operator.h"
 #include "ChargeTemplate.h"
 #include "Transaction.h"
+#include "Bill.h"
 using namespace TaoPropertyUWP;
 using namespace Windows::Data::Json;
 using namespace concurrency;
@@ -56,6 +57,7 @@ namespace TaoPropertyUWP
 		static void RefreshOperators();
 		static void RefreshChargeTemplates();
 		static void RefreshTransactions();
+		static void RefreshBills();
 		static bool DeleteSubdivision(int id);
 		static bool DeleteEnterprise(int id);
 		static bool DeleteResident(String^);
@@ -63,6 +65,7 @@ namespace TaoPropertyUWP
 		static bool DeleteHouse(int id);
 		static bool DeleteCarport(int id);
 		static bool DeleteChargeTemplate(int id);
+		static bool DeleteBill(int id);
 		static bool AddEnterprise(String^);
 		static bool AddHouse(String^,String^,String^,String^,String^,String^,
 			String^,String^,String^,String^,String^,String^);
@@ -71,6 +74,8 @@ namespace TaoPropertyUWP
 		static bool AddResidnet(String^, String^, String^, String^);
 		static bool AddOperator(String^, String^, String^, String^);
 		static bool AddChargeTemplate(String^, String^, String^, String^, String^);
+		static bool AddBill(String^, String^, String^, String^, String^, 
+			String^, String^, String^, String^, String^, String^);
 		static bool PatchHouse(String^, String^, String^, String^, String^, String^, String^,
 			String^, String^, String^, String^, String^, String^);
 		static bool PatchCarport(String^, String^, String^, String^, String^);
@@ -78,6 +83,8 @@ namespace TaoPropertyUWP
 		static bool PatchChargeTemplate(String^, String^, String^, String^, String^, String^);
 		static bool PatchResident(String^, String^, String^, String^, String^);
 		static bool PatchEnterprise(String^, String^, String^);
+		static bool PatchBill(String^, String^, String^, String^, String^, String^,
+			String^, String^, String^, String^, String^, String^);
 	};
 
 }

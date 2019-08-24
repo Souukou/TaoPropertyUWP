@@ -14,7 +14,7 @@
 #include "LoginPage.xaml.h"
 #include "SettingPage.xaml.h"
 #include "TaoConnector.h"
-
+#include "BillManagePage.xaml.h"
 
 using namespace TaoPropertyUWP;
 
@@ -60,6 +60,11 @@ void TaoPropertyUWP::MainPage::ListBox_SelectionChanged(Platform::Object^ sender
 	{
 		TitleTextBlock->Text = "桃物业";
 		MainContentFrame->Navigate(TypeName(HomePage::typeid));
+	}
+	if (BillManageListBoxItem->IsSelected)
+	{
+		TitleTextBlock->Text = "账单管理";
+		MainContentFrame->Navigate(TypeName(BillManagePage::typeid));
 	}
 	if (TransactionHistoryBoxItem->IsSelected)
 	{

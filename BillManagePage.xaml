@@ -1,0 +1,231 @@
+﻿<Page
+    x:Class="TaoPropertyUWP.BillManagePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:data="using:TaoPropertyUWP.Models"
+    xmlns:local="using:TaoPropertyUWP"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    mc:Ignorable="d">
+
+    <RelativePanel x:Name="theRelativePanel" SizeChanged="TheRelativePanel_SizeChanged">
+        <Rectangle
+            x:Name="CoverRectangle"
+            Fill="Black"
+            Opacity="0.5"
+            RelativePanel.Above="MainGrid"
+            RelativePanel.AlignBottomWithPanel="True"
+            RelativePanel.AlignLeftWithPanel="True"
+            RelativePanel.AlignRightWithPanel="True"
+            RelativePanel.AlignTopWithPanel="True"
+            Visibility="Collapsed" />
+        <Grid
+            x:Name="MainGrid"
+            Margin="15"
+            RelativePanel.AlignBottomWithPanel="True"
+            RelativePanel.AlignLeftWithPanel="True"
+            RelativePanel.AlignRightWithPanel="True"
+            RelativePanel.AlignTopWithPanel="True">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <RelativePanel>
+                <TextBlock
+                    x:Name="SubTitle"
+                    Margin="0,0,0,5"
+                    FontSize="20"
+                    RelativePanel.AlignLeftWithPanel="True"
+                    Text="所有收费项目" />
+                <Button
+                    x:Name="RefreshButton"
+                    Click="RefreshButton_Click"
+                    Content="&#xE72C;"
+                    FontFamily="Segoe MDL2 Assets"
+                    FontSize="20"
+                    RelativePanel.LeftOf="NewButton" />
+                <Button
+                    x:Name="NewButton"
+                    VerticalAlignment="Stretch"
+                    Click="NewButton_Click"
+                    Content="&#xE710;"
+                    FontFamily="Segoe MDL2 Assets"
+                    FontSize="20"
+                    RelativePanel.AlignRightWithPanel="True" />
+            </RelativePanel>
+            <Grid
+                x:Name="TitleGrid"
+                Grid.Row="1"
+                Height="30"
+                Margin="0,0,0,2"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Center">
+                <Grid.Background>
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <GradientStop Offset="0" Color="{ThemeResource SystemAccentColorLight3}" />
+                        <GradientStop Offset="1" Color="{ThemeResource SystemAltHighColor}" />
+                    </LinearGradientBrush>
+                </Grid.Background>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="4*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="50" />
+                </Grid.ColumnDefinitions>
+                <TextBlock
+                    Grid.Column="0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="16"
+                    Text="账单ID" />
+                <TextBlock
+                    Grid.Column="1"
+                    VerticalAlignment="Center"
+                    FontSize="16"
+                    Text="财产ID" />
+                <TextBlock
+                    Grid.Column="2"
+                    VerticalAlignment="Center"
+                    FontSize="16"
+                    Text="账单名称" />
+                <TextBlock
+                    Grid.Column="3"
+                    VerticalAlignment="Center"
+                    FontSize="16"
+                    Text="服务起始时间" />
+                <TextBlock
+                    Grid.Column="4"
+                    VerticalAlignment="Center"
+                    FontSize="16"
+                    Text="服务结束时间" />
+                <TextBlock
+                    Grid.Column="5"
+                    VerticalAlignment="Center"
+                    FontSize="16"
+                    Text="应交费用" />
+                <TextBlock
+                    Grid.Column="6"
+                    VerticalAlignment="Center"
+                    FontSize="16"
+                    Text="支付状态" />
+            </Grid>
+            <ListView
+                Grid.Row="2"
+                IsItemClickEnabled="True"
+                ItemClick="ListView_ItemClick"
+                ItemsSource="{x:Bind ViewModel.Bills}"
+                SelectionMode="Extended">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+                        <Setter Property="Padding" Value="0" />
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="data:Bill">
+                        <Grid BorderThickness="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="4*" />
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="50" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock
+                                Grid.Column="0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                FontSize="16"
+                                Text="{x:Bind getId}" />
+                            <TextBlock
+                                Grid.Column="1"
+                                VerticalAlignment="Center"
+                                FontSize="16"
+                                Text="{x:Bind getPropertyId}" />
+                            <TextBlock
+                                Grid.Column="2"
+                                VerticalAlignment="Center"
+                                FontSize="16"
+                                Text="{x:Bind getName}" />
+                            <TextBlock
+                                Grid.Column="3"
+                                VerticalAlignment="Center"
+                                FontSize="16"
+                                Text="{x:Bind getStartTime}" />
+                            <TextBlock
+                                Grid.Column="4"
+                                VerticalAlignment="Center"
+                                FontSize="16"
+                                Text="{x:Bind getEndTime}" />
+                            <TextBlock
+                                Grid.Column="5"
+                                VerticalAlignment="Center"
+                                FontSize="16"
+                                Text="{x:Bind getFeePayable}" />
+                            <TextBlock
+                                Grid.Column="6"
+                                VerticalAlignment="Center"
+                                FontSize="16"
+                                Text="{x:Bind getIsPaid}" />
+                            <Button
+                                x:Name="DeleteButton"
+                                Grid.Column="7"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Stretch"
+                                Content="&#xE74D;"
+                                FontFamily="Segoe MDL2 Assets"
+                                FontSize="18"
+                                RelativePanel.AlignRightWithPanel="True">
+                                <Button.Flyout>
+                                    <Flyout x:Name="DeleteFlyout">
+                                        <StackPanel Margin="5">
+                                            <TextBlock Margin="0,0,0,10" Text="确定删除该账单？" />
+                                            <Button
+                                                x:Name="DeleteFlyoutButton"
+                                                HorizontalAlignment="Right"
+                                                Click="DeleteFlyoutButton_Click"
+                                                Content="确定" />
+                                        </StackPanel>
+                                    </Flyout>
+                                </Button.Flyout>
+                            </Button>
+                        </Grid>
+
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </Grid>
+        <Popup
+            x:Name="DetailPopup"
+            Width="600"
+            Closed="DetailPopup_Closed"
+            IsLightDismissEnabled="True"
+            IsOpen="False"
+            LightDismissOverlayMode="Auto"
+            Opened="DetailPopup_Opened"
+            RelativePanel.AlignRightWithPanel="True">
+            <Popup.ChildTransitions>
+                <TransitionCollection>
+                    <PaneThemeTransition Edge="Right" />
+                </TransitionCollection>
+            </Popup.ChildTransitions>
+            <Popup.Child>
+                <Frame
+                    x:Name="PopupFrame"
+                    Width="600"
+                    Height="{Binding ElementName=theRelativePanel, Path=ActualHeight}" />
+            </Popup.Child>
+        </Popup>
+    </RelativePanel>
+</Page>

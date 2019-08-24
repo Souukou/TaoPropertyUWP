@@ -42,6 +42,9 @@
     <ClCompile Include="Transaction.cpp">
       <Filter>Models</Filter>
     </ClCompile>
+    <ClCompile Include="Bill.cpp">
+      <Filter>Models</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -68,6 +71,9 @@
       <Filter>Models</Filter>
     </ClInclude>
     <ClInclude Include="Transaction.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="Bill.h">
       <Filter>Models</Filter>
     </ClInclude>
   </ItemGroup>
@@ -134,5 +140,8 @@
     <Page Include="SettingPage.xaml" />
     <Page Include="SubdivisionDetailPage.xaml" />
     <Page Include="ChargeTemplateDetailPage.xaml" />
+    <Page Include="BillManagePage.xaml" />
+    <Page Include="BillDetailPage.xaml" />
+    <Page Include="NewBillPage.xaml" />
   </ItemGroup>
 </Project>

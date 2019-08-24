@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "ChargeTemplate.h"
 #include "TaoConnector.h"
+
 IObservableVector<ChargeTemplate^>^ ChargeTemplateViewModel::chargeTemplates;
 
 bool ChargeTemplate::Delete()

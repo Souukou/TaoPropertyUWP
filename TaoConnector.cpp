@@ -313,6 +313,43 @@ void TaoConnector::RefreshTransactions()
 			});
 }
 
+void TaoConnector::RefreshBills()
+{
+	auto request = GenerateRequest(GenerateUri(L"bill/"), HttpMethod::Get, GetBase64Cred());
+	create_task(httpClient->TrySendRequestAsync(request))
+		.then([=](HttpRequestResult^ result)
+			{
+				if (result->Succeeded)
+				{
+					HttpResponseMessage^ response = result->ResponseMessage;
+					JsonArray^ theJsons = JsonArray::Parse(result->ResponseMessage->Content->ToString());
+
+					BillViewModel::Bills->Clear();
+					for (int i = 0; i < theJsons->Size; ++i)
+					{
+						JsonObject^ nowJson = theJsons->GetObjectAt(i);
+						int id = nowJson->Lookup("id")->GetNumber();
+						int propertyId = nowJson->Lookup("property")->GetNumber();
+						String^ name = nowJson->Lookup("name")->GetString();
+						String^ createdTime = nowJson->Lookup("createdTime")->GetString();
+						String^ startTime = nowJson->Lookup("startTime")->GetString();
+						String^ endTime = nowJson->Lookup("endTime")->GetString();
+						String^ dueTime = nowJson->Lookup("dueTime")->GetString();
+						float unitPrice = nowJson->Lookup("unitPrice")->GetNumber();
+						float quantity = nowJson->Lookup("quantity")->GetNumber();
+						float totalCost = nowJson->Lookup("totalCost")->GetNumber();
+						float feePayable = nowJson->Lookup("feePayable")->GetNumber();
+						float feeWaiver = nowJson->Lookup("feeWaiver")->GetNumber();
+						bool isPaid = nowJson->Lookup("isPaid")->GetBoolean();
+
+						BillViewModel::Bills->Append(ref new Bill(id, propertyId, name, createdTime, 
+							startTime, endTime, dueTime, unitPrice, quantity, totalCost,
+							feePayable, feeWaiver, isPaid));
+					}
+				}
+			});
+}
+
 bool TaoConnector::DeleteSubdivision(int id)
 {
 	auto request = GenerateRequest(GenerateUri(L"subdivision/" + id + "/"), HttpMethod::Delete, GetBase64Cred());
@@ -371,6 +408,18 @@ bool TaoConnector::DeleteHouse(int id)
 bool TaoConnector::DeleteCarport(int id)
 {
 	auto request = GenerateRequest(GenerateUri(L"carport/" + id + "/"), HttpMethod::Delete, GetBase64Cred());
+	//bool isSucceeded = false;
+	create_task(httpClient->TrySendRequestAsync(request))
+		.then([=](HttpRequestResult^ result)mutable
+			{
+				//isSucceeded = result->Succeeded;
+			});
+	return true;
+}
+
+bool TaoConnector::DeleteBill(int id)
+{
+	auto request = GenerateRequest(GenerateUri(L"bill/" + id + "/"), HttpMethod::Delete, GetBase64Cred());
 	//bool isSucceeded = false;
 	create_task(httpClient->TrySendRequestAsync(request))
 		.then([=](HttpRequestResult^ result)mutable
@@ -630,6 +679,57 @@ bool TaoConnector::AddChargeTemplate(
 	return true;
 }
 
+bool TaoConnector::AddBill(
+	String^ propertyId, //int
+	String^ name,
+	String^ startTime,
+	String^ endTime,
+	String^ dueTime,
+	String^ unitPrice, //float
+	String^ quantity, //float
+	String^ totalCost, //float
+	String^ feePayable, //float
+	String^ feeWaiver, //float
+	String^ isPaid //bool
+)
+{
+	JsonObject^ requestJson = ref new JsonObject();
+	if (propertyId != L"")
+		requestJson->Insert("property", JsonValue::CreateNumberValue(stoi(propertyId->Data())));
+	if (name != L"")
+		requestJson->Insert("name", JsonValue::CreateStringValue(name));
+	if (startTime != L"")
+		requestJson->Insert("startTime", JsonValue::CreateStringValue(startTime));
+	if (endTime != L"")
+		requestJson->Insert("endTime", JsonValue::CreateStringValue(endTime));
+	if (dueTime != L"")
+		requestJson->Insert("dueTime", JsonValue::CreateStringValue(dueTime));
+	if (unitPrice != L"")
+		requestJson->Insert("unitPrice", JsonValue::CreateNumberValue(stof(unitPrice->Data())));
+	if (quantity != L"")
+		requestJson->Insert("quantity", JsonValue::CreateNumberValue(stof(quantity->Data())));
+	if (totalCost != L"")
+		requestJson->Insert("totalCost", JsonValue::CreateNumberValue(stof(totalCost->Data())));
+	if (feePayable != L"")
+		requestJson->Insert("feePayable", JsonValue::CreateNumberValue(stof(feePayable->Data())));
+	if (feeWaiver != L"")
+		requestJson->Insert("feeWaiver", JsonValue::CreateNumberValue(stof(feeWaiver->Data())));
+	if (isPaid != L"")
+		requestJson->Insert("isPaid", JsonValue::CreateBooleanValue(stoi(isPaid->Data())));
+	HttpStringContent^ requestContent = ref new HttpStringContent(requestJson->ToString());
+	auto request = GenerateRequest(GenerateUri(L"bill/"), HttpMethod::Post, GetBase64Cred());
+	request->Content = requestContent;
+	request->Content->Headers->ContentType = ref new HttpMediaTypeHeaderValue("application/json");
+	create_task(httpClient->TrySendRequestAsync(request))
+		.then([=](HttpRequestResult^ result)
+			{
+				if (result->Succeeded)
+				{
+					true;
+				}
+			});
+	return true;
+}
 bool TaoConnector::PatchResident(
 	String^ id,
 	String^ name,
@@ -841,4 +941,57 @@ bool TaoConnector::PatchEnterprise(
 				}
 			});
 	return true;// request->Content->ToString();
+}
+
+bool TaoConnector::PatchBill(
+	String^ id,
+	String^ propertyId, //int
+	String^ name,
+	String^ startTime,
+	String^ endTime,
+	String^ dueTime,
+	String^ unitPrice, //float
+	String^ quantity, //float
+	String^ totalCost, //float
+	String^ feePayable, //float
+	String^ feeWaiver, //float
+	String^ isPaid //bool
+)
+{
+	JsonObject^ requestJson = ref new JsonObject();
+	if (propertyId != L"")
+		requestJson->Insert("property", JsonValue::CreateNumberValue(stoi(propertyId->Data())));
+	if (name != L"")
+		requestJson->Insert("name", JsonValue::CreateStringValue(name));
+	if (startTime != L"")
+		requestJson->Insert("startTime", JsonValue::CreateStringValue(startTime));
+	if (endTime != L"")
+		requestJson->Insert("endTime", JsonValue::CreateStringValue(endTime));
+	if (dueTime != L"")
+		requestJson->Insert("dueTime", JsonValue::CreateStringValue(dueTime));
+	if (unitPrice != L"")
+		requestJson->Insert("unitPrice", JsonValue::CreateNumberValue(stof(unitPrice->Data())));
+	if (quantity != L"")
+		requestJson->Insert("quantity", JsonValue::CreateNumberValue(stof(quantity->Data())));
+	if (totalCost != L"")
+		requestJson->Insert("totalCost", JsonValue::CreateNumberValue(stof(totalCost->Data())));
+	if (feePayable != L"")
+		requestJson->Insert("feePayable", JsonValue::CreateNumberValue(stof(feePayable->Data())));
+	if (feeWaiver != L"")
+		requestJson->Insert("feeWaiver", JsonValue::CreateNumberValue(stof(feeWaiver->Data())));
+	if (isPaid != L"")
+		requestJson->Insert("isPaid", JsonValue::CreateBooleanValue(stoi(isPaid->Data())));
+	HttpStringContent^ requestContent = ref new HttpStringContent(requestJson->ToString());
+	auto request = GenerateRequest(GenerateUri(L"bill/" + id + "/"), HttpMethod::Patch, GetBase64Cred());
+	request->Content = requestContent;
+	request->Content->Headers->ContentType = ref new HttpMediaTypeHeaderValue("application/json");
+	create_task(httpClient->TrySendRequestAsync(request))
+		.then([=](HttpRequestResult^ result)
+			{
+				if (result->Succeeded)
+				{
+					true;
+				}
+			});
+	return true;
 }
