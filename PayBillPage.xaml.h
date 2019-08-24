@@ -19,5 +19,6 @@ namespace TaoPropertyUWP
 		PayBillPage();
 	private:
 		void AddButton_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
+		void Page_Loaded(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
 	};
 }

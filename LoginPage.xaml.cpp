@@ -35,7 +35,7 @@ void TaoPropertyUWP::LoginPage::LoginButton_Click(Platform::Object^ sender, Wind
 {
 	TaoConnector::UserName = PhoneBox->Text;
 	TaoConnector::PassWord = ThePasswordBox->Password;
-	this->Frame->Navigate(TypeName(HomePage::typeid));
+	this->Frame->GoBack();
 	TaoConnector::RefreshCarports();
 	TaoConnector::RefreshChargeTemplates();
 	TaoConnector::RefreshEnterprises();

@@ -9,6 +9,7 @@
 #include "ChargeTemplate.h"
 #include "TaoConnector.h"
 #include "NewChargeTemplatePage.xaml.h"
+#include "LoginPage.xaml.h"
 using namespace TaoPropertyUWP;
 
 using namespace Platform;
@@ -85,4 +86,13 @@ void TaoPropertyUWP::ChargeTemplatePage::DetailPopup_Opened(Platform::Object^ se
 	this->SavedBackground = TitleGrid->Background;
 	TitleGrid->Background = nullptr;
 	CoverRectangle->Visibility = Windows::UI::Xaml::Visibility::Visible;
+}
+
+
+void TaoPropertyUWP::ChargeTemplatePage::Page_Loaded(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+	if (TaoConnector::UserName->Equals("") || TaoConnector::PassWord->Equals(""))
+	{
+		this->Frame->Navigate(TypeName(LoginPage::typeid));
+	}
 }

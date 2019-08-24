@@ -7,6 +7,7 @@
 #include "PayBillPage.xaml.h"
 #include "TaoConnector.h"
 #include "TransactionPage.xaml.h"
+#include "LoginPage.xaml.h"
 using namespace TaoPropertyUWP;
 
 using namespace Platform;
@@ -41,4 +42,13 @@ void TaoPropertyUWP::PayBillPage::AddButton_Click(Platform::Object^ sender, Wind
 	);
 	TaoConnector::RefreshTransactions();
 	this->Frame->Navigate(TypeName(TransactionPage::typeid));
+}
+
+
+void TaoPropertyUWP::PayBillPage::Page_Loaded(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+	if (TaoConnector::UserName->Equals("") || TaoConnector::PassWord->Equals(""))
+	{
+		this->Frame->Navigate(TypeName(LoginPage::typeid));
+	}
 }

@@ -10,6 +10,7 @@
 #include "TaoConnector.h"
 #include "NewHousePage.xaml.h"
 #include "NewCarportPage.xaml.h"
+#include "LoginPage.xaml.h"
 
 using namespace TaoPropertyUWP;
 
@@ -36,6 +37,10 @@ PropertyManagePage::PropertyManagePage()
 
 void TaoPropertyUWP::PropertyManagePage::PropertyManagePage_Loaded(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
 {
+	if (TaoConnector::UserName->Equals("") || TaoConnector::PassWord->Equals(""))
+	{
+		this->Frame->Navigate(TypeName(LoginPage::typeid));
+	}
 	PropertyTypeComboBox->SelectedIndex = 0;
 }
 
@@ -77,3 +82,4 @@ void TaoPropertyUWP::PropertyManagePage::NewButton_Click(Platform::Object^ sende
 		PropertyContentFrame->Navigate(TypeName(NewCarportPage::typeid));
 	}
 }
+

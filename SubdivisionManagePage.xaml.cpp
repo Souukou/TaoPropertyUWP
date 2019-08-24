@@ -7,6 +7,7 @@
 #include "SubdivisionManagePage.xaml.h"
 #include "Subdivision.h"
 #include "NewSubdivisionPage.xaml.h"
+#include "LoginPage.xaml.h"
 #include "SubdivisionDetailPage.xaml.h"
 #include "TaoConnector.h"
 #include <sstream>
@@ -90,4 +91,13 @@ void TaoPropertyUWP::SubdivisionManagePage::DetailPopup_Opened(Platform::Object^
 	this->SavedBackground = TitleGrid->Background;
 	TitleGrid->Background = nullptr;
 	CoverRectangle->Visibility = Windows::UI::Xaml::Visibility::Visible;
+}
+
+
+void TaoPropertyUWP::SubdivisionManagePage::Page_Loaded(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+	if (TaoConnector::UserName->Equals("") || TaoConnector::PassWord->Equals(""))
+	{
+		this->Frame->Navigate(TypeName(LoginPage::typeid));
+	}
 }

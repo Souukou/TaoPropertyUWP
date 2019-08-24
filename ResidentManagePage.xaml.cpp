@@ -8,6 +8,7 @@
 #include "NewResidentPage.xaml.h"
 #include "Resident.h"
 #include "ResidentDetailPage.xaml.h"
+#include "LoginPage.xaml.h"
 #include "TaoConnector.h"
 using namespace TaoPropertyUWP;
 using namespace TaoPropertyUWP::Models;
@@ -85,4 +86,13 @@ void TaoPropertyUWP::ResidentManagePage::DetailPopup_Opened(Platform::Object^ se
 	this->SavedBackground = TitleGrid->Background;
 	TitleGrid->Background = nullptr;
 	CoverRectangle->Visibility = Windows::UI::Xaml::Visibility::Visible;
+}
+
+
+void TaoPropertyUWP::ResidentManagePage::Page_Loaded(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+	if (TaoConnector::UserName->Equals("") || TaoConnector::PassWord->Equals(""))
+	{
+		this->Frame->Navigate(TypeName(LoginPage::typeid));
+	}
 }

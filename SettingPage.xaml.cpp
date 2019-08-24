@@ -5,6 +5,7 @@
 
 #include "pch.h"
 #include "SettingPage.xaml.h"
+#include "LoginPage.xaml.h"
 
 using namespace TaoPropertyUWP;
 
@@ -18,6 +19,7 @@ using namespace Windows::UI::Xaml::Data;
 using namespace Windows::UI::Xaml::Input;
 using namespace Windows::UI::Xaml::Media;
 using namespace Windows::UI::Xaml::Navigation;
+using namespace Windows::UI::Xaml::Interop;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -71,4 +73,13 @@ void TaoPropertyUWP::SettingPage::ConfirmButton_Click(Platform::Object^ sender, 
 void TaoPropertyUWP::SettingPage::CancelButton_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
 {
 	GoToNormalState();
+}
+
+
+void TaoPropertyUWP::SettingPage::Page_Loaded(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
+{
+	if (TaoConnector::UserName->Equals("") || TaoConnector::PassWord->Equals(""))
+	{
+		this->Frame->Navigate(TypeName(LoginPage::typeid));
+	}
 }

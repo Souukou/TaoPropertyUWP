@@ -43,5 +43,6 @@ namespace TaoPropertyUWP
 		void ListView_ItemClick(Platform::Object^ sender, Windows::UI::Xaml::Controls::ItemClickEventArgs^ e);
 		void DetailPopup_Closed(Platform::Object^ sender, Platform::Object^ e);
 		void DetailPopup_Opened(Platform::Object^ sender, Platform::Object^ e);
+		void Page_Loaded(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
 	};
 }

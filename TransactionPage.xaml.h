@@ -34,5 +34,6 @@ namespace TaoPropertyUWP
 	private:
 		static TransactionViewModel^ viewModel;
 		void RefreshButton_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
+		void Page_Loaded(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e);
 	};
 }
