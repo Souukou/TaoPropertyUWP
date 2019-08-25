@@ -28,7 +28,7 @@
                 Margin="0,0,0,50"
                 HorizontalAlignment="Center"
                 FontSize="42"
-                Text="登陆" />
+                Text="登录" />
 
             <TextBlock
                 Grid.Row="1"
@@ -63,7 +63,7 @@
                     Margin="0,30,00,0"
                     Background="{ThemeResource SystemAccentColorLight2}"
                     Click="LoginButton_Click"
-                    Content="登陆"
+                    Content="登录"
                     FontSize="28"
                     RelativePanel.AlignRightWithPanel="True" />
                 <Button
