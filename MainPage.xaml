@@ -51,6 +51,7 @@
                 FontSize="22"
                 PlaceholderText="搜索"
                 QueryIcon="Find"
+                QuerySubmitted="SearchBox_QuerySubmitted"
                 RelativePanel.AlignRightWithPanel="True" />
         </RelativePanel>
         <SplitView

@@ -2,6 +2,7 @@
 #include "House.h"
 #include "TaoConnector.h"
 IObservableVector<House^>^ HouseViewModel::houses;
+IObservableVector<House^>^ HouseViewModel::searchHouses;
 
 HouseViewModel::HouseViewModel()
 {
@@ -16,6 +17,15 @@ IObservableVector<House^>^ HouseViewModel::Houses::get()
 		TaoConnector::RefreshHouses();
 	}
 	return houses;
+}
+
+IObservableVector<House^>^ HouseViewModel::SearchHouses::get()
+{
+	if (searchHouses == nullptr)
+	{
+		searchHouses = ref new Platform::Collections::Vector<House^>();
+	}
+	return searchHouses;
 }
 
 bool House::Delete()

@@ -1033,3 +1033,47 @@ bool TaoConnector::PatchBill(
 			});
 	return true;
 }
+
+void TaoConnector::SearchHouses(String^ QueryString)
+{
+	auto request = GenerateRequest(GenerateUri(L"house/?search=" + QueryString), HttpMethod::Get, GetBase64Cred());
+	create_task(httpClient->TrySendRequestAsync(request))
+		.then([=](HttpRequestResult^ result)
+			{
+				if (result->Succeeded)
+				{
+					HttpResponseMessage^ response = result->ResponseMessage;
+					JsonArray^ theJsons = JsonArray::Parse(result->ResponseMessage->Content->ToString());
+
+					HouseViewModel::SearchHouses->Clear();
+					for (int i = 0; i < theJsons->Size; ++i)
+					{
+						JsonObject^ nowJson = theJsons->GetObjectAt(i);
+						int id = nowJson->Lookup("id")->GetNumber();
+						int subdivisionId = nowJson->Lookup("subdivision")->GetNumber();
+
+						auto proprietorArray = nowJson->Lookup("proprietor")->GetArray();
+						Platform::Collections::Vector<int>^ proprietor = ref new Platform::Collections::Vector<int>();
+						for (int j = 0; j < proprietorArray->Size; ++j)
+						{
+							proprietor->Append(proprietorArray->GetNumberAt(j));
+						}
+
+						Platform::String^ note = nowJson->Lookup("note")->GetString();
+						Platform::String^ no = nowJson->Lookup("no")->GetString();
+						float netFloorArea = nowJson->Lookup("netFloorArea")->GetNumber();
+						float grossFloorArea = nowJson->Lookup("grossFloorArea")->GetNumber();
+						Platform::String^ building = nowJson->Lookup("building")->GetString();
+						int unit = nowJson->Lookup("unit")->GetNumber();
+						int floor = nowJson->Lookup("floor")->GetNumber();
+						Platform::String^ houseStatus = nowJson->Lookup("houseStatus")->GetString();
+						Platform::String^ layout = nowJson->Lookup("layout")->GetString();
+						Platform::String^ direction = nowJson->Lookup("direction")->GetString();
+						//Platform::String^ createTime = nowJson->Lookup("createTime")->GetString();
+
+						HouseViewModel::SearchHouses->Append(ref new House(id, subdivisionId, proprietor, note, no,
+							netFloorArea, grossFloorArea, building, unit, floor, houseStatus, layout, direction));
+					}
+				}
+			});
+}

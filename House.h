@@ -198,9 +198,14 @@ namespace TaoPropertyUWP
 		{
 		private:
 			static IObservableVector<House^>^ houses;
+			static IObservableVector<House^>^ searchHouses;
 		public:
 			HouseViewModel();
 			static property IObservableVector<House^>^ Houses
+			{
+				IObservableVector<House^>^ get();
+			}
+			static property IObservableVector<House^>^ SearchHouses
 			{
 				IObservableVector<House^>^ get();
 			}

@@ -86,6 +86,7 @@ namespace TaoPropertyUWP
 		static bool PatchEnterprise(String^, String^, String^);
 		static bool PatchBill(String^, String^, String^, String^, String^, String^,
 			String^, String^, String^, String^, String^, String^);
+		static void SearchHouses(String^);
 	};
 
 }

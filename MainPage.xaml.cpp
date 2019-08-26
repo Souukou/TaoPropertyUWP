@@ -16,6 +16,7 @@
 #include "TaoConnector.h"
 #include "BillManagePage.xaml.h"
 #include "PayBillPage.xaml.h"
+#include "SearchResultPage.xaml.h"
 
 using namespace TaoPropertyUWP;
 
@@ -107,3 +108,10 @@ void TaoPropertyUWP::MainPage::GoBackButton_Click(Platform::Object^ sender, Wind
 }
 
 
+
+
+void TaoPropertyUWP::MainPage::SearchBox_QuerySubmitted(Windows::UI::Xaml::Controls::AutoSuggestBox^ sender, Windows::UI::Xaml::Controls::AutoSuggestBoxQuerySubmittedEventArgs^ args)
+{
+	
+	MainContentFrame->Navigate(TypeName(SearchResultPage::typeid), args->QueryText);
+}

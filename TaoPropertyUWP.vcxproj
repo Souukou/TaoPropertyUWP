@@ -248,6 +248,9 @@
     <ClInclude Include="ResidentManagePage.xaml.h">
       <DependentUpon>ResidentManagePage.xaml</DependentUpon>
     </ClInclude>
+    <ClInclude Include="SearchResultPage.xaml.h">
+      <DependentUpon>SearchResultPage.xaml</DependentUpon>
+    </ClInclude>
     <ClInclude Include="SettingPage.xaml.h">
       <DependentUpon>SettingPage.xaml</DependentUpon>
     </ClInclude>
@@ -330,6 +333,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="ResidentManagePage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SearchResultPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Include="SettingPage.xaml">
@@ -464,6 +470,9 @@
     </ClCompile>
     <ClCompile Include="ResidentManagePage.xaml.cpp">
       <DependentUpon>ResidentManagePage.xaml</DependentUpon>
+    </ClCompile>
+    <ClCompile Include="SearchResultPage.xaml.cpp">
+      <DependentUpon>SearchResultPage.xaml</DependentUpon>
     </ClCompile>
     <ClCompile Include="SettingPage.xaml.cpp">
       <DependentUpon>SettingPage.xaml</DependentUpon>

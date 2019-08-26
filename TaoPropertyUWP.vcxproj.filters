@@ -144,5 +144,6 @@
     <Page Include="BillDetailPage.xaml" />
     <Page Include="NewBillPage.xaml" />
     <Page Include="PayBillPage.xaml" />
+    <Page Include="SearchResultPage.xaml" />
   </ItemGroup>
 </Project>
